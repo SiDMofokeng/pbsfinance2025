@@ -1,0 +1,1480 @@
+/* PBS Finance – App-level overrides for application layout */
+
+.loan-application-section {
+  /* let .loan-calculator-two handle the background */
+  padding: 80px 0 100px;
+}
+
+.loan-application-section .section-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #3B4A54; /* PBS Charcoal */
+}
+
+.loan-application-section .section-subtitle {
+  font-size: 14px;
+  color: #6B7A83;
+  margin-bottom: 24px;
+}
+
+/* Tabs */
+
+.loan-application-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid rgba(59, 74, 84, 0.16);
+  margin-bottom: 0px;
+  background-color: #ffffff;
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.loan-application-tablink {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 999px;
+  color: #3B4A54;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.loan-application-tablink:hover {
+  background-color: rgba(181, 228, 128, 0.18);
+}
+
+.loan-application-tablink.is-active {
+  background-color: #B5E480;      /* PBS Green */
+  color: #ffffff;
+}
+
+/* Panels */
+
+.loan-application-tabcontent {
+  display: none;
+  padding: 24px 0 0;
+}
+
+/* Card feeling for forms */
+
+.loan-application-section .loan-calculator-two__inner {
+  margin-top: 0;
+}
+
+.loan-application-section .contact-one__form {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 24px 24px 28px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.loan-application-section h1.main.Title {
+  font-size: 24px;
+  margin-bottom: 18px;
+  color: #3B4A54;
+}
+
+.loan-application-section .form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.loan-application-section .form-control,
+.loan-application-section select {
+  border-radius: 12px;
+}
+
+/* Buttons */
+
+.loan-application-section .thm-btn {
+  margin-top: 8px;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+  .loan-application-tabs {
+    border-radius: 12px;
+  }
+
+  .loan-application-tablink {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .loan-application-section .contact-one__form {
+    padding: 18px 16px 22px;
+  }
+}
+
+/* ===== UX improvements for Apply page forms ===== */
+
+/* Grouped form sections */
+.form-section {
+  margin-bottom: 32px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.form-section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.form-section__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1b2b38;
+  margin-bottom: 8px;
+}
+
+.form-section__subtitle {
+  font-size: 13px;
+  color: #6B7A83;
+  margin-bottom: 16px;
+}
+
+/* Two-column layout that collapses nicely on mobile */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+@media (max-width: 767px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tighter, consistent field styling */
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #24323c;
+}
+
+.form-group .field-hint {
+  font-size: 11px;
+  color: #8b9aa5;
+  margin-top: 4px;
+}
+
+/* Step navigation area inside each tab */
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.step-actions__info {
+  font-size: 12px;
+  color: #6B7A83;
+}
+
+.step-actions .thm-btn {
+  margin-top: 0; /* override old margin */
+}
+
+/* =======================
+   PBS Finance – Auth screens
+   ======================= */
+
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 16px;
+  background:
+    radial-gradient(1200px 260px at 50% -140px,
+      rgba(16, 24, 40, 0.08),
+      rgba(16, 24, 40, 0) 65%),
+    linear-gradient(#f7f9fb, #f7f9fb);
+}
+
+.auth-card {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  padding: 24px 24px 28px;
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.auth-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1b2b38;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.auth-subtitle {
+  font-size: 13px;
+  color: #6B7A83;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-form .form-group {
+  margin-bottom: 14px;
+}
+
+.auth-form label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #24323c;
+  margin-bottom: 4px;
+}
+
+.auth-input {
+  border-radius: 12px;
+  border: 1px solid #d9e2ec;
+  font-size: 14px;
+  padding: 9px 12px;
+  height: auto;
+}
+
+.auth-input:focus {
+  border-color: #B5E480;
+  box-shadow: 0 0 0 2px rgba(181, 228, 128, 0.35);
+  outline: none;
+}
+
+.auth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0 16px;
+  font-size: 12px;
+}
+
+.auth-row .form-check-label {
+  font-size: 12px;
+  color: #3B4A54;
+}
+
+.auth-link {
+  font-size: 12px;
+  color: #3B4A54;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-btn-full {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.auth-footer-text {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #6B7A83;
+  text-align: center;
+}
+
+/* Small screens */
+@media (max-width: 575px) {
+  .auth-card {
+    padding: 20px 16px 24px;
+  }
+}
+
+/* =========================================================
+   PBS – Auth Screen Gradient (Soft Premium Radial Glow)
+   ========================================================= */
+
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 16px;
+  background:
+    radial-gradient(
+      900px 360px at 50% -160px,
+      rgba(15, 23, 42, 0.12),
+      rgba(15, 23, 42, 0) 65%
+    ),
+    linear-gradient(to bottom, #f7f9fb 0%, #f0f3f6 100%);
+}
+
+/* =======================
+   PBS – Auth tabs
+   ======================= */
+
+.auth-tabs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #f3f6f9;
+  border-radius: 999px;
+  padding: 4px;
+  margin: 0 auto 16px;
+}
+
+.auth-tablink {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3B4A54;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-tablink.is-active {
+  background: #B5E480;          /* PBS green */
+  color: #0f1f29;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+.auth-tabcontent {
+  display: none;
+}
+
+/* =========================================================
+   PBS – Floating Gradient Background (Logo Colors)
+   ========================================================= */
+
+.auth-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Base soft radial glow (same as before, keeps it clean) */
+.auth-section {
+  background: radial-gradient(
+      900px 360px at 50% -160px,
+      rgba(15, 23, 42, 0.10),
+      rgba(15, 23, 42, 0) 70%
+    ),
+    linear-gradient(to bottom, #f7f9fb 0%, #f0f3f6 100%);
+}
+
+/* Floating gradient blobs */
+.auth-section::before,
+.auth-section::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  animation: floatBlob 12s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+/* Top-left green glow */
+.auth-section::before {
+  background: rgba(181, 228, 128, 0.9); /* PBS Green */
+  top: -180px;
+  left: -140px;
+}
+
+/* Bottom-right charcoal glow */
+.auth-section::after {
+  background: rgba(59, 74, 84, 0.9); /* PBS Charcoal */
+  bottom: -160px;
+  right: -140px;
+  animation-delay: 3s;
+}
+
+/* Floating movement animation */
+@keyframes floatBlob {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(1.05); }
+}
+
+/* Make sure the card sits ABOVE the blobs */
+.auth-card {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tabs also above */
+.auth-tabs {
+  position: relative;
+  z-index: 2;
+}
+
+/* =======================
+   PBS – Auth layout (split screen)
+   ======================= */
+
+.auth-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 16px;
+  background:
+    radial-gradient(
+      900px 360px at 50% -160px,
+      rgba(15, 23, 42, 0.10),
+      rgba(15, 23, 42, 0) 70%
+    ),
+    linear-gradient(to bottom, #f7f9fb 0%, #f0f3f6 100%);
+}
+
+.auth-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* Desktop: image left, card right */
+@media (min-width: 992px) {
+  .auth-layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+  .auth-card { order: 2; }
+  .auth-visual { order: 1; }
+}
+
+/* Mobile: stack, card first */
+@media (max-width: 991.98px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Left visual panel ===== */
+
+.auth-visual {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.auth-visual-inner {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: radial-gradient(circle at 0% 0%, #B5E480 0%, #3B4A54 45%, #101827 100%);
+  box-shadow:
+    0 26px 60px rgba(15, 23, 42, 0.40),
+    0 0 0 1px rgba(15, 23, 42, 0.15);
+}
+
+.auth-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+
+/* Soft overlay to keep things readable */
+.auth-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.45), transparent 55%);
+  pointer-events: none;
+}
+
+/* Text on the visual */
+.auth-visual-text {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  color: #f9fafb;
+}
+
+.auth-visual-text h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.auth-visual-text p {
+  font-size: 13px;
+  max-width: 280px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ===== Right card & shared auth styles ===== */
+
+.auth-card {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  width: 100%;
+  margin-left: auto;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 20px 40px rgba(15, 23, 42, 0.10),
+    0 4px 20px rgba(15, 23, 42, 0.06);
+  padding: 24px 24px 28px;
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.auth-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1b2b38;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.auth-subtitle {
+  font-size: 13px;
+  color: #6B7A83;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.auth-form .form-group {
+  margin-bottom: 14px;
+}
+
+.auth-form label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #24323c;
+  margin-bottom: 4px;
+}
+
+.auth-input {
+  border-radius: 12px;
+  border: 1px solid #d9e2ec;
+  font-size: 14px;
+  padding: 9px 12px;
+  height: auto;
+}
+
+.auth-input:focus {
+  border-color: #B5E480;
+  box-shadow: 0 0 0 2px rgba(181, 228, 128, 0.35);
+  outline: none;
+}
+
+.auth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0 16px;
+  font-size: 12px;
+}
+
+.auth-row .form-check-label {
+  font-size: 12px;
+  color: #3B4A54;
+}
+
+.auth-link {
+  font-size: 12px;
+  color: #3B4A54;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-btn-full {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Footer text if needed */
+.auth-footer-text {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #6B7A83;
+  text-align: center;
+}
+
+/* ===== Auth tabs ===== */
+
+.auth-tabs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #f3f6f9;
+  border-radius: 999px;
+  padding: 4px;
+  margin: 0 auto 16px;
+}
+
+.auth-tablink {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3B4A54;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-tablink.is-active {
+  background: #B5E480;          /* PBS green */
+  color: #0f1f29;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+.auth-tabcontent {
+  display: none;
+}
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 575.98px) {
+  .auth-card {
+    margin: 0 auto;
+    padding: 20px 16px 24px;
+  }
+  .auth-visual-text h2 {
+    font-size: 18px;
+  }
+  .auth-visual-text p {
+    font-size: 12px;
+  }
+}
+
+/* === FIX: Keep left illustration from stretching when Register is taller === */
+
+/* Don't force both columns to be the same height */
+.auth-layout {
+  align-items: center;  /* instead of stretch */
+}
+
+/* Let the illustration keep its own height */
+.auth-visual {
+  align-self: center;
+}
+
+/* Make the inner panel and image auto-height, not 100% of the grid row */
+.auth-visual-inner {
+  height: auto;
+  max-height: none;
+}
+
+.auth-visual-img {
+  width: 100%;
+  height: auto;           /* <-- was 100%, this is what was stretching it */
+  object-fit: contain;    /* show whole image, don't crop */
+}
+
+/* ============================================
+   PBS – Admin dashboard
+   ============================================ */
+
+.admin-body {
+  background: linear-gradient(to bottom, #f7f9fb, #edf1f6);
+  font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.admin-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top header */
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.admin-header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-logo {
+  height: 36px;
+  width: auto;
+}
+
+.admin-header__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1b2b38;
+}
+
+.admin-header__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Search */
+
+.admin-header__search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f3f6f9;
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.admin-header__search i {
+  font-size: 13px;
+  color: #7c8b97;
+}
+
+.admin-header__search input {
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  outline: none;
+  min-width: 220px;
+}
+
+/* User chip */
+
+.admin-icon-btn {
+  border: none;
+  background: transparent;
+  padding: 6px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #24323c;
+}
+
+.admin-icon-btn:hover {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+}
+
+.admin-user__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #B5E480;
+  color: #0f1f29;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-user__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-user__name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1b2b38;
+}
+
+.admin-user__role {
+  font-size: 11px;
+  color: #7c8b97;
+}
+
+/* Layout */
+
+.admin-main {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  align-items: stretch;
+  min-height: calc(100vh - 64px);
+}
+
+/* Side nav */
+
+.admin-sidenav {
+  padding: 18px 20px;
+  border-right: 1px solid rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, #f6faf5, #f5f7fb);
+}
+
+.admin-sidenav__section + .admin-sidenav__section {
+  margin-top: 18px;
+}
+
+.admin-sidenav__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8b9aa5;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.admin-sidenav__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #344553;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+.admin-sidenav__link i {
+  font-size: 13px;
+}
+
+.admin-sidenav__link:hover {
+  background: rgba(181, 228, 128, 0.14);
+}
+
+.admin-sidenav__link.is-active {
+  background: #B5E480;
+  color: #0f1f29;
+}
+
+/* Content area */
+
+.admin-content {
+  padding: 22px 28px 28px;
+}
+
+/* Page head */
+
+.admin-page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1b2b38;
+  margin-bottom: 2px;
+}
+
+.admin-page-subtitle {
+  font-size: 13px;
+  color: #7c8b97;
+  margin: 0;
+}
+
+.admin-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-select {
+  border-radius: 999px;
+  border: 1px solid #d2dde8;
+  font-size: 13px;
+  padding: 7px 24px 7px 10px;
+  background: #ffffff;
+}
+
+.admin-head-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-inline: 14px;
+}
+
+.admin-head-btn--full {
+  width: 100%;
+  justify-content: center;
+}
+
+/* KPIs */
+
+.admin-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.admin-kpi-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.admin-kpi-label {
+  font-size: 12px;
+  color: #7c8b97;
+}
+
+.admin-kpi-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.admin-kpi-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1b2b38;
+}
+
+.admin-kpi-pill {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eff3f8;
+}
+
+.admin-kpi-pill--success {
+  background: rgba(181, 228, 128, 0.18);
+  color: #3a6b15;
+}
+
+.admin-kpi-pill--warning {
+  background: rgba(255, 193, 87, 0.22);
+  color: #8c6009;
+}
+
+.admin-kpi-pill--danger {
+  background: rgba(239, 68, 68, 0.2);
+  color: #991b1b;
+}
+
+/* Panels + table */
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.admin-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 16px 16px;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.05);
+}
+
+.admin-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.admin-panel__head h2 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: #1b2b38;
+}
+
+.admin-link-btn {
+  border: none;
+  background: transparent;
+  color: #3B4A54;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Table */
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #edf1f6;
+}
+
+.admin-table th {
+  text-align: left;
+  font-weight: 600;
+  color: #7c8b97;
+  font-size: 11px;
+}
+
+.admin-table td {
+  color: #24323c;
+}
+
+/* Badges */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.badge--pending {
+  background: rgba(255, 193, 87, 0.14);
+  color: #8c6009;
+}
+
+.badge--approved {
+  background: rgba(181, 228, 128, 0.18);
+  color: #3a6b15;
+}
+
+.badge--declined {
+  background: rgba(239, 68, 68, 0.16);
+  color: #b91c1c;
+}
+
+/* Right panel list */
+
+.admin-panel--side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.admin-list li + li {
+  margin-top: 10px;
+}
+
+.admin-list__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-list__label {
+  font-size: 12px;
+  color: #1b2b38;
+  font-weight: 500;
+}
+
+.admin-list__value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1b2b38;
+}
+
+.admin-list__sub {
+  font-size: 11px;
+  color: #7c8b97;
+  margin: 2px 0 0;
+}
+
+.admin-panel__cta {
+  margin-top: auto;
+}
+
+/* Responsive */
+
+@media (max-width: 991.98px) {
+  .admin-main {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-sidenav {
+    display: none; /* simple for now, can add mobile menu later */
+  }
+
+  .admin-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .admin-page-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-header__search input {
+    min-width: 140px;
+  }
+}
+
+/* ============================================
+   PBS – Apply for a Loan redesigned section
+   ============================================ */
+
+/* Section background similar to admin/auth pages */
+.loan-application-section {
+  padding: 30px 0 80px;
+  background:
+    radial-gradient(
+      1200px 360px at 50% -140px,
+      rgba(15, 23, 42, 0.10),
+      rgba(15, 23, 42, 0) 70%
+    ),
+    linear-gradient(to bottom, #f7f9fb 0%, #edf1f6 100%);
+}
+
+/* Heading */
+.loan-app-head {
+  margin-bottom: 18px;
+}
+
+.loan-app-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1b2b38;
+  margin-bottom: 4px;
+}
+
+.loan-app-subtitle {
+  font-size: 13px;
+  color: #7c8b97;
+  margin: 0;
+}
+
+/* Main card shell */
+.loan-application-shell {
+  margin-top: 0px;
+  border-radius: 20px;
+}
+
+/* Top bar: tabs + summary */
+.loan-shell-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.loan-shell-summary {
+  text-align: right;
+}
+
+.loan-shell-summary p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #7c8b97;
+}
+
+.loan-shell-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3f6f9;
+  font-size: 11px;
+  color: #3B4A54;
+}
+
+/* Tabs – match login pills */
+.loan-application-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  background: #f3f6f9;
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.loan-application-tablink {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3B4A54;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.loan-application-tablink:hover {
+  background: rgba(181, 228, 128, 0.20);
+}
+
+.loan-application-tablink.is-active,
+.loan-application-tablink.active {
+  background: #B5E480; /* PBS green */
+  color: #0f1f29;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+/* Body area */
+.loan-shell-body {
+  margin-top: 6px;
+}
+
+/* Forms inside apply card – reuse login style */
+.loan-application-section .contact-one__form {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 4px 0 0;
+  box-shadow: none; /* shell already has shadow */
+}
+
+.loan-application-section .form-group {
+  margin-bottom: 12px;
+}
+
+.loan-application-section label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #24323c;
+  margin-bottom: 4px;
+}
+
+.loan-application-section .form-control,
+.loan-application-section select {
+  border-radius: 12px;
+  border: 1px solid #d9e2ec;
+  font-size: 14px;
+  padding: 9px 12px;
+  height: auto;
+}
+
+.loan-application-section .form-control:focus,
+.loan-application-section select:focus {
+  border-color: #B5E480;
+  box-shadow: 0 0 0 2px rgba(181, 228, 128, 0.35);
+  outline: none;
+}
+
+/* Buttons in steps */
+.loan-application-section .thm-btn {
+  margin-top: 6px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+  .loan-shell-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .loan-shell-summary {
+    text-align: left;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .loan-application-shell {
+    padding: 14px 12px 18px;
+  }
+
+  .loan-app-title {
+    font-size: 20px;
+  }
+}
+
+/* REVIEW SCREEN LAYOUT --------------------------------------- */
+
+.review-carousel {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 20px 0 40px;
+  position: relative;
+}
+
+.review-slide {
+  display: none;
+  animation: fadeSlide 0.25s ease-out;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pretty-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 32px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.review-card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0C2A42; /* PBS dark */
+}
+
+.edit-btn {
+  background: #0C2A42;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #0A2338;
+}
+
+.review-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.review-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 8px;
+}
+
+.review-item span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.review-item strong {
+  font-size: 0.95rem;
+  color: #0C2A42;
+  font-weight: 600;
+}
+
+/* SLIDER CONTROLS -------------------------------------------- */
+
+.review-carousel-controls {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.review-carousel-controls .thm-btn,
+.review-carousel-controls .thm-btn--ghost {
+  padding: 10px 24px !important;
+}
+
+.review-carousel-indicator {
+  text-align: center;
+}
+
+#review-slide-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.review-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.review-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #d2d2d2;
+  cursor: pointer;
+}
+
+.review-dot.is-active {
+  background: #9ECB5B; /* PBS green */
+}
+
+/* FINAL CONFIRM SECTION -------------------------------------- */
+
+.review-final {
+  max-width: 650px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.review-final button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+}
+
+.error-msg {
+  color: #D9534F;   /* soft red */
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.input-error {
+  border: 1px solid #D9534F !important;
+  background-color: #FFF5F5 !important;
+}

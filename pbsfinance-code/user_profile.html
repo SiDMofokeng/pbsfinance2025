@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | My Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons (optional, same as dashboard) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- fonts / vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+
+  <style>
+    /* PROFILE PAGE SPECIFIC STYLES – tuned to match admin cards */
+
+    .profile-page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .profile-page-header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0C2A42;
+    }
+
+    .profile-status-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e5f5d5;
+      color: #49781c;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .profile-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.4fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .profile-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .profile-card,
+    .profile-form-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 26px 28px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .profile-summary-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .profile-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #9ecb5b, #4ebc92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.6rem;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0C2A42;
+    }
+
+    .profile-email {
+      font-size: 0.9rem;
+      color: #7d8491;
+      margin-top: 2px;
+    }
+
+    .profile-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .profile-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eef3f7;
+      font-size: 0.75rem;
+      color: #4c5a6b;
+    }
+
+    .profile-meta-list {
+      margin-top: 14px;
+      font-size: 0.9rem;
+      color: #4c5a6b;
+      padding-left: 18px;
+    }
+
+    .profile-meta-list li {
+      margin-bottom: 6px;
+    }
+
+    .profile-summary-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .profile-form-header h2 {
+      margin: 0 0 4px;
+      font-size: 1.2rem;
+      color: #0C2A42;
+    }
+
+    .profile-form-group {
+      margin-bottom: 16px;
+    }
+
+    .profile-form-group label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: #5a6675;
+    }
+
+    .profile-two-col {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .profile-two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .profile-form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body class="admin-body">
+  <div class="admin-shell">
+
+    <!-- TOP BAR – same as dashboard -->
+    <header class="admin-header">
+      <div class="admin-header__left">
+        <a href="index.html" class="admin-logo-link">
+          <img src="assets/images/logo-dark.png" alt="PBS Finance" class="admin-logo">
+        </a>
+        <span class="admin-header__title">Admin Portal</span>
+      </div>
+
+      <div class="admin-header__right">
+        <div class="admin-header__search">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search applications, customers…" />
+        </div>
+
+        <button class="admin-icon-btn" type="button">
+          <i class="far fa-bell"></i>
+        </button>
+
+        <div class="admin-user">
+          <div class="admin-user__avatar">SA</div>
+          <div class="admin-user__meta">
+            <span class="admin-user__name">Sydney Admin</span>
+            <span class="admin-user__role">Loan manager</span>
+          </div>
+          <button class="admin-icon-btn admin-user__menu" type="button">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN AREA -->
+    <div class="admin-main">
+
+      <!-- SIDE NAV – same structure as dashboard, My profile active -->
+      <nav class="admin-sidenav">
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Overview</span>
+          <a href="admin-dashboard.html" class="admin-sidenav__link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Applications</span>
+          <a href="#" class="admin-sidenav__link">
+            <i class="fas fa-file-alt"></i>
+            <span>All applications</span>
+          </a>
+          <a href="#" class="admin-sidenav__link">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Pending review</span>
+          </a>
+          <a href="#" class="admin-sidenav__link">
+            <i class="fas fa-check-circle"></i>
+            <span>Approved</span>
+          </a>
+          <a href="#" class="admin-sidenav__link">
+            <i class="fas fa-times-circle"></i>
+            <span>Declined</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">System</span>
+          <a href="#" class="admin-sidenav__link">
+            <i class="fas fa-users-cog"></i>
+            <span>Admin users</span>
+          </a>
+          <a href="user_profile.html" class="admin-sidenav__link is-active">
+            <i class="fas fa-user-circle"></i>
+            <span>My profile</span>
+          </a>
+          <a href="#" class="admin-sidenav__link">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- PROFILE CONTENT -->
+      <main class="admin-content">
+
+        <div class="profile-page-header">
+          <h1>My Profile</h1>
+          <span class="profile-status-pill">Active Client</span>
+        </div>
+
+        <div class="profile-layout">
+
+          <!-- LEFT SUMMARY -->
+          <aside class="profile-card">
+            <div class="profile-summary-header">
+              <div class="profile-avatar">LM</div>
+              <div>
+                <h2 class="profile-name">Lebo Mofokeng</h2>
+                <div class="profile-email">lebo.mofokeng@example.co.za</div>
+              </div>
+            </div>
+
+            <div class="profile-badge-row">
+              <span class="profile-badge">ID Verified</span>
+              <span class="profile-badge">Loan Applications: 2</span>
+            </div>
+
+            <ul class="profile-meta-list">
+              <li><strong>ID Number:</strong> 900101 5009 087</li>
+              <li><strong>Primary Bank:</strong> FNB</li>
+              <li><strong>Last Login:</strong> 17 Nov 2025 · 13:45</li>
+            </ul>
+
+            <div class="profile-summary-actions">
+              <button type="button" class="thm-btn thm-btn--ghost">Download Statement</button>
+              <button type="button" class="thm-btn thm-btn--outline">View Applications</button>
+            </div>
+          </aside>
+
+          <!-- RIGHT EDIT FORM -->
+          <section class="profile-form-card">
+            <div class="profile-form-header">
+              <h2>Personal Details</h2>
+            </div>
+
+            <form>
+
+              <div class="profile-two-col">
+                <div class="profile-form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" value="Lebo">
+                </div>
+                <div class="profile-form-group">
+                  <label>Surname</label>
+                  <input type="text" class="form-control" value="Mofokeng">
+                </div>
+              </div>
+
+              <div class="profile-two-col">
+                <div class="profile-form-group">
+                  <label>ID Number</label>
+                  <input type="text" class="form-control" value="9001015009087">
+                </div>
+                <div class="profile-form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" value="lebo.mofokeng@example.co.za">
+                </div>
+              </div>
+
+              <div class="profile-two-col">
+                <div class="profile-form-group">
+                  <label>Mobile Number</label>
+                  <input type="text" class="form-control" value="+27 82 123 4567">
+                </div>
+                <div class="profile-form-group">
+                  <label>Alternative Contact</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+
+              <hr />
+
+              <div class="profile-form-header">
+                <h2>Residential Address</h2>
+              </div>
+
+              <div class="profile-form-group">
+                <label>Street Address</label>
+                <input type="text" class="form-control" value="Unit 12, Maple Heights, 25 Main Road">
+              </div>
+
+              <div class="profile-two-col">
+                <div class="profile-form-group">
+                  <label>Suburb</label>
+                  <input type="text" class="form-control" value="Fourways">
+                </div>
+                <div class="profile-form-group">
+                  <label>City</label>
+                  <input type="text" class="form-control" value="Johannesburg">
+                </div>
+              </div>
+
+              <div class="profile-two-col">
+                <div class="profile-form-group">
+                  <label>Province</label>
+                  <input type="text" class="form-control" value="Gauteng">
+                </div>
+                <div class="profile-form-group">
+                  <label>Postal Code</label>
+                  <input type="text" class="form-control" value="2191">
+                </div>
+              </div>
+
+              <hr />
+
+              <div class="profile-form-header">
+                <h2>Employment &amp; Banking</h2>
+              </div>
+
+              <div class="profile-two-col">
+                <div class="profile-form-group">
+                  <label>Employer</label>
+                  <input type="text" class="form-control" value="PBS Consulting (Pty) Ltd">
+                </div>
+                <div class="profile-form-group">
+                  <label>Employment Status</label>
+                  <select class="form-control">
+                    <option selected>Full Time Employment</option>
+                    <option>Part Time</option>
+                    <option>Self-employed</option>
+                    <option>Unemployed</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="profile-two-col">
+                <div class="profile-form-group">
+                  <label>Primary Bank</label>
+                  <select class="form-control">
+                    <option>FNB</option>
+                    <option>ABSA</option>
+                    <option>Standard Bank</option>
+                    <option>Nedbank</option>
+                    <option>Capitec</option>
+                  </select>
+                </div>
+                <div class="profile-form-group">
+                  <label>Account Number</label>
+                  <input type="text" class="form-control" value="62012345678">
+                </div>
+              </div>
+
+              <div class="profile-form-actions">
+                <button type="button" class="thm-btn thm-btn--ghost">Cancel</button>
+                <button type="submit" class="thm-btn">Save Changes</button>
+              </div>
+
+            </form>
+          </section>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- JS (same as dashboard if you need it) -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
