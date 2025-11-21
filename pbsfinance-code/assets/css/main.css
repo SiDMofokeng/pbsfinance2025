@@ -1549,7 +1549,7 @@ h6 {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: var(--thm-color);
+  color: #0f1f29;
   -webkit-transition: 500ms;
   transition: 500ms;
   position: relative;
@@ -1579,7 +1579,7 @@ h6 {
 .main-menu .main-menu__list>li:hover>a,
 .stricky-header .main-menu__list>li.current>a,
 .stricky-header .main-menu__list>li:hover>a {
-  color: var(--thm-black);
+  color: #0f1f29;
   text-shadow: 0px 0 0 currentColor;
 }
 
@@ -10596,6 +10596,7 @@ nav.main-header-two__menu.main-menu {
     padding-bottom: 150px;
     margin-bottom: 150px;
   }
+  
 }
 
 .loan-calculator-two__shape-1 {
@@ -10640,8 +10641,8 @@ nav.main-header-two__menu.main-menu {
 
 .loan-calculator-two__inner {
   background-color: #FFFFFF;
-  -webkit-box-shadow: 0px 49px 39px #DEE3E6;
-  box-shadow: 0px 49px 39px #DEE3E6;
+  -webkit-box-shadow: 0px 0px 0px #DEE3E6;
+  box-shadow: 0px 0px 0px #DEE3E6;
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: top center;
@@ -12039,7 +12040,7 @@ select#cars {
 .main-header-two__menu .main-menu__list>li>a::before {
   bottom: auto;
   top: calc(100% + 15px);
-  background-color: #0C2139;
+  background-color: #ffffff;
 }
 
 .main-header-two__form {
@@ -12735,7 +12736,7 @@ Main Header Five
 
 .main-header__five .main-menu .main-menu__list>li.current>a,
 .main-header__five .main-menu .main-menu__list>li:hover>a {
-  color: #ffffff;
+  color: #0f1f29;
 }
 
 .stricky-header--three.stricky-header .main-menu__list>li>a {
@@ -12744,7 +12745,7 @@ Main Header Five
 
 .stricky-header--three.stricky-header .main-menu__list>li.current>a,
 .stricky-header--three.stricky-header .main-menu__list>li:hover>a {
-  color: #ffffff;
+  color: #0f1f29;
 }
 
 .main-header__five .main-menu .main-menu__list>li>a::before {

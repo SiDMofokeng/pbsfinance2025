@@ -1510,3 +1510,607 @@
       #3B4A54 100%       /* PBS Charcoal */
   );
 }
+
+/* === Apply Page Gradient Background (same as admin) === */
+.apply-body-gradient {
+  background: linear-gradient(
+      165deg,
+      #B5E480 0%,
+      #A2DD77 18%,
+      #3B4A54 100%
+  );
+  min-height: 100vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Tabs Icons */
+.loan-application-tablink i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Heading Icons */
+.loan-application-heading i {
+  color: #B5E480; /* match PBS green */
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* ============ Loan Success Screen ============ */
+
+.loan-success-section {
+  /* reuse the same admin gradient background */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.loan-success-card {
+  text-align: center;
+}
+
+.loan-success-icon {
+  margin-top: 4px;
+  margin-bottom: 12px;
+  font-size: 42px;
+  color: #B5E480; /* PBS green */
+}
+
+.loan-success-copy p {
+  font-size: 13px;
+  color: #6B7A83;
+  margin-bottom: 18px;
+}
+
+.loan-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.loan-success-btn-primary {
+  background-color: #B5E480 !important;
+  color: #0f1f29 !important;
+}
+
+.loan-success-btn-secondary {
+  background-color: #ffffff !important;
+  color: #3B4A54 !important;
+  border: 1px solid rgba(27, 43, 56, 0.16);
+}
+
+/* stack buttons nicely on small screens */
+@media (max-width: 575px) {
+  .loan-success-actions .thm-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ===== Header Login Button ===== */
+
+.header-login-btn {
+  background-color: #B5E480; /* PBS Green */
+  color: #0F1F29;
+  padding: 9px 18px;
+  margin-left: 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.header-login-btn:hover {
+  background-color: #A2DD77;
+  color: #0F1F29;
+}
+
+@media (max-width: 991px) {
+  .header-login-btn {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============ Client Portal ============ */
+
+.portal-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 16px;
+  background: linear-gradient(
+    165deg,
+    #B5E480 0%,
+    #A2DD77 18%,
+    #3B4A54 100%
+  );
+}
+
+.portal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1.6fr);
+  gap: 24px;
+}
+
+.portal-card {
+  background: #ffffff;
+  border-radius: 20px; /* same as auth-card */
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12); /* same vibe as auth */
+  padding: 24px 24px 20px;
+}
+
+/* Left summary */
+
+.portal-logo {
+  margin-bottom: 10px;
+}
+
+.portal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1b2b38;
+  margin-bottom: 4px;
+}
+
+.portal-subtitle {
+  font-size: 13px;
+  color: #6B7A83;
+  margin-bottom: 18px;
+}
+
+.portal-summary-list {
+  border-radius: 14px;
+  background: #f7f9fb;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.portal-summary-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #3B4A54;
+  padding: 4px 0;
+}
+
+.portal-summary-label {
+  opacity: 0.85;
+}
+
+.portal-summary-value {
+  font-weight: 600;
+}
+
+.portal-summary-value--success {
+  color: #22c55e;
+}
+
+.portal-summary-value--warning {
+  color: #f59e0b;
+}
+
+.portal-help {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #6B7A83;
+}
+
+.portal-help i {
+  margin-top: 2px;
+  color: #B5E480;
+}
+
+/* Right panel */
+
+.portal-main-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.portal-main-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1b2b38;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.portal-main-title i {
+  color: #B5E480; /* PBS green icon accent */
+}
+
+/* Filters */
+
+.portal-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.portal-filter-label {
+  font-size: 12px;
+  color: #6B7A83;
+}
+
+.portal-chip {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: #ffffff;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #3B4A54;
+  cursor: pointer;
+}
+
+.portal-chip--active {
+  background: #B5E480;
+  border-color: #B5E480;
+  color: #0f1f29;
+  font-weight: 600;
+}
+
+/* Application list rows */
+
+.portal-app-row {
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  padding: 12px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.portal-app-row:first-of-type {
+  border-top: none;
+}
+
+.portal-app-main {
+  flex: 1;
+}
+
+.portal-app-line1,
+.portal-app-line2,
+.portal-app-line3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #3B4A54;
+}
+
+.portal-app-line1 {
+  margin-bottom: 4px;
+}
+
+.portal-app-line2 {
+  margin-bottom: 2px;
+}
+
+.portal-app-ref {
+  font-weight: 600;
+}
+
+.portal-app-amount {
+  font-weight: 700;
+  color: #1b2b38;
+}
+
+.portal-app-meta,
+.portal-app-date,
+.portal-app-updated {
+  color: #6B7A83;
+}
+
+/* Status pills */
+
+.portal-status-pill {
+  border-radius: 999px;
+  font-size: 11px;
+  padding: 3px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.portal-status-pill i {
+  font-size: 12px;
+}
+
+.portal-status-pill--approved {
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+}
+
+.portal-status-pill--pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: #b45309;
+}
+
+/* Row actions */
+
+.portal-app-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.portal-link-button {
+  border: none;
+  padding: 6px 8px;
+  font-size: 12px;
+  color: #1d4ed8;
+  background: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Empty state */
+
+.portal-empty-state {
+  text-align: center;
+  padding: 32px 12px 20px;
+}
+
+.portal-empty-state i {
+  font-size: 32px;
+  color: #B5E480;
+  margin-bottom: 8px;
+}
+
+.portal-empty-state h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #1b2b38;
+}
+
+.portal-empty-state p {
+  font-size: 13px;
+  color: #6B7A83;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+
+@media (max-width: 991px) {
+  .portal-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .portal-card {
+    padding: 18px 16px 18px;
+  }
+
+  .portal-app-line2,
+  .portal-app-line3 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}
+
+/* ===== Portal Tabs (Applications / Profile) ===== */
+
+.portal-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.portal-tablink {
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #3B4A54;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.portal-tablink i {
+  font-size: 13px;
+}
+
+.portal-tablink--active {
+  background: #B5E480;
+  border-color: #B5E480;
+  color: #0F1F29;
+  font-weight: 600;
+}
+
+/* Tab content wrapper */
+.portal-tabcontent {
+  margin-top: 4px;
+}
+
+/* Profile view */
+
+.portal-profile-intro {
+  font-size: 13px;
+  color: #6B7A83;
+  margin: 0 0 10px;
+}
+
+.portal-profile-form {
+  margin-top: 4px;
+}
+
+.portal-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+}
+
+.portal-profile-form .form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #24323c;
+  margin-bottom: 4px;
+}
+
+.portal-profile-form .auth-input {
+  font-size: 14px;
+}
+
+.portal-profile-footer {
+  margin-top: 16px;
+}
+
+.portal-profile-note {
+  font-size: 12px;
+  color: #6B7A83;
+  margin-bottom: 8px;
+}
+
+.portal-profile-save {
+  max-width: 220px;
+}
+
+/* Profile responsiveness */
+@media (max-width: 767px) {
+  .portal-profile-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portal-profile-save {
+    width: 100%;
+  }
+}
+
+/* ===== Application Detail View (Client Portal) ===== */
+
+.portal-app-detail {
+  margin-top: 8px;
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  padding-top: 16px;
+}
+
+.portal-app-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.portal-back-link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 12px;
+  color: #1d4ed8;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.portal-back-link i {
+  font-size: 12px;
+}
+
+.portal-app-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.portal-app-detail-meta,
+.portal-app-detail-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f7f9fb; /* same “light panel” feeling as admin */
+}
+
+.portal-app-detail-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.portal-app-detail-value {
+  font-size: 13px;
+  color: #1f2933;
+  font-weight: 500;
+}
+
+.portal-app-detail-next {
+  padding: 8px 0 0;
+}
+
+.portal-app-detail-next p {
+  font-size: 13px;
+  color: #6B7A83;
+  margin: 4px 0 0;
+}
+
+.portal-app-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.portal-detail-btn-primary {
+  background-color: #B5E480 !important;
+  color: #0F1F29 !important;
+}
+
+.portal-detail-btn-secondary {
+  background-color: #ffffff !important;
+  color: #3B4A54 !important;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+/* Status pill already exists; just ensure same radius & size */
+.portal-status-pill {
+  border-radius: 999px;
+  font-size: 11px;
+  padding: 3px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 575px) {
+  .portal-app-detail-meta,
+  .portal-app-detail-dates {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portal-app-detail-actions .thm-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.portal-app-row {
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  padding: 10px 0;
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+

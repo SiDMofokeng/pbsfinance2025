@@ -58,6 +58,9 @@
 								<ul class="main-menu__list">
 									<li class="dropdown"><a href="index.html">Home</a></li>
 									<li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
+									<li><a href="#footer">Contact Support</a></li>
+									    <!-- LOGIN BUTTON -->
+									<a href="client-login.html" class="header-login-btn">Login</a>
 								</ul>
 							</div>
 						</nav>
@@ -81,210 +84,56 @@
 				<!-- App-style card shell -->
 				<div class="loan-application-shell">
 
-				<!-- Top bar: step tabs + summary -->
-				<div class="loan-shell-top">
-					<div class="loan-application-tabs">
-					<button class="loan-application-tablink" id="loan-default-tab"
-							onclick="openLoanStep(event, 'UserRegistrations', 1)">User Registration</button>
-					<button class="loan-application-tablink"
-							onclick="openLoanStep(event, 'Income', 2)">Income</button>
-					<button class="loan-application-tablink"
-							onclick="openLoanStep(event, 'Expenses', 3)">Expenses</button>
-					<button class="loan-application-tablink"
-							onclick="openLoanStep(event, 'Banking', 4)">Banking</button>
-					<button class="loan-application-tablink"
-							onclick="openLoanStep(event, 'Documents', 5)">Documents</button>
-					<button class="loan-application-tablink"
-							onclick="openLoanStep(event, 'finalizeApplication', 6)">Finalize Application</button>
-					</div>
+					<!-- Top bar: step tabs + summary -->
+					<div class="loan-shell-top">
+						<div class="loan-application-tabs">
+						<button class="loan-application-tablink is-active" onclick="openLoanStep(event, 'Income')">
+							<i class="fas fa-sack-dollar"></i>
+							<span>Income</span>
+						</button>
 
-					<div class="loan-shell-summary">
-					<span class="loan-shell-chip">
-						Step <span id="loan-step-indicator">1</span> of 6
-					</span>
-					<p>Average completion time: 3–5 minutes.</p>
-					</div>
-				</div>
+						<button class="loan-application-tablink" onclick="openLoanStep(event, 'Expenses')">
+							<i class="fas fa-receipt"></i>
+							<span>Expenses</span>
+						</button>
 
-				<!-- Body: all tab contents -->
-				<div class="loan-shell-body">
+						<button class="loan-application-tablink" onclick="openLoanStep(event, 'Banking')">
+							<i class="fas fa-university"></i>
+							<span>Banking</span>
+						</button>
 
-					<!-- Step 1: User Registration -->
-					<div id="UserRegistrations" class="loan-application-tabcontent">
+						<button class="loan-application-tablink"
+								onclick="openLoanStep(event, 'Documents', 5)">
+							<i class="fas fa-cloud-upload-alt"></i>
+							<span>Upload Documents</span>
+						</button>
 
-					<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
-						<h1 class="main Title">User Registration</h1>
-						<div class="row">
-						<div class="col-lg-12">
-							<form action="contact.php" method="post" class="contact-one__form">
-							<!-- BLOCK 1: first 4 fields -->
-							<div id="user-block-1" class="loan-form-block">
-								<div class="row low-gutters">
-								<div class="col-md-6">
-									<div class="form-group">
-									<label>Name:</label>
-									<input type="text" placeholder="Your Name"
-											class="form-control contact-one__form-input" name="name" required>
-									</div>
-								</div>
+						<button class="loan-application-tablink" onclick="openLoanStep(event, 'FinalizeApp')">
+							<i class="fas fa-check-circle"></i>
+							<span>Finalize</span>
+						</button>
 
-								<div class="col-md-6">
-									<div class="form-group">
-									<label>Surname:</label>
-									<input type="text" placeholder="Your Surname"
-											class="form-control contact-one__form-input" name="surname" required>
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-									<label>ID Number:</label>
-									<input type="number" placeholder="ID Number"
-											class="form-control contact-one__form-input" name="id_number" required>
-											<small class="error-msg" id="id-error"></small>
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-									<label>Email:</label>
-									<input type="email" placeholder="Email"
-											class="form-control contact-one__form-input" name="email" required>
-											<small class="error-msg" id="email-error"></small>
-									</div>
-								</div>
-
-								<div class="col-md-12 mt-2">
-									<button type="button" class="thm-btn thm-btn--outline"
-											onclick="if (validateUserRegistration()) { showNextBlock('user-block-2'); }">
-										Continue
-									</button>
-								</div>
-								</div>
-							</div>
-
-							<!-- BLOCK 2: next fields + terms + next step -->
-							<div id="user-block-2" class="loan-form-block" style="display:none;">
-								<div class="row low-gutters mt-3">
-								<div class="col-md-6">
-									<div class="form-group">
-									<label>Employment Status:</label>
-									<select name="employment_status" class="form-control">
-										<option value="full-time-employment">Full Time Employment</option>
-										<option value="self-employed">Self-Employed</option>
-										<option value="unemployed">Unemployed</option>
-									</select>
-									</div>
-								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-									<label>Password:</label>
-									<input type="password" placeholder="Password"
-											class="form-control contact-one__form-input" name="password" required>
-									</div>
-								</div>
-
-								<!-- Optional: we keep address as a block below -->
-								<div class="col-md-12">
-									<button type="button"
-											class="loan-extra-toggle"
-											data-target="#address-details">
-									+ Add address details (optional)
-									</button>
-								</div>
-
-								<div class="col-md-12">
-									<div id="address-details" class="loan-extra-section">
-									<div class="row low-gutters mt-2">
-										<div class="col-md-6">
-										<div class="form-group">
-											<label>Unit / House No:</label>
-											<input type="text" placeholder="Unit / House No"
-												class="form-control contact-one__form-input" name="unit_house">
-										</div>
-										</div>
-
-										<div class="col-md-6">
-										<div class="form-group">
-											<label>Suburb:</label>
-											<input type="text" placeholder="Suburb"
-												class="form-control contact-one__form-input" name="suburb">
-										</div>
-										</div>
-
-										<div class="col-md-6">
-										<div class="form-group">
-											<label>Complex (If applicable):</label>
-											<input type="text" placeholder="Complex (If applicable)"
-												class="form-control contact-one__form-input" name="complex">
-										</div>
-										</div>
-
-										<div class="col-md-6">
-										<div class="form-group">
-											<label>City / Town:</label>
-											<input type="text" placeholder="City / Town"
-												class="form-control contact-one__form-input" name="city">
-										</div>
-										</div>
-
-										<div class="col-md-6">
-										<div class="form-group">
-											<label>Street Name:</label>
-											<input type="text" placeholder="Street Name"
-												class="form-control contact-one__form-input" name="street_name">
-										</div>
-										</div>
-
-										<div class="col-md-6">
-										<div class="form-group">
-											<label>Province:</label>
-											<input type="text" placeholder="Province"
-												class="form-control contact-one__form-input" name="province">
-										</div>
-										</div>
-
-										<div class="col-md-6">
-										<div class="form-group">
-											<label>Postal Code:</label>
-											<input type="text" placeholder="Postal Code"
-												class="form-control contact-one__form-input" name="postal_code">
-										</div>
-										</div>
-									</div>
-									</div>
-								</div>
-
-								<div class="col-md-6 mt-3">
-									<div class="form-group">
-									<input type="checkbox" id="terms" name="terms">
-									<label for="terms"> I agree to the Terms and Conditions set herewith</label>
-									</div>
-								</div>
-
-								<div class="col-md-6 mt-3">
-									<div class="form-group text-md-end">
-									<button class="thm-btn" type="button"
-											onclick="openLoanStepFromButton('Income', 2)">
-										Next, Income Details
-									</button>
-									</div>
-								</div>
-								</div>
-							</div>
-
-							</form>
 						</div>
+
+						<div class="loan-shell-summary">
+						<span class="loan-shell-chip">
+							Step <span id="loan-step-indicator">1</span> of 6
+						</span>
+						<p>Average completion time: 3–5 minutes.</p>
 						</div>
 					</div>
-					</div>
+
+					<!-- Body: all tab contents -->
+					<div class="loan-shell-body">
 
 					<!-- Step 2: Income -->
 					<div id="Income" class="loan-application-tabcontent">
 
 						<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
-							<h1 class="main Title">Income</h1>
+							<h3 class="loan-application-heading">
+								<i class="fas fa-sack-dollar"></i> Income Details
+							</h3>
+
 							<div class="row">
 							<div class="col-lg-12">
 								<form action="contact.php" method="post" class="contact-one__form">
@@ -383,7 +232,10 @@
 					<div id="Expenses" class="loan-application-tabcontent">
 
 					<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
-						<h1 class="main Title">Expenses</h1>
+						<h3 class="loan-application-heading">
+							<i class="fas fa-receipt"></i> Expenses Overview
+						</h3>
+
 						<div class="row">
 						<div class="col-lg-12">
 							<form action="contact.php" method="post" class="contact-one__form">
@@ -547,8 +399,11 @@
 					<!-- Step 4: Banking -->
 					<div id="Banking" class="loan-application-tabcontent">
 
-					<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
-						<h1 class="main Title">Banking</h1>
+						<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
+						<h3 class="loan-application-heading">
+							<i class="fas fa-university"></i> Banking Details
+						</h3>
+
 						<div class="row">
 						<div class="col-lg-12">
 							<form action="contact.php" method="post" class="contact-one__form">
@@ -641,14 +496,17 @@
 							</form>
 						</div>
 						</div>
-					</div>
+						</div>
 					</div>
 
 					<!-- Step 5: Documents -->
 					<div id="Documents" class="loan-application-tabcontent">
 
 					<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
-						<h1 class="main Title">Upload Documents</h1>
+						<h3 class="loan-application-heading">
+							<i class="fas fa-cloud-upload-alt"></i>
+							Upload Documents
+						</h3>
 						<div class="row">
 							
 						<div class="col-lg-12">
@@ -662,21 +520,21 @@
 							<div class="row low-gutters">
 								<div class="col-md-12">
 								<div class="form-group">
-									<label>Copy of ID / Passport (PDF, JPG, PNG)</label>
+									<label><i class="fas fa-id-card"></i> Copy of ID / Passport (PDF, JPG, PNG)</label>
 									<input type="file" name="id_document" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
 								</div>
 								</div>
 
 								<div class="col-md-12">
 								<div class="form-group">
-									<label>Latest Payslip (PDF, JPG, PNG)</label>
+									<label><i class="fas fa-file-alt"></i> Latest Payslip (PDF, JPG, PNG)</label>
 									<input type="file" name="payslip" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
 								</div>
 								</div>
 
 								<div class="col-md-12">
 								<div class="form-group">
-									<label>Last 3 Months Bank Statements (PDF)</label>
+									<label><i class="fas fa-file-invoice-dollar"></i> Last 3 Months Bank Statements (PDF)</label>
 									<input type="file" name="bank_statements" class="form-control" accept=".pdf" multiple>
 								</div>
 								</div>
@@ -707,9 +565,12 @@
 					</div>
 
 					<!-- Step 6: Finalize -->
-					<div id="finalizeApplication" class="loan-application-tabcontent">
+					<div id="FinalizeApp" class="loan-application-tabcontent">
 						<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
-							<h1 class="main Title">Finalize Application</h1>
+							<h3 class="loan-application-heading">
+								<i class="fas fa-check-circle"></i> Review & Finalize
+							</h3>
+
 							<div class="row">
 							<div class="col-lg-12">
 								<div class="contact-one__form">
@@ -1281,8 +1142,7 @@ function goToReviewSlide(index) {
 
 
   document.addEventListener("DOMContentLoaded", function () {
-    var defaultTab = document.getElementById("loan-default-tab");
-    if (defaultTab) defaultTab.click();
+    openLoanStep(null, "Income", 2);
 
     setupAddressToggle();
 	setupBankLogos();   // <--- add this line

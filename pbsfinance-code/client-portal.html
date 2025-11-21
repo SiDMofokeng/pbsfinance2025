@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | My Applications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <section class="portal-section">
+      <div class="container">
+        <div class="portal-layout">
+
+          <!-- Left: Summary & user info -->
+          <aside class="portal-aside">
+            <div class="portal-card portal-card--summary">
+              <div class="portal-logo">
+                <img src="assets/images/logo-dark.png" alt="PBS Finance" width="140">
+              </div>
+
+              <h1 class="portal-title">My applications</h1>
+              <p class="portal-subtitle">
+                Track your loan applications, update your profile, and see what happens next.
+              </p>
+
+              <div class="portal-summary-list">
+                <div class="portal-summary-item">
+                  <span class="portal-summary-label">Active applications</span>
+                  <span class="portal-summary-value">2</span>
+                </div>
+                <div class="portal-summary-item">
+                  <span class="portal-summary-label">Approved</span>
+                  <span class="portal-summary-value portal-summary-value--success">1</span>
+                </div>
+                <div class="portal-summary-item">
+                  <span class="portal-summary-label">Pending documents</span>
+                  <span class="portal-summary-value portal-summary-value--warning">1</span>
+                </div>
+              </div>
+
+              <div class="portal-help">
+                <i class="fas fa-info-circle"></i>
+                <p>
+                  Need help? Contact our team at
+                  <a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a>
+                  or call (+27) 63 068 3230.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right: Applications + Profile -->
+          <main class="portal-main">
+            <div class="portal-card portal-card--list">
+
+              <!-- TOP TABS: Applications / Profile -->
+              <div class="portal-tabs">
+                <button class="portal-tablink portal-tablink--active" type="button"
+                        onclick="openPortalTab('portalApplications', this)">
+                  <i class="fas fa-list-ul"></i>
+                  <span>Applications</span>
+                </button>
+                <button class="portal-tablink" type="button"
+                        onclick="openPortalTab('portalProfile', this)">
+                  <i class="fas fa-user-circle"></i>
+                  <span>My profile</span>
+                </button>
+              </div>
+
+              <!-- TAB: APPLICATIONS -->
+              <div id="portalApplications" class="portal-tabcontent" style="display: block;">
+
+                <div class="portal-main-header">
+                  <h2 class="portal-main-title">
+                    <i class="fas fa-list-ul"></i> Application history
+                  </h2>
+
+                  <div class="portal-filters">
+                    <span class="portal-filter-label">Filter:</span>
+                    <button class="portal-chip portal-chip--active" type="button">All</button>
+                    <button class="portal-chip" type="button">In progress</button>
+                    <button class="portal-chip" type="button">Approved</button>
+                    <button class="portal-chip" type="button">Declined</button>
+                  </div>
+                </div>
+
+                <!-- LIST VIEW -->
+                <div id="portalAppList">
+
+                  <!-- Example application row -->
+                  <div class="portal-app-row">
+                    <div class="portal-app-main">
+                      <div class="portal-app-line1">
+                        <span class="portal-app-ref">Ref: PBS-2025-00123</span>
+                        <span class="portal-status-pill portal-status-pill--approved">
+                          <i class="fas fa-check-circle"></i> Approved
+                        </span>
+                      </div>
+                      <div class="portal-app-line2">
+                        <span class="portal-app-amount">R 150 000</span>
+                        <span class="portal-app-meta">48 months · Fixed rate</span>
+                      </div>
+                      <div class="portal-app-line3">
+                        <span class="portal-app-date">Submitted: 12 Nov 2025</span>
+                        <span class="portal-app-updated">Last updated: 18 Nov 2025</span>
+                      </div>
+                    </div>
+                    <div class="portal-app-actions">
+                      <button class="portal-link-button" type="button"
+                              data-app-ref="PBS-2025-00123"
+                              onclick="showApplicationDetail(this)">
+                        View details
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Example application row with pending docs -->
+                  <div class="portal-app-row">
+                    <div class="portal-app-main">
+                      <div class="portal-app-line1">
+                        <span class="portal-app-ref">Ref: PBS-2025-00145</span>
+                        <span class="portal-status-pill portal-status-pill--pending">
+                          <i class="fas fa-clock"></i> Pending documents
+                        </span>
+                      </div>
+                      <div class="portal-app-line2">
+                        <span class="portal-app-amount">R 75 000</span>
+                        <span class="portal-app-meta">24 months · Variable rate</span>
+                      </div>
+                      <div class="portal-app-line3">
+                        <span class="portal-app-date">Submitted: 20 Nov 2025</span>
+                        <span class="portal-app-updated">Last updated: 21 Nov 2025</span>
+                      </div>
+                    </div>
+                    <div class="portal-app-actions">
+                      <button class="portal-link-button" type="button"
+                              data-app-ref="PBS-2025-00145"
+                              onclick="showApplicationDetail(this)">
+                        View details
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Empty state example (keep commented until needed) -->
+                  <!--
+                  <div class="portal-empty-state">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>No applications yet</h3>
+                    <p>Once you submit a loan application, you’ll see it listed here.</p>
+                    <a href="apply_for_a_loan.html" class="thm-btn">Start a new application</a>
+                  </div>
+                  -->
+
+                </div>
+
+                <!-- DETAIL VIEW -->
+                <div id="portalAppDetail" class="portal-app-detail" style="display: none;">
+                  <div class="portal-app-detail-header">
+                    <button type="button" class="portal-back-link" onclick="hideApplicationDetail()">
+                      <i class="fas fa-arrow-left"></i> Back to applications
+                    </button>
+
+                    <div class="portal-app-detail-status-wrapper">
+                      <span id="portalDetailStatusPill"
+                            class="portal-status-pill portal-status-pill--approved">
+                        <i id="portalDetailStatusIcon" class="fas fa-check-circle"></i>
+                        <span id="portalDetailStatusText">Approved</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="portal-app-detail-body">
+                    <div class="portal-app-detail-meta">
+                      <div>
+                        <div class="portal-app-detail-label">Reference</div>
+                        <div class="portal-app-detail-value" id="portalDetailRef">PBS-2025-00123</div>
+                      </div>
+                      <div>
+                        <div class="portal-app-detail-label">Amount</div>
+                        <div class="portal-app-detail-value" id="portalDetailAmount">R 150 000</div>
+                      </div>
+                      <div>
+                        <div class="portal-app-detail-label">Term</div>
+                        <div class="portal-app-detail-value" id="portalDetailTerm">48 months</div>
+                      </div>
+                      <div>
+                        <div class="portal-app-detail-label">Rate type</div>
+                        <div class="portal-app-detail-value" id="portalDetailRate">Fixed</div>
+                      </div>
+                    </div>
+
+                    <div class="portal-app-detail-dates">
+                      <div>
+                        <div class="portal-app-detail-label">Submitted</div>
+                        <div class="portal-app-detail-value" id="portalDetailSubmitted">
+                          12 Nov 2025
+                        </div>
+                      </div>
+                      <div>
+                        <div class="portal-app-detail-label">Last updated</div>
+                        <div class="portal-app-detail-value" id="portalDetailUpdated">
+                          18 Nov 2025
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="portal-app-detail-next">
+                      <div class="portal-app-detail-label">What happens next</div>
+                      <p id="portalDetailNextStep">
+                        We are preparing your contract. A PBS Finance consultant will contact you
+                        to finalise signing and confirm your payout date.
+                      </p>
+                    </div>
+
+                    <div class="portal-app-detail-actions">
+                      <button type="button" class="thm-btn portal-detail-btn-primary">
+                        Download summary
+                      </button>
+                      <button type="button" class="thm-btn portal-detail-btn-secondary">
+                        Contact support
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- TAB: PROFILE -->
+              <div id="portalProfile" class="portal-tabcontent" style="display: none;">
+
+                <div class="portal-main-header">
+                  <h2 class="portal-main-title">
+                    <i class="fas fa-user-circle"></i> My profile
+                  </h2>
+                  <p class="portal-profile-intro">
+                    Keep your personal and contact details up to date so we can reach you
+                    about your applications.
+                  </p>
+                </div>
+
+                <form class="portal-profile-form" action="#" method="post">
+                  <div class="portal-profile-grid">
+
+                    <div class="form-group">
+                      <label for="profile_fullname">Full name</label>
+                      <input type="text" id="profile_fullname" name="profile_fullname"
+                             class="form-control auth-input" placeholder="Name and surname" value="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="profile_idnumber">ID number</label>
+                      <input type="text" id="profile_idnumber" name="profile_idnumber"
+                             class="form-control auth-input" placeholder="13-digit ID" value="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="profile_email">Email address</label>
+                      <input type="email" id="profile_email" name="profile_email"
+                             class="form-control auth-input" placeholder="you@example.com" value="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="profile_phone">Cell number</label>
+                      <input type="tel" id="profile_phone" name="profile_phone"
+                             class="form-control auth-input" placeholder="e.g. 082 123 4567" value="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="profile_address">Residential address</label>
+                      <input type="text" id="profile_address" name="profile_address"
+                             class="form-control auth-input"
+                             placeholder="Unit / Complex / Street, Suburb, City" value="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="profile_preference">Contact preference</label>
+                      <select id="profile_preference" name="profile_preference"
+                              class="form-control auth-input">
+                        <option value="">Select preference</option>
+                        <option value="email">Email</option>
+                        <option value="sms">SMS</option>
+                        <option value="call">Phone call</option>
+                      </select>
+                    </div>
+
+                  </div>
+
+                  <div class="portal-profile-footer">
+                    <p class="portal-profile-note">
+                      These details are used to contact you about your application status and
+                      request any supporting documents.
+                    </p>
+                    <button type="submit" class="thm-btn auth-btn-full portal-profile-save">
+                      Save changes
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+
+            </div>
+          </main>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function openPortalTab(tabId, buttonEl) {
+      // Hide all tab contents
+      var contents = document.querySelectorAll(".portal-tabcontent");
+      contents.forEach(function (el) {
+        el.style.display = "none";
+      });
+
+      // Show selected tab
+      var active = document.getElementById(tabId);
+      if (active) {
+        active.style.display = "block";
+      }
+
+      // Toggle active class on tab buttons
+      var buttons = document.querySelectorAll(".portal-tablink");
+      buttons.forEach(function (btn) {
+        btn.classList.remove("portal-tablink--active");
+      });
+      if (buttonEl) {
+        buttonEl.classList.add("portal-tablink--active");
+      }
+    }
+
+    function showApplicationDetail(buttonEl) {
+      var ref = buttonEl.getAttribute("data-app-ref");
+
+      var listEl = document.getElementById("portalAppList");
+      var detailEl = document.getElementById("portalAppDetail");
+      if (!listEl || !detailEl) return;
+
+      // Simple demo data mapping – later you can load this via API
+      var data = {
+        status: "Approved",
+        statusClass: "portal-status-pill--approved",
+        statusIcon: "fas fa-check-circle",
+        statusText: "Approved",
+        amount: "R 150 000",
+        term: "48 months",
+        rate: "Fixed",
+        submitted: "12 Nov 2025",
+        updated: "18 Nov 2025",
+        nextStep: "We are preparing your contract. A PBS Finance consultant will contact you to finalise signing and confirm your payout date."
+      };
+
+      if (ref === "PBS-2025-00145") {
+        data = {
+          status: "Pending documents",
+          statusClass: "portal-status-pill--pending",
+          statusIcon: "fas fa-clock",
+          statusText: "Pending documents",
+          amount: "R 75 000",
+          term: "24 months",
+          rate: "Variable",
+          submitted: "20 Nov 2025",
+          updated: "21 Nov 2025",
+          nextStep: "We are waiting for your latest bank statements and proof of address. Upload your documents to continue the assessment."
+        };
+      }
+
+      // Populate detail elements
+      document.getElementById("portalDetailRef").textContent = ref;
+      document.getElementById("portalDetailAmount").textContent = data.amount;
+      document.getElementById("portalDetailTerm").textContent = data.term;
+      document.getElementById("portalDetailRate").textContent = data.rate;
+      document.getElementById("portalDetailSubmitted").textContent = data.submitted;
+      document.getElementById("portalDetailUpdated").textContent = data.updated;
+      document.getElementById("portalDetailNextStep").textContent = data.nextStep;
+
+      // Status pill
+      var statusPill = document.getElementById("portalDetailStatusPill");
+      var statusIcon = document.getElementById("portalDetailStatusIcon");
+      var statusText = document.getElementById("portalDetailStatusText");
+
+      statusPill.className = "portal-status-pill " + data.statusClass;
+      statusIcon.className = data.statusIcon;
+      statusText.textContent = data.statusText;
+
+      // Toggle views
+      listEl.style.display = "none";
+      detailEl.style.display = "block";
+    }
+
+    function hideApplicationDetail() {
+      var listEl = document.getElementById("portalAppList");
+      var detailEl = document.getElementById("portalAppDetail");
+      if (!listEl || !detailEl) return;
+
+      detailEl.style.display = "none";
+      listEl.style.display = "block";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Ensure Applications tab is visible by default
+      openPortalTab("portalApplications", document.querySelector(".portal-tablink"));
+    });
+  </script>
+
+</body>
+
+</html>
