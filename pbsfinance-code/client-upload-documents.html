@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | Upload Documents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <section class="portal-section portal-section--single">
+      <div class="container">
+        <div class="portal-upload-card">
+
+          <!-- Header -->
+          <header class="portal-upload-header">
+            <div class="portal-upload-logo">
+              <img src="assets/images/logo-dark.png" alt="PBS Finance" width="140">
+            </div>
+
+            <div class="portal-upload-header-text">
+              <h1 class="portal-upload-title">Upload your documents</h1>
+              <p class="portal-upload-subtitle">
+                To continue with your application, please upload the requested documents below.
+              </p>
+
+              <div class="portal-upload-ref-row">
+                <div class="portal-upload-ref">
+                  <span class="portal-upload-ref-label">Application reference</span>
+                  <span class="portal-upload-ref-value">PBS-2025-00145</span>
+                </div>
+                <span class="portal-status-pill portal-status-pill--pending">
+                  <i class="fas fa-clock"></i> Pending documents
+                </span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Required docs summary -->
+          <section class="portal-upload-summary">
+            <p class="portal-docs-intro">
+              We still need a few documents from you to complete our assessment. Please make sure your files are
+              clear and readable.
+            </p>
+
+            <ul class="portal-doc-list portal-doc-list--upload">
+              <li>
+                <i class="fas fa-file-invoice-dollar"></i>
+                Latest <strong>3 months bank statements</strong> (PDF)
+              </li>
+              <li>
+                <i class="fas fa-file-alt"></i>
+                Latest <strong>payslip</strong> (PDF)
+              </li>
+              <li>
+                <i class="fas fa-file-pdf"></i>
+                <strong>Proof of address</strong> (not older than 3 months)
+              </li>
+            </ul>
+          </section>
+
+          <!-- Upload form -->
+          <section class="portal-upload-form-section">
+            <form class="portal-doc-upload-form" action="#" method="post" enctype="multipart/form-data">
+              <div class="portal-upload-grid">
+
+                <div class="form-group">
+                  <label for="doc_bank" class="portal-upload-label">
+                    Bank statements (PDF)
+                  </label>
+                  <input type="file" id="doc_bank" class="form-control auth-input">
+                  <small class="portal-upload-help">Upload a single PDF containing the last 3 months.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="doc_payslip" class="portal-upload-label">
+                    Latest payslip (PDF)
+                  </label>
+                  <input type="file" id="doc_payslip" class="form-control auth-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="doc_address" class="portal-upload-label">
+                    Proof of address (PDF or image)
+                  </label>
+                  <input type="file" id="doc_address" class="form-control auth-input">
+                  <small class="portal-upload-help">
+                    Examples: utility bill, bank letter, lease agreement (not older than 3 months).
+                  </small>
+                </div>
+
+              </div>
+
+              <p class="portal-docs-note">
+                Your documents are used only for assessing this application and will be handled securely in line with
+                our privacy policy.
+              </p>
+
+              <div class="portal-upload-actions">
+                <button type="submit" class="thm-btn portal-detail-btn-primary portal-docs-submit">
+                  Submit documents
+                </button>
+                <a href="client-portal.html" class="portal-upload-back-link">
+                  Back to My applications
+                </a>
+              </div>
+            </form>
+          </section>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | Notifications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <section class="portal-section">
+      <div class="container">
+        <div class="portal-layout">
+
+          <!-- Left: summary -->
+          <aside class="portal-aside">
+            <div class="portal-card portal-card--summary">
+              <div class="portal-logo">
+                <img src="assets/images/logo-dark.png" alt="PBS Finance" width="140">
+              </div>
+
+              <h1 class="portal-title">Notifications</h1>
+              <p class="portal-subtitle">
+                See updates on your loan applications, document requests, and status changes.
+              </p>
+
+              <div class="portal-summary-list">
+                <div class="portal-summary-item">
+                  <span class="portal-summary-label">Unread</span>
+                  <span class="portal-summary-value portal-summary-value--warning">3</span>
+                </div>
+                <div class="portal-summary-item">
+                  <span class="portal-summary-label">Last 7 days</span>
+                  <span class="portal-summary-value">6</span>
+                </div>
+              </div>
+
+              <div class="portal-help">
+                <i class="fas fa-info-circle"></i>
+                <p>
+                  You’ll also receive important updates by email. Make sure your
+                  <a href="client-portal.html">profile details</a> are correct.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right: notifications -->
+          <main class="portal-main">
+            <div class="portal-card portal-card--list">
+
+              <div class="portal-main-header portal-main-header--compact">
+                <h2 class="portal-main-title">
+                  <i class="fas fa-bell"></i> Recent notifications
+                </h2>
+
+                <div class="portal-filters portal-filters--notifications">
+                  <button type="button" class="portal-chip portal-chip--active">All</button>
+                  <button type="button" class="portal-chip">Unread</button>
+                  <button type="button" class="portal-chip">Application updates</button>
+                  <button type="button" class="portal-chip">Document requests</button>
+                </div>
+              </div>
+
+              <div class="portal-notification-actions">
+                <a href="#" class="portal-link-button portal-link-button--small">
+                  Mark all as read
+                </a>
+              </div>
+
+              <div class="portal-notifications-list">
+                <!-- Notification 1: Document request -->
+                <article class="portal-notification portal-notification--unread">
+                  <div class="portal-notification-icon">
+                    <i class="fas fa-file-upload"></i>
+                  </div>
+                  <div class="portal-notification-body">
+                    <div class="portal-notification-top">
+                      <h3 class="portal-notification-title">
+                        Documents requested for application PBS-2025-00145
+                      </h3>
+                      <span class="portal-notification-badge portal-notification-badge--docs">
+                        Document request
+                      </span>
+                    </div>
+                    <p class="portal-notification-text">
+                      We still need your latest bank statements and proof of address to continue your assessment.
+                    </p>
+                    <div class="portal-notification-meta">
+                      <span class="portal-notification-time">Today · 09:18</span>
+                      <a href="client-upload-documents.html" class="portal-link-button">
+                        Upload documents
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Notification 2: Status updated -->
+                <article class="portal-notification portal-notification--unread">
+                  <div class="portal-notification-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="portal-notification-body">
+                    <div class="portal-notification-top">
+                      <h3 class="portal-notification-title">
+                        Application PBS-2025-00123 approved
+                      </h3>
+                      <span class="portal-notification-badge portal-notification-badge--status">
+                        Status update
+                      </span>
+                    </div>
+                    <p class="portal-notification-text">
+                      Your loan has been approved. A PBS consultant will contact you to finalise your contract.
+                    </p>
+                    <div class="portal-notification-meta">
+                      <span class="portal-notification-time">Yesterday · 16:02</span>
+                      <a href="client-portal.html" class="portal-link-button">
+                        View in My applications
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Notification 3: In review -->
+                <article class="portal-notification">
+                  <div class="portal-notification-icon">
+                    <i class="fas fa-search-dollar"></i>
+                  </div>
+                  <div class="portal-notification-body">
+                    <div class="portal-notification-top">
+                      <h3 class="portal-notification-title">
+                        Application PBS-2025-00160 is in review
+                      </h3>
+                      <span class="portal-notification-badge portal-notification-badge--status">
+                        Status update
+                      </span>
+                    </div>
+                    <p class="portal-notification-text">
+                      Our team is reviewing your application. We’ll let you know if we need any additional information.
+                    </p>
+                    <div class="portal-notification-meta">
+                      <span class="portal-notification-time">20 Nov 2025 · 13:27</span>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Example older read notification -->
+                <article class="portal-notification">
+                  <div class="portal-notification-icon">
+                    <i class="fas fa-user-check"></i>
+                  </div>
+                  <div class="portal-notification-body">
+                    <div class="portal-notification-top">
+                      <h3 class="portal-notification-title">
+                        Profile updated successfully
+                      </h3>
+                      <span class="portal-notification-badge portal-notification-badge--profile">
+                        Profile
+                      </span>
+                    </div>
+                    <p class="portal-notification-text">
+                      Your contact details have been updated. We’ll use these for future application updates.
+                    </p>
+                    <div class="portal-notification-meta">
+                      <span class="portal-notification-time">18 Nov 2025 · 08:11</span>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Empty state example (keep for later) -->
+                <!--
+                <div class="portal-empty-state">
+                  <i class="fas fa-bell-slash"></i>
+                  <h3>No notifications yet</h3>
+                  <p>We’ll show updates here as your applications move through the process.</p>
+                </div>
+                -->
+
+              </div>
+
+            </div>
+          </main>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

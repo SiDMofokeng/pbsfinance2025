@@ -149,8 +149,9 @@
                     <div class="portal-app-actions">
                       <button class="portal-link-button" type="button"
                               data-app-ref="PBS-2025-00145"
+                              data-open-docs="true"
                               onclick="showApplicationDetail(this)">
-                        View details
+                        Upload documents
                       </button>
                     </div>
                   </div>
@@ -224,6 +225,56 @@
                         We are preparing your contract. A PBS Finance consultant will contact you
                         to finalise signing and confirm your payout date.
                       </p>
+                    </div>
+
+                    <!-- Upload documents block -->
+                    <div id="portalDetailDocs" class="portal-app-detail-docs" style="display: none;">
+                      <div class="portal-app-detail-label">Upload documents</div>
+                      <p class="portal-docs-intro">
+                        We still need a few documents from you to continue your assessment.
+                        Please upload clear, legible copies below.
+                      </p>
+
+                      <ul class="portal-doc-list">
+                        <li>
+                          <i class="fas fa-file-invoice-dollar"></i>
+                          Latest 3 months bank statements
+                        </li>
+                        <li>
+                          <i class="fas fa-file-alt"></i>
+                          Latest payslip
+                        </li>
+                        <li>
+                          <i class="fas fa-file-pdf"></i>
+                          Proof of address (not older than 3 months)
+                        </li>
+                      </ul>
+
+                      <form class="portal-doc-upload-form" action="#" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                          <label for="doc_bank">Bank statements (PDF)</label>
+                          <input type="file" id="doc_bank" class="form-control auth-input">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="doc_payslip">Payslip (PDF)</label>
+                          <input type="file" id="doc_payslip" class="form-control auth-input">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="doc_address">Proof of address (PDF or image)</label>
+                          <input type="file" id="doc_address" class="form-control auth-input">
+                        </div>
+
+                        <p class="portal-docs-note">
+                          For your security, documents are stored securely and are only used to assess
+                          your application.
+                        </p>
+
+                        <button type="submit" class="thm-btn portal-detail-btn-primary portal-docs-submit">
+                          Submit documents
+                        </button>
+                      </form>
                     </div>
 
                     <div class="portal-app-detail-actions">
@@ -326,19 +377,16 @@
 
   <script>
     function openPortalTab(tabId, buttonEl) {
-      // Hide all tab contents
       var contents = document.querySelectorAll(".portal-tabcontent");
       contents.forEach(function (el) {
         el.style.display = "none";
       });
 
-      // Show selected tab
       var active = document.getElementById(tabId);
       if (active) {
         active.style.display = "block";
       }
 
-      // Toggle active class on tab buttons
       var buttons = document.querySelectorAll(".portal-tablink");
       buttons.forEach(function (btn) {
         btn.classList.remove("portal-tablink--active");
@@ -350,14 +398,15 @@
 
     function showApplicationDetail(buttonEl) {
       var ref = buttonEl.getAttribute("data-app-ref");
+      var openDocs = buttonEl.getAttribute("data-open-docs") === "true";
 
       var listEl = document.getElementById("portalAppList");
       var detailEl = document.getElementById("portalAppDetail");
-      if (!listEl || !detailEl) return;
+      var docsEl = document.getElementById("portalDetailDocs");
+      if (!listEl || !detailEl || !docsEl) return;
 
-      // Simple demo data mapping – later you can load this via API
+      // Default demo data
       var data = {
-        status: "Approved",
         statusClass: "portal-status-pill--approved",
         statusIcon: "fas fa-check-circle",
         statusText: "Approved",
@@ -366,12 +415,13 @@
         rate: "Fixed",
         submitted: "12 Nov 2025",
         updated: "18 Nov 2025",
-        nextStep: "We are preparing your contract. A PBS Finance consultant will contact you to finalise signing and confirm your payout date."
+        nextStep: "We are preparing your contract. A PBS Finance consultant will contact you to finalise signing and confirm your payout date.",
+        requiresDocs: false
       };
 
+      // Pending docs example
       if (ref === "PBS-2025-00145") {
         data = {
-          status: "Pending documents",
           statusClass: "portal-status-pill--pending",
           statusIcon: "fas fa-clock",
           statusText: "Pending documents",
@@ -380,11 +430,11 @@
           rate: "Variable",
           submitted: "20 Nov 2025",
           updated: "21 Nov 2025",
-          nextStep: "We are waiting for your latest bank statements and proof of address. Upload your documents to continue the assessment."
+          nextStep: "We are waiting for your latest bank statements and proof of address. Upload your documents to continue the assessment.",
+          requiresDocs: true
         };
       }
 
-      // Populate detail elements
       document.getElementById("portalDetailRef").textContent = ref;
       document.getElementById("portalDetailAmount").textContent = data.amount;
       document.getElementById("portalDetailTerm").textContent = data.term;
@@ -393,7 +443,6 @@
       document.getElementById("portalDetailUpdated").textContent = data.updated;
       document.getElementById("portalDetailNextStep").textContent = data.nextStep;
 
-      // Status pill
       var statusPill = document.getElementById("portalDetailStatusPill");
       var statusIcon = document.getElementById("portalDetailStatusIcon");
       var statusText = document.getElementById("portalDetailStatusText");
@@ -402,7 +451,20 @@
       statusIcon.className = data.statusIcon;
       statusText.textContent = data.statusText;
 
-      // Toggle views
+      // Show or hide docs block
+      if (data.requiresDocs) {
+        docsEl.style.display = "block";
+
+        // If user clicked "Upload documents", scroll down to the docs panel
+        if (openDocs) {
+          setTimeout(function () {
+            docsEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 150);
+        }
+      } else {
+        docsEl.style.display = "none";
+      }
+
       listEl.style.display = "none";
       detailEl.style.display = "block";
     }
@@ -417,7 +479,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-      // Ensure Applications tab is visible by default
       openPortalTab("portalApplications", document.querySelector(".portal-tablink"));
     });
   </script>

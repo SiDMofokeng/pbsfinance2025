@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body class="admin-body">
+  <div class="admin-shell">
+
+    <!-- TOP BAR -->
+    <header class="admin-header">
+      <div class="admin-header__left">
+        <a href="index.html" class="admin-logo-link">
+          <img src="assets/images/logo-dark.png" alt="PBS Finance" class="admin-logo">
+        </a>
+        <span class="admin-header__title">Admin Portal</span>
+      </div>
+
+      <div class="admin-header__right">
+        <div class="admin-header__search">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search applications, customers…" />
+        </div>
+
+        <button class="admin-icon-btn" type="button">
+          <i class="far fa-bell"></i>
+        </button>
+
+        <div class="admin-user">
+          <div class="admin-user__avatar">SA</div>
+          <div class="admin-user__meta">
+            <span class="admin-user__name">Sydney Admin</span>
+            <span class="admin-user__role">System admin</span>
+          </div>
+          <button class="admin-icon-btn admin-user__menu" type="button">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN AREA -->
+    <div class="admin-main">
+
+      <!-- SIDE NAV -->
+      <nav class="admin-sidenav">
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Overview</span>
+          <a href="admin-dashboard.html" class="admin-sidenav__link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Applications</span>
+          <a href="admin-applications.html" class="admin-sidenav__link">
+            <i class="fas fa-file-alt"></i>
+            <span>All applications</span>
+          </a>
+          <a href="admin-applications.html#pending" class="admin-sidenav__link">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Pending review</span>
+          </a>
+          <a href="admin-applications.html#approved" class="admin-sidenav__link">
+            <i class="fas fa-check-circle"></i>
+            <span>Approved</span>
+          </a>
+          <a href="admin-applications.html#declined" class="admin-sidenav__link">
+            <i class="fas fa-times-circle"></i>
+            <span>Declined</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">System</span>
+          <a href="admin-users.html" class="admin-sidenav__link">
+            <i class="fas fa-users-cog"></i>
+            <span>Admin users</span>
+          </a>
+          <a href="user_profile.html" class="admin-sidenav__link">
+            <i class="fas fa-user-circle"></i>
+            <span>My profile</span>
+          </a>
+          <a href="admin-settings.html" class="admin-sidenav__link is-active">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- CONTENT -->
+      <main class="admin-content">
+
+        <!-- Page heading -->
+        <div class="admin-page-head">
+          <div>
+            <h1 class="admin-page-title">Settings</h1>
+            <p class="admin-page-subtitle">
+              Configure system-wide preferences for the PBS Finance admin portal. UX-only – no live integrations yet.
+            </p>
+          </div>
+        </div>
+
+        <!-- Settings layout -->
+        <section class="admin-grid admin-grid--settings">
+
+          <!-- Left: General & notifications -->
+          <div class="admin-panel admin-panel--settings">
+            <div class="admin-panel__head">
+              <h2>General settings</h2>
+            </div>
+            <div class="admin-panel__body">
+              <div class="form-group">
+                <label class="admin-field-label" for="settings_company_name">Company name</label>
+                <input type="text" id="settings_company_name" class="form-control auth-input"
+                       value="PBS Finance">
+              </div>
+
+              <div class="form-group">
+                <label class="admin-field-label" for="settings_support_email">Support email</label>
+                <input type="email" id="settings_support_email" class="form-control auth-input"
+                       value="support@pbsfinance.co.za">
+              </div>
+
+              <div class="form-group">
+                <label class="admin-field-label" for="settings_timezone">Default timezone</label>
+                <select id="settings_timezone" class="form-control auth-input">
+                  <option selected>GMT+2 – South Africa Standard Time</option>
+                  <option>GMT+1 – Central Africa Time</option>
+                  <option>GMT – Greenwich Mean Time</option>
+                </select>
+              </div>
+
+              <hr class="admin-settings-divider">
+
+              <div class="admin-panel__head admin-panel__head--sub">
+                <h2>Email & notifications</h2>
+              </div>
+
+              <div class="admin-toggle-row">
+                <div>
+                  <div class="admin-toggle-title">Email clients on status changes</div>
+                  <div class="admin-toggle-sub">
+                    When an application is approved, declined or moved into review.
+                  </div>
+                </div>
+                <label class="admin-switch">
+                  <input type="checkbox" checked>
+                  <span class="admin-switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-toggle-row">
+                <div>
+                  <div class="admin-toggle-title">Email clients when documents are requested</div>
+                  <div class="admin-toggle-sub">
+                    Sends a link to the client portal upload page.
+                  </div>
+                </div>
+                <label class="admin-switch">
+                  <input type="checkbox" checked>
+                  <span class="admin-switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="admin-toggle-row">
+                <div>
+                  <div class="admin-toggle-title">Send reminders for incomplete applications</div>
+                  <div class="admin-toggle-sub">
+                    Sends a reminder after 3 days of inactivity.
+                  </div>
+                </div>
+                <label class="admin-switch">
+                  <input type="checkbox">
+                  <span class="admin-switch-slider"></span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Security & display -->
+          <div class="admin-panel admin-panel--settings">
+            <div class="admin-panel__head">
+              <h2>Security</h2>
+            </div>
+            <div class="admin-panel__body">
+
+              <div class="admin-toggle-row">
+                <div>
+                  <div class="admin-toggle-title">Require 2FA for admin users</div>
+                  <div class="admin-toggle-sub">
+                    In the live system, this would enforce SMS or app-based verification on sign-in.
+                  </div>
+                </div>
+                <label class="admin-switch">
+                  <input type="checkbox">
+                  <span class="admin-switch-slider"></span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="admin-field-label" for="settings_session_timeout">
+                  Session timeout
+                </label>
+                <select id="settings_session_timeout" class="form-control auth-input">
+                  <option>15 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>60 minutes</option>
+                  <option>2 hours</option>
+                </select>
+                <small class="admin-settings-help">
+                  After this period of inactivity, admins will be signed out automatically.
+                </small>
+              </div>
+
+              <div class="form-group">
+                <label class="admin-field-label" for="settings_login_attempts">
+                  Failed login attempts before lockout
+                </label>
+                <input type="number" id="settings_login_attempts" class="form-control auth-input" value="5" min="3">
+                <small class="admin-settings-help">
+                  In the live system, more than this number will temporarily lock the account.
+                </small>
+              </div>
+
+              <hr class="admin-settings-divider">
+
+              <div class="admin-panel__head admin-panel__head--sub">
+                <h2>Display</h2>
+              </div>
+
+              <div class="form-group">
+                <label class="admin-field-label" for="settings_theme">
+                  Theme
+                </label>
+                <select id="settings_theme" class="form-control auth-input">
+                  <option selected>Light (PBS default)</option>
+                  <option>Dark</option>
+                </select>
+              </div>
+
+              <div class="admin-toggle-row">
+                <div>
+                  <div class="admin-toggle-title">Compact tables</div>
+                  <div class="admin-toggle-sub">
+                    Reduce spacing in admin tables to show more rows per screen.
+                  </div>
+                </div>
+                <label class="admin-switch">
+                  <input type="checkbox">
+                  <span class="admin-switch-slider"></span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Save / cancel -->
+        <section class="admin-settings-footer">
+          <div class="admin-settings-footer-inner">
+            <div class="admin-settings-footer-text">
+              <div class="admin-settings-footer-title">Save settings</div>
+              <div class="admin-settings-footer-sub">
+                Changes here are UX only for now. In a live build, they would apply across the admin portal.
+              </div>
+            </div>
+            <div class="admin-settings-footer-actions">
+              <button type="button" class="thm-btn admin-status-btn-secondary">
+                Cancel
+              </button>
+              <button type="button" class="thm-btn admin-status-btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

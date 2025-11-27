@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | All Applications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- fonts / vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body class="admin-body">
+  <div class="admin-shell">
+
+    <!-- TOP BAR -->
+    <header class="admin-header">
+      <div class="admin-header__left">
+        <a href="index.html" class="admin-logo-link">
+          <img src="assets/images/logo-dark.png" alt="PBS Finance" class="admin-logo">
+        </a>
+        <span class="admin-header__title">Admin Portal</span>
+      </div>
+
+      <div class="admin-header__right">
+        <div class="admin-header__search">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search applications, customers…" />
+        </div>
+
+        <button class="admin-icon-btn" type="button">
+          <i class="far fa-bell"></i>
+        </button>
+
+        <div class="admin-user">
+          <div class="admin-user__avatar">SA</div>
+          <div class="admin-user__meta">
+            <span class="admin-user__name">Sydney Admin</span>
+            <span class="admin-user__role">Loan manager</span>
+          </div>
+          <button class="admin-icon-btn admin-user__menu" type="button">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN AREA -->
+    <div class="admin-main">
+
+      <!-- SIDE NAV -->
+      <nav class="admin-sidenav">
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Overview</span>
+          <a href="admin-dashboard.html" class="admin-sidenav__link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Applications</span>
+          <a href="admin-applications.html" class="admin-sidenav__link is-active">
+            <i class="fas fa-file-alt"></i>
+            <span>All applications</span>
+          </a>
+          <a href="#pending" class="admin-sidenav__link">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Pending review</span>
+          </a>
+          <a href="#approved" class="admin-sidenav__link">
+            <i class="fas fa-check-circle"></i>
+            <span>Approved</span>
+          </a>
+          <a href="#declined" class="admin-sidenav__link">
+            <i class="fas fa-times-circle"></i>
+            <span>Declined</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">System</span>
+          <a href="admin-users.html" class="admin-sidenav__link">
+            <i class="fas fa-users-cog"></i>
+            <span>Admin users</span>
+          </a>
+          <a href="user_profile.html" class="admin-sidenav__link">
+            <i class="fas fa-user-circle"></i>
+            <span>My profile</span>
+          </a>
+          <a href="admin-settings.html" class="admin-sidenav__link">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- CONTENT -->
+      <main class="admin-content">
+
+        <!-- Page heading + filters -->
+        <div class="admin-page-head">
+          <div>
+            <h1 class="admin-page-title">All applications</h1>
+            <p class="admin-page-subtitle">
+              Browse and manage all loan applications in the PBS Finance system.
+            </p>
+          </div>
+          <div class="admin-head-actions">
+            <select class="admin-select">
+              <option>All time</option>
+              <option>Last 30 days</option>
+              <option>This quarter</option>
+              <option>This year</option>
+            </select>
+            <a href="apply_for_a_loan.html" class="thm-btn admin-head-btn">
+              <i class="fas fa-plus-circle"></i>
+              <span>New application</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Filters row -->
+        <section class="admin-filters-row" id="pending">
+          <div class="admin-filters-row__left">
+            <label class="admin-filter-label">
+              Status
+              <select class="admin-select admin-select--sm">
+                <option>All</option>
+                <option selected>Pending review</option>
+                <option>Approved</option>
+                <option>Declined</option>
+              </select>
+            </label>
+
+            <label class="admin-filter-label">
+              Loan type
+              <select class="admin-select admin-select--sm">
+                <option>All</option>
+                <option>Personal loan</option>
+                <option>Business loan</option>
+                <option>Vehicle finance</option>
+                <option>Home loan</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="admin-filters-row__right" id="approved">
+            <div class="admin-search admin-search--inline">
+              <i class="fas fa-search"></i>
+              <input type="text" class="admin-search-input" placeholder="Search by ref, name, ID">
+            </div>
+          </div>
+        </section>
+
+        <!-- Applications table -->
+        <section class="admin-panel">
+          <div class="admin-panel__head">
+            <h2>Applications list</h2>
+          </div>
+
+          <div class="admin-table-wrap" id="declined">
+            <table class="admin-table admin-table--applications">
+              <thead>
+                <tr>
+                  <th>Reference</th>
+                  <th>Applicant</th>
+                  <th>Loan type</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Updated</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PBS-2025-00123</td>
+                  <td>Thandi Mokoena</td>
+                  <td>Personal loan</td>
+                  <td>R 120,000</td>
+                  <td><span class="badge badge--approved">Approved</span></td>
+                  <td>18 Nov 2025 · 09:24</td>
+                  <td>
+                    <a href="admin-application-detail.html" class="admin-link-btn admin-link-btn--sm">
+                      Open
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PBS-2025-00145</td>
+                  <td>Lerato Dlamini</td>
+                  <td>Personal loan</td>
+                  <td>R 75,000</td>
+                  <td><span class="badge badge--pending">Pending documents</span></td>
+                  <td>21 Nov 2025 · 11:02</td>
+                  <td>
+                    <a href="admin-application-detail.html" class="admin-link-btn admin-link-btn--sm">
+                      Open
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PBS-2025-00160</td>
+                  <td>Sipho Ndlovu</td>
+                  <td>Vehicle finance</td>
+                  <td>R 350,000</td>
+                  <td><span class="badge badge--pending">Pending review</span></td>
+                  <td>22 Nov 2025 · 10:15</td>
+                  <td>
+                    <a href="admin-application-detail.html" class="admin-link-btn admin-link-btn--sm">
+                      Open
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PBS-2025-00172</td>
+                  <td>Ayesha Khan</td>
+                  <td>Business loan</td>
+                  <td>R 600,000</td>
+                  <td><span class="badge badge--declined">Declined</span></td>
+                  <td>22 Nov 2025 · 09:47</td>
+                  <td>
+                    <a href="admin-application-detail.html" class="admin-link-btn admin-link-btn--sm">
+                      Open
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PBS-2025-00180</td>
+                  <td>Nomsa Dlamini</td>
+                  <td>Personal loan</td>
+                  <td>R 80,000</td>
+                  <td><span class="badge badge--pending">Pending review</span></td>
+                  <td>22 Nov 2025 · 08:30</td>
+                  <td>
+                    <a href="admin-application-detail.html" class="admin-link-btn admin-link-btn--sm">
+                      Open
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

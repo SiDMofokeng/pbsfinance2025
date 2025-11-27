@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | Admin Users</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body class="admin-body">
+  <div class="admin-shell">
+
+    <!-- TOP BAR -->
+    <header class="admin-header">
+      <div class="admin-header__left">
+        <a href="index.html" class="admin-logo-link">
+          <img src="assets/images/logo-dark.png" alt="PBS Finance" class="admin-logo">
+        </a>
+        <span class="admin-header__title">Admin Portal</span>
+      </div>
+
+      <div class="admin-header__right">
+        <div class="admin-header__search">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search applications, customers…" />
+        </div>
+
+        <button class="admin-icon-btn" type="button">
+          <i class="far fa-bell"></i>
+        </button>
+
+        <div class="admin-user">
+          <div class="admin-user__avatar">SA</div>
+          <div class="admin-user__meta">
+            <span class="admin-user__name">Sydney Admin</span>
+            <span class="admin-user__role">System admin</span>
+          </div>
+          <button class="admin-icon-btn admin-user__menu" type="button">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN AREA -->
+    <div class="admin-main">
+
+      <!-- SIDE NAV -->
+      <nav class="admin-sidenav">
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Overview</span>
+          <a href="admin-dashboard.html" class="admin-sidenav__link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Applications</span>
+          <a href="admin-applications.html" class="admin-sidenav__link">
+            <i class="fas fa-file-alt"></i>
+            <span>All applications</span>
+          </a>
+          <a href="admin-applications.html#pending" class="admin-sidenav__link">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Pending review</span>
+          </a>
+          <a href="admin-applications.html#approved" class="admin-sidenav__link">
+            <i class="fas fa-check-circle"></i>
+            <span>Approved</span>
+          </a>
+          <a href="admin-applications.html#declined" class="admin-sidenav__link">
+            <i class="fas fa-times-circle"></i>
+            <span>Declined</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">System</span>
+          <a href="admin-users.html" class="admin-sidenav__link is-active">
+            <i class="fas fa-users-cog"></i>
+            <span>Admin users</span>
+          </a>
+          <a href="user_profile.html" class="admin-sidenav__link">
+            <i class="fas fa-user-circle"></i>
+            <span>My profile</span>
+          </a>
+          <a href="admin-settings.html" class="admin-sidenav__link">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- CONTENT -->
+      <main class="admin-content">
+
+        <!-- Page heading + actions -->
+        <div class="admin-page-head">
+          <div>
+            <h1 class="admin-page-title">Admin users</h1>
+            <p class="admin-page-subtitle">
+              Manage who has access to the PBS Finance admin portal and which actions they can perform.
+            </p>
+          </div>
+          <div class="admin-head-actions">
+            <select class="admin-select">
+              <option>All roles</option>
+              <option>System admin</option>
+              <option>Loan manager</option>
+              <option>Read-only</option>
+            </select>
+            <button type="button" class="thm-btn admin-head-btn">
+              <i class="fas fa-user-plus"></i>
+              <span>Add admin user</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid: user list + details -->
+        <section class="admin-grid admin-grid--users">
+
+          <!-- LEFT: Users table -->
+          <div class="admin-panel">
+            <div class="admin-panel__head">
+              <h2>All admin users</h2>
+            </div>
+
+            <div class="admin-table-wrap admin-table-wrap--users">
+              <table class="admin-table admin-table--users">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Last active</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="is-selected">
+                    <td>
+                      <div class="admin-user-cell">
+                        <div class="admin-user-initials">SA</div>
+                        <div>
+                          <div class="admin-user-name">Sydney Admin</div>
+                          <div class="admin-user-tag">You</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>sid.mofokeng@example.com</td>
+                    <td>System admin</td>
+                    <td><span class="badge badge--approved">Active</span></td>
+                    <td>Today · 10:12</td>
+                    <td class="admin-table-actions">
+                      <button type="button" class="admin-link-btn admin-link-btn--sm">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-user-cell">
+                        <div class="admin-user-initials">TM</div>
+                        <div>
+                          <div class="admin-user-name">Thandi Mokoena</div>
+                          <div class="admin-user-tag">Loan manager</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>thandi.mokoena@example.com</td>
+                    <td>Loan manager</td>
+                    <td><span class="badge badge--approved">Active</span></td>
+                    <td>Yesterday · 16:45</td>
+                    <td class="admin-table-actions">
+                      <button type="button" class="admin-link-btn admin-link-btn--sm">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-user-cell">
+                        <div class="admin-user-initials">JN</div>
+                        <div>
+                          <div class="admin-user-name">Jabu Nkosi</div>
+                          <div class="admin-user-tag">Read-only</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>jabu.nkosi@example.com</td>
+                    <td>Read-only</td>
+                    <td><span class="badge badge--pending">Invited</span></td>
+                    <td>Invite sent · 3 days ago</td>
+                    <td class="admin-table-actions">
+                      <button type="button" class="admin-link-btn admin-link-btn--sm">
+                        Resend invite
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="admin-user-cell">
+                        <div class="admin-user-initials">AK</div>
+                        <div>
+                          <div class="admin-user-name">Ayesha Khan</div>
+                          <div class="admin-user-tag">Loan manager</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>ayesha.khan@example.com</td>
+                    <td>Loan manager</td>
+                    <td><span class="badge badge--declined">Disabled</span></td>
+                    <td>Last active · 2 months ago</td>
+                    <td class="admin-table-actions">
+                      <button type="button" class="admin-link-btn admin-link-btn--sm">
+                        Enable user
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- RIGHT: “Edit admin” panel (UX only) -->
+          <aside class="admin-panel admin-panel--side admin-panel--user-detail">
+            <div class="admin-panel__head">
+              <h2>Selected user</h2>
+            </div>
+
+            <div class="admin-panel__body">
+              <div class="admin-user-detail-header">
+                <div class="admin-user-initials admin-user-initials--lg">SA</div>
+                <div>
+                  <div class="admin-user-detail-name">Sydney Admin</div>
+                  <div class="admin-user-detail-email">sid.mofokeng@example.com</div>
+                  <div class="admin-user-detail-role">System admin</div>
+                </div>
+              </div>
+
+              <form class="admin-user-form" action="#" method="post">
+                <div class="form-group">
+                  <label class="admin-field-label" for="admin_user_name">Full name</label>
+                  <input type="text" id="admin_user_name" class="form-control auth-input"
+                         value="Sydney Admin">
+                </div>
+
+                <div class="form-group">
+                  <label class="admin-field-label" for="admin_user_email">Email address</label>
+                  <input type="email" id="admin_user_email" class="form-control auth-input"
+                         value="sid.mofokeng@example.com">
+                </div>
+
+                <div class="form-group">
+                  <label class="admin-field-label" for="admin_user_role">Role</label>
+                  <select id="admin_user_role" class="form-control auth-input">
+                    <option>System admin</option>
+                    <option>Loan manager</option>
+                    <option>Read-only</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="admin-field-label">Status</label>
+                  <div class="admin-user-status-row">
+                    <span class="badge badge--approved">Active</span>
+                    <button type="button" class="admin-link-btn admin-link-btn--sm">
+                      Disable user
+                    </button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="admin-field-label">Security</label>
+                  <div class="admin-user-security">
+                    <button type="button" class="admin-link-btn admin-link-btn--sm">
+                      Send password reset link
+                    </button>
+                    <button type="button" class="admin-link-btn admin-link-btn--sm">
+                      Force logout on all devices
+                    </button>
+                  </div>
+                </div>
+
+                <div class="admin-status-actions admin-status-actions--user">
+                  <button type="submit" class="thm-btn admin-status-btn-primary">
+                    Save changes
+                  </button>
+                  <button type="button" class="thm-btn admin-status-btn-secondary">
+                    Cancel
+                  </button>
+                </div>
+
+                <p class="admin-status-hint">
+                  In the live system, changes here will update this admin’s access and be recorded in the audit log.
+                </p>
+              </form>
+            </div>
+          </aside>
+
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

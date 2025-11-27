@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | Request Documents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body class="admin-body">
+  <div class="admin-shell">
+
+    <!-- TOP BAR -->
+    <header class="admin-header">
+      <div class="admin-header__left">
+        <a href="index.html" class="admin-logo-link">
+          <img src="assets/images/logo-dark.png" alt="PBS Finance" class="admin-logo">
+        </a>
+        <span class="admin-header__title">Admin Portal</span>
+      </div>
+
+      <div class="admin-header__right">
+        <div class="admin-header__search">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search applications, customers…" />
+        </div>
+
+        <button class="admin-icon-btn" type="button">
+          <i class="far fa-bell"></i>
+        </button>
+
+        <div class="admin-user">
+          <div class="admin-user__avatar">SA</div>
+          <div class="admin-user__meta">
+            <span class="admin-user__name">Sydney Admin</span>
+            <span class="admin-user__role">Loan manager</span>
+          </div>
+          <button class="admin-icon-btn admin-user__menu" type="button">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN AREA -->
+    <div class="admin-main">
+
+      <!-- SIDE NAV -->
+      <nav class="admin-sidenav">
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Overview</span>
+          <a href="admin-dashboard.html" class="admin-sidenav__link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">Applications</span>
+          <a href="admin-applications.html" class="admin-sidenav__link is-active">
+            <i class="fas fa-file-alt"></i>
+            <span>All applications</span>
+          </a>
+          <a href="admin-applications.html#pending" class="admin-sidenav__link">
+            <i class="fas fa-hourglass-half"></i>
+            <span>Pending review</span>
+          </a>
+          <a href="admin-applications.html#approved" class="admin-sidenav__link">
+            <i class="fas fa-check-circle"></i>
+            <span>Approved</span>
+          </a>
+          <a href="admin-applications.html#declined" class="admin-sidenav__link">
+            <i class="fas fa-times-circle"></i>
+            <span>Declined</span>
+          </a>
+        </div>
+
+        <div class="admin-sidenav__section">
+          <span class="admin-sidenav__label">System</span>
+          <a href="admin-users.html" class="admin-sidenav__link">
+            <i class="fas fa-users-cog"></i>
+            <span>Admin users</span>
+          </a>
+          <a href="user_profile.html" class="admin-sidenav__link">
+            <i class="fas fa-user-circle"></i>
+            <span>My profile</span>
+          </a>
+          <a href="admin-settings.html" class="admin-sidenav__link">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- CONTENT -->
+      <main class="admin-content">
+
+        <!-- Page heading -->
+        <div class="admin-page-head">
+          <div>
+            <button class="admin-link-btn admin-link-btn--back" type="button"
+                    onclick="window.location.href='admin-application-detail.html'">
+              <i class="fas fa-arrow-left"></i>
+              <span>Back to application</span>
+            </button>
+
+            <h1 class="admin-page-title">Request additional documents</h1>
+            <p class="admin-page-subtitle">
+              Application PBS-2025-00145 · Lerato Dlamini
+            </p>
+          </div>
+          <div class="admin-head-actions">
+            <span class="badge badge--pending">Pending documents</span>
+          </div>
+        </div>
+
+        <!-- Request documents layout -->
+        <section class="admin-request-grid">
+
+          <!-- LEFT: Choose documents -->
+          <div class="admin-panel admin-panel--request">
+            <div class="admin-panel__head">
+              <h2>Documents required</h2>
+            </div>
+            <div class="admin-panel__body">
+              <p class="admin-doc-note">
+                Select the documents you still need from the client for this application.
+              </p>
+
+              <ul class="admin-request-doc-list">
+                <li>
+                  <label class="admin-checkbox">
+                    <input type="checkbox" checked />
+                    <span class="admin-checkbox-box"></span>
+                    <span class="admin-checkbox-label">
+                      Latest 3 months <strong>bank statements</strong>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label class="admin-checkbox">
+                    <input type="checkbox" checked />
+                    <span class="admin-checkbox-box"></span>
+                    <span class="admin-checkbox-label">
+                      Latest <strong>payslip</strong>
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label class="admin-checkbox">
+                    <input type="checkbox" />
+                    <span class="admin-checkbox-box"></span>
+                    <span class="admin-checkbox-label">
+                      <strong>Proof of address</strong> (not older than 3 months)
+                    </span>
+                  </label>
+                </li>
+                <li>
+                  <label class="admin-checkbox">
+                    <input type="checkbox" />
+                    <span class="admin-checkbox-box"></span>
+                    <span class="admin-checkbox-label">
+                      Copy of <strong>ID document</strong>
+                    </span>
+                  </label>
+                </li>
+              </ul>
+
+              <div class="form-group">
+                <label class="admin-field-label" for="admin_custom_doc">
+                  Other documents (optional)
+                </label>
+                <input id="admin_custom_doc" type="text" class="form-control auth-input"
+                       placeholder="e.g. Company registration documents">
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Message & preview -->
+          <div class="admin-panel admin-panel--request">
+            <div class="admin-panel__head">
+              <h2>Message to client</h2>
+            </div>
+            <div class="admin-panel__body">
+              <p class="admin-doc-note">
+                This message will be included in the email or SMS sent to the client, and will show in their
+                notifications.
+              </p>
+
+              <div class="form-group">
+                <label class="admin-field-label" for="admin_request_message">
+                  Custom message
+                </label>
+                <textarea id="admin_request_message" class="form-control auth-input" rows="4"
+                          placeholder="Hi Lerato, please upload your latest bank statements and payslip so we can continue assessing your application."></textarea>
+              </div>
+
+              <div class="admin-request-preview">
+                <div class="admin-request-preview-title">
+                  Example notification
+                </div>
+                <div class="admin-request-preview-body">
+                  <p class="admin-request-preview-line">
+                    <strong>Subject:</strong> Documents required for your PBS Finance application PBS-2025-00145
+                  </p>
+                  <p class="admin-request-preview-line">
+                    Hi Lerato,
+                  </p>
+                  <p class="admin-request-preview-line">
+                    We’re still missing a few documents needed to finalise your loan application.
+                  </p>
+                  <p class="admin-request-preview-line">
+                    Please upload the following:
+                  </p>
+                  <ul class="admin-request-preview-list">
+                    <li>Latest 3 months bank statements</li>
+                    <li>Latest payslip</li>
+                  </ul>
+                  <p class="admin-request-preview-line">
+                    You can upload your documents securely via your PBS Finance portal.
+                  </p>
+                  <p class="admin-request-preview-line">
+                    Thank you,<br>
+                    PBS Finance team
+                  </p>
+                </div>
+              </div>
+
+              <div class="admin-status-actions admin-status-actions--doc">
+                <button type="button" class="thm-btn admin-status-btn-primary">
+                  Send request
+                </button>
+                <button type="button" class="thm-btn admin-status-btn-secondary"
+                        onclick="window.location.href='admin-application-detail.html'">
+                  Cancel
+                </button>
+              </div>
+
+              <p class="admin-status-hint">
+                In the live system, this will create a notification in the client portal and send an email/SMS
+                with a link to upload documents.
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
