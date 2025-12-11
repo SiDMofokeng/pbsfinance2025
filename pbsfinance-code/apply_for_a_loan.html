@@ -1244,6 +1244,227 @@ function validateUserRegistration() {
 
 </script>
 
+<script>
+/* ------------------------------------------------------------------
+  Validation wrapper for loan tabs & forms
+  Drop this in AFTER your existing loan JS (so it can wrap functions)
+------------------------------------------------------------------ */
+(function () {
+  // Helper: find visible loan-form-blocks inside the currently active tab
+  function getVisibleBlocksInCurrentTab() {
+    var tabContents = document.querySelectorAll('.loan-application-tabcontent');
+    for (var i = 0; i < tabContents.length; i++) {
+      var t = tabContents[i];
+      if (t.style.display !== 'none') {
+        // return all .loan-form-blocks that are visible (display != none)
+        return Array.prototype.slice.call(t.querySelectorAll('.loan-form-block')).filter(function (b) {
+          return b.style.display !== 'none';
+        });
+      }
+    }
+    return [];
+  }
+
+  // Helper: find first invalid element inside a container and show inline message
+  function validateContainer(container) {
+    var inputs = container.querySelectorAll('input,select,textarea');
+    var firstInvalid = null;
+    // remove old error messages from this container
+    Array.prototype.forEach.call(container.querySelectorAll('.validation-error'), function (el) {
+      el.parentNode && el.parentNode.removeChild(el);
+    });
+
+    for (var i = 0; i < inputs.length; i++) {
+      var el = inputs[i];
+      // skip hidden or disabled
+      if (el.disabled || el.type === 'hidden' || el.offsetParent === null) continue;
+
+      var valid = true;
+      // Use HTML5 validity if the field has "required" or other constraints
+      if (typeof el.checkValidity === 'function' && el.hasAttribute('required')) {
+        valid = el.checkValidity();
+      } else {
+        // fallback: for text/number/email/select, ensure non-empty if they have a name attribute
+        var t = el.type ? el.type.toLowerCase() : el.tagName.toLowerCase();
+        if ((t === 'text' || t === 'email' || t === 'tel' || t === 'number' || t === 'textarea' || el.tagName.toLowerCase() === 'select') &&
+            el.name && String(el.value).trim() === '') {
+          valid = false;
+        }
+      }
+
+      if (!valid) {
+        firstInvalid = firstInvalid || el;
+        // add inline error message
+        var msg = el.getAttribute('data-error') || (el.hasAttribute('required') ? 'This field is required' : 'Please enter a value');
+        var err = document.createElement('div');
+        err.className = 'validation-error';
+        err.style.color = '#ad2e2e';
+        err.style.fontSize = '0.9rem';
+        err.style.marginTop = '6px';
+        err.textContent = msg;
+        // insert after the element
+        (el.parentNode || el).appendChild(err);
+      }
+    }
+
+    if (firstInvalid) {
+      // focus the first invalid element for UX
+      try { firstInvalid.focus(); } catch (e) {}
+      return { valid: false, first: firstInvalid };
+    }
+    return { valid: true };
+  }
+
+  // Validate the "current" tab. We treat the last visible loan-form-block as the active block to validate.
+  function validateCurrentTab() {
+    var visibleBlocks = getVisibleBlocksInCurrentTab();
+    if (!visibleBlocks || visibleBlocks.length === 0) {
+      // fallback: validate whole visible tab area
+      var tabContents = document.querySelectorAll('.loan-application-tabcontent');
+      for (var i = 0; i < tabContents.length; i++) {
+        if (tabContents[i].style.display !== 'none') {
+          return validateContainer(tabContents[i]);
+        }
+      }
+      return { valid: true };
+    }
+    // Validate each visible block (especially the first one, or last depending on your UX)
+    // We'll validate all visible blocks and focus the first invalid.
+    for (var j = 0; j < visibleBlocks.length; j++) {
+      var res = validateContainer(visibleBlocks[j]);
+      if (!res.valid) return res;
+    }
+    return { valid: true };
+  }
+
+  // Wrap openLoanStepFromButton to validate before navigation forward
+  if (typeof window.openLoanStepFromButton === 'function') {
+    window.__orig_openLoanStepFromButton = window.openLoanStepFromButton;
+    window.openLoanStepFromButton = function (stepId, stepNumber) {
+      // Validate current tab before allowing navigation forward
+      var validation = validateCurrentTab();
+      if (!validation.valid) {
+        // do not navigate, user will see inline errors and focus will be set
+        return false;
+      }
+      // proceed with original behavior
+      return window.__orig_openLoanStepFromButton(stepId, stepNumber);
+    };
+  }
+
+  // Wrap openLoanStep to prevent user clicking on future tabs without completing current
+  if (typeof window.openLoanStep === 'function') {
+    window.__orig_openLoanStep = window.openLoanStep;
+    window.openLoanStep = function (evt, stepId, stepNumber) {
+      try {
+        // find ordering of tabs and indices
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.loan-application-tablink'));
+        var targetIndex = tabs.findIndex(function (t) {
+          return t.getAttribute('onclick') && t.getAttribute('onclick').indexOf("'" + stepId + "'") !== -1 ||
+                 (t.dataset && t.dataset.step === stepId);
+        });
+        var currentIndex = tabs.findIndex(function (t) { return t.classList.contains('is-active'); });
+
+        // If moving forward (targetIndex > currentIndex), validate current tab first
+        if (targetIndex > currentIndex) {
+          var validation = validateCurrentTab();
+          if (!validation.valid) {
+            // Block navigation forward
+            if (evt && evt.preventDefault) evt.preventDefault();
+            return false;
+          }
+        }
+      } catch (e) {
+        // If anything goes wrong, fall back to original function
+        console.warn('openLoanStep wrapper error', e);
+      }
+
+      return window.__orig_openLoanStep(evt, stepId, stepNumber);
+    };
+  }
+
+  // Intercept form submit inside loan-application-shell to prevent empty submission
+  var loanShellForms = document.querySelectorAll('.loan-application-shell form');
+  Array.prototype.forEach.call(loanShellForms, function (form) {
+    form.addEventListener('submit', function (e) {
+      // remove previous inline errors within the form
+      Array.prototype.forEach.call(form.querySelectorAll('.validation-error'), function (el) {
+        el.parentNode && el.parentNode.removeChild(el);
+      });
+
+      // Validate entire form using HTML5 API
+      if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+        // Show inline errors for invalid items
+        var invalids = form.querySelectorAll(':invalid');
+        if (invalids && invalids.length) {
+          e.preventDefault();
+          e.stopPropagation();
+          // show inline messages
+          Array.prototype.forEach.call(invalids, function (el) {
+            var msg = el.validationMessage || 'Please fill out this field';
+            var err = document.createElement('div');
+            err.className = 'validation-error';
+            err.style.color = '#ad2e2e';
+            err.style.fontSize = '0.9rem';
+            err.style.marginTop = '6px';
+            err.textContent = msg;
+            (el.parentNode || el).appendChild(err);
+          });
+          // focus first invalid
+          try { invalids[0].focus(); } catch (err) {}
+        }
+      } else {
+        // fallback: run custom validateCurrentTab which checks empties too
+        var res = validateCurrentTab();
+        if (!res.valid) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+    }, false);
+  });
+
+  // UX nicety: remove validation message when user starts typing
+  document.addEventListener('input', function (ev) {
+    var el = ev.target;
+    if (!el) return;
+    var p = el.parentNode;
+    if (!p) return;
+    var old = p.querySelector('.validation-error');
+    if (old) {
+      // If element now has a value, remove the error
+      if (el.value && String(el.value).trim() !== '') {
+        old.parentNode && old.parentNode.removeChild(old);
+      }
+    }
+  }, true);
+
+  // Also support clicking the "Continue" outline buttons which call showNextBlock (these bypass openLoanStepFromButton)
+  // We override showNextBlock to validate the block being hidden (the currently visible one) if we are progressing to a next block.
+  if (typeof window.showNextBlock === 'function') {
+    window.__orig_showNextBlock = window.showNextBlock;
+    window.showNextBlock = function (blockId) {
+      // find the block currently visible (inside same tab)
+      var visibleBlocks = getVisibleBlocksInCurrentTab();
+      // If the blockId is not within current visibleBlocks, treat as normal
+      // But validate the current visible blocks before revealing the new one
+      var validation = validateCurrentTab();
+      if (!validation.valid) {
+        return false;
+      }
+      return window.__orig_showNextBlock(blockId);
+    };
+  }
+
+  // Expose a helper to run validation programmatically (for debugging/testing)
+  window.validateLoanUI = function () {
+    return validateCurrentTab();
+  };
+
+})();
+</script>
+
+
 
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/bootstrap.bundle.min.js"></script>
