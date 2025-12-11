@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PBS Finance | Admin Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <section class="auth-section">
+      <div class="container">
+        <div class="auth-card">
+
+          <!-- LOGO -->
+          <div class="auth-logo">
+            <img src="assets/images/PBS_Security.png" alt="PBS Finance" width="150">
+          </div>
+
+          <h1 class="auth-title">Request Access</h1>
+          <p class="auth-subtitle">Set up access to manage PBS Finance applications.</p>
+
+          <form class="auth-form" action="#" method="post">
+            <div class="form-group">
+              <label for="full_name">Full name</label>
+              <input type="text" id="full_name" name="full_name"
+                     class="form-control auth-input" placeholder="Name and surname" required>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_password">iD Number</label>
+              <input type="number" id="id_number" name="id_number"
+                     class="form-control auth-input" placeholder="Enter id number" required>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_email">Work email</label>
+              <input type="email" id="reg_email" name="reg_email"
+                     class="form-control auth-input" placeholder="you@company.co.za" required>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_password">Password</label>
+              <input type="password" id="reg_password" name="reg_password"
+                     class="form-control auth-input" placeholder="Create a password" required>
+            </div>
+
+            <div class="form-group">
+              <label for="reg_password_confirm">Confirm password</label>
+              <input type="password" id="reg_password_confirm" name="reg_password_confirm"
+                     class="form-control auth-input" placeholder="Repeat your password" required>
+            </div>
+
+            <button type="submit" class="thm-btn auth-btn-full" onclick="window.location.href='admin-2fa.html'">Create account</button>
+          </form>
+
+          <div class="auth-footer-text">
+            Already have access?
+            <a href="admin-login.html" class="auth-link">Back to login</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

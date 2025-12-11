@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>PBS Finance | Admin Registration</title>
+  <title>PBS Finance | Admin Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- favicons -->
@@ -29,40 +29,36 @@
             <img src="assets/images/PBS_Security.png" alt="PBS Finance" width="150">
           </div>
 
-          <h1 class="auth-title">Create Admin Account</h1>
-          <p class="auth-subtitle">Set up access to manage PBS Finance applications.</p>
+          <h1 class="auth-title">Sign-In</h1>
+          <p class="auth-subtitle">Manage PBS Finance applications.</p>
 
           <form class="auth-form" action="#" method="post">
             <div class="form-group">
-              <label for="full_name">Full name</label>
-              <input type="text" id="full_name" name="full_name"
-                     class="form-control auth-input" placeholder="Name and surname" required>
-            </div>
-
-            <div class="form-group">
-              <label for="reg_email">Work email</label>
-              <input type="email" id="reg_email" name="reg_email"
+              <label for="admin_email">Email</label>
+              <input type="email" id="admin_email" name="admin_email"
                      class="form-control auth-input" placeholder="you@company.co.za" required>
             </div>
 
             <div class="form-group">
-              <label for="reg_password">Password</label>
-              <input type="password" id="reg_password" name="reg_password"
-                     class="form-control auth-input" placeholder="Create a password" required>
+              <label for="admin_password">Password</label>
+              <input type="password" id="admin_password" name="admin_password"
+                     class="form-control auth-input" placeholder="Enter your password" required>
             </div>
 
-            <div class="form-group">
-              <label for="reg_password_confirm">Confirm password</label>
-              <input type="password" id="reg_password_confirm" name="reg_password_confirm"
-                     class="form-control auth-input" placeholder="Repeat your password" required>
+            <div class="auth-row">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="remember_me">
+                <label class="form-check-label" for="remember_me">Remember me</label>
+              </div>
+              <a href="#" class="auth-link">Forgot password?</a>
             </div>
 
-            <button type="submit" class="thm-btn auth-btn-full">Create account</button>
+            <button type="submit" class="thm-btn auth-btn-full">Login</button>
           </form>
 
           <div class="auth-footer-text">
-            Already have access?
-            <a href="admin-login.html" class="auth-link">Back to login</a>
+            Don’t have an admin account?
+            <a href="admin-register.html" class="auth-link">Request access</a>
           </div>
 
         </div>

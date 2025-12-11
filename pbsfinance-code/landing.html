@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PBS Finance | Landing</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- existing styles (keep your paths) -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+
+  <!-- fontawesome for icons -->
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <style>
+    /* tiny header overrides so this file works standalone */
+    .site-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 20px;
+      background: linear-gradient(165deg,#B5E480 0%, #A2DD77 18%, #3B4A54 100%);
+      color:#fff;
+    }
+    .site-header .brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+    .site-header .brand img{ height:34px; }
+    .site-nav { display:flex; gap:12px; align-items:center; }
+    .btn-ghost { background:transparent; border:1px solid rgba(255,255,255,0.18); color:#fff; padding:8px 12px; border-radius:8px; text-decoration:none; }
+    .btn-solid { background:#0F1F29; color:#B5E480; padding:8px 12px; border-radius:8px; text-decoration:none; font-weight:600; }
+    .user-bubble { display:flex; gap:8px; align-items:center; background: rgba(255,255,255,0.12); padding:6px 10px; border-radius:999px; }
+    .user-name { font-weight:600; font-size:14px; color:#fff; }
+    /* small demo banner */
+    .demo-note { text-align:center; margin:22px 0; color:#334155; font-size:14px; }
+    .hero { max-width:980px; margin:28px auto; padding:32px; background:#fff; border-radius:18px; box-shadow:0 10px 30px rgba(15,23,42,0.06); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo-dark.png" alt="PBS logo">
+      <div>
+        <div style="font-weight:700">PBS Finance</div>
+        <div style="font-size:12px; opacity:0.9">Simple, secure loans</div>
+      </div>
+    </a>
+
+    <nav class="site-nav" id="siteNav">
+      <!-- JS will toggle the content here -->
+      <!-- default placeholder for no-js -->
+      <a href="client-login.html" class="btn-ghost">Sign in</a>
+      <a href="client-register.html" class="btn-solid">Sign up</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="demo-note">
+      This is the landing page. It will show the user name in the header if the user is logged in.
+      Use <strong>landing-demo.html</strong> to simulate login / logout.
+    </div>
+
+    <section class="hero">
+      <h1>Welcome to PBS Finance</h1>
+      <p style="color:#475569">
+        Clean demo landing page. The header shows different actions depending on whether the user is logged in.
+      </p>
+
+      <div style="margin-top:18px">
+        <a class="btn-solid" href="apply_for_a_loan.html">Apply for a loan</a>
+        <a class="btn-ghost" href="client-portal.html" style="margin-left:8px">Client portal</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Header logic: show user name if logged in, otherwise show Sign in / Sign up
+    function renderHeader() {
+      const nav = document.getElementById('siteNav');
+      nav.innerHTML = ''; // clear
+      try {
+        const stored = localStorage.getItem('pbs_user');
+        if (stored) {
+          // parse and show user bubble
+          const user = JSON.parse(stored);
+          const bubble = document.createElement('div');
+          bubble.className = 'user-bubble';
+          bubble.innerHTML = '<span class="user-name">' + (user.name || 'User') + '</span>' +
+                             '<a href="client-portal.html" class="btn-ghost" style="border-color:rgba(255,255,255,0.12);">My applications</a>' +
+                             '<a id="logoutBtn" class="btn-ghost" style="margin-left:6px;">Sign out</a>';
+          nav.appendChild(bubble);
+
+          // wire logout
+          document.getElementById('logoutBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            localStorage.removeItem('pbs_user');
+            renderHeader();
+          });
+        } else {
+          // guest view
+          const a1 = document.createElement('a'); a1.href='client-login.html'; a1.className='btn-ghost'; a1.textContent='Sign in';
+          const a2 = document.createElement('a'); a2.href='client-register.html'; a2.className='btn-solid'; a2.textContent='Sign up';
+          nav.appendChild(a1); nav.appendChild(a2);
+        }
+      } catch (err) {
+        // fallback to guest view
+        const a1 = document.createElement('a'); a1.href='client-login.html'; a1.className='btn-ghost'; a1.textContent='Sign in';
+        const a2 = document.createElement('a'); a2.href='client-register.html'; a2.className='btn-solid'; a2.textContent='Sign up';
+        nav.appendChild(a1); nav.appendChild(a2);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderHeader);
+  </script>
+</body>
+</html>

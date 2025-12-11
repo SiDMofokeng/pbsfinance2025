@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PBS Finance | Apply for a Loan (Guest)</title>
+  <!-- favicons & css (same as original) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/swiper.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/odometer.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="assets/css/nouislider.min.css">
+  <link rel="stylesheet" href="assets/css/nouislider.pips.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+
+  <style>
+    /* small styles for the guest prompt panel so it sits nicely in the same layout */
+    .guest-prompt {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.06);
+      margin: 8px 0 24px;
+    }
+    .guest-prompt h3 { margin-bottom: 8px; }
+    .guest-prompt p { margin-bottom: 16px; color:#6B7A83; }
+    .guest-prompt .btn { border-radius: 999px; padding:10px 22px; font-weight:700; }
+    .guest-prompt .btn-login { background:#B5E480;color:#0F1F29;border:none; }
+    .guest-prompt .btn-register { background:transparent;color:#0F1F29;border:1px solid #dbe7cf;margin-left:10px; }
+  </style>
+</head>
+<body class="has-sticky-offset home-page-wrapper">
+  <div class="preloader">
+    <img class="preloader__image" src="assets/images/loader.png" alt="">
+  </div>
+  <div class="page-wrapper">
+
+    <div class="main-header-two">
+      <div class="topbar-two"></div>
+
+      <div class="main-header-two__info">
+        <div class="container">
+          <div class="main-header-two__info__inner">
+
+            <div class="logo-box">
+              <a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
+              <span class="fa fa-bars mobile-nav__toggler"></span>
+            </div><!-- /.logo-box -->
+
+            <nav class="main-header-two__menu main-menu">
+              <div class="container">
+                <ul class="main-menu__list">
+                  <li class="dropdown"><a href="index.html">Home</a></li>
+                  <li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
+                  <li><a href="#footer">Contact Support</a></li>
+
+                  <!-- GUEST: Keep Login here so header looks identical -->
+                  <li class="main-menu__item main-menu__item--auth">
+                    <a href="login.html" class="header-login-btn">Login</a>
+                  </li>
+
+                </ul>
+              </div>
+            </nav>
+
+          </div><!-- /.main-header-two__info__inner -->
+        </div><!-- /.container -->
+      </div><!-- /.main-header-two__info -->
+
+    </div>
+
+    <div class="stricky-header stricked-menu main-header-two__menu main-menu">
+      <div class="sticky-header__content"></div>
+    </div>
+
+    <!-- ===============================
+         Apply for a Loan – Guest view (tabs replaced with login prompt)
+         =============================== -->
+    <section id="apply-for-loan" class="loan-calculator-two loan-application-section">
+      <div class="container">
+        <div class="loan-application-shell">
+
+          <!-- REPLACED Top bar: Instead of tabs we show a guest prompt asking user to log in -->
+          <div class="loan-shell-top">
+            <div style="width:100%;display:flex;justify-content:center;">
+              <div class="guest-prompt" style="max-width:920px;">
+                <h3>Welcome — please sign in to continue your application</h3>
+                <p>To complete an application and access saved progress, you need to be signed in.  
+                   Signing in allows you to save progress, upload documents securely and track your application.</p>
+                <div>
+                  <a href="client-login.html" class="btn btn-login">Sign in</a>
+                  <a href="client-register.html" class="btn btn-register">Create an account</a>
+                </div>
+                <div style="margin-top:12px;color:#97a2ad;font-size:13px;">
+                  Or continue as a guest — the application will be available but tabs below are hidden until you sign in.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Body: keep structure but hide the tab content area (keeps page spacing consistent) -->
+          <div class="loan-shell-body">
+            <div class="container" style="max-width:1200px;margin:22px auto;">
+              <div style="background:#fff;border-radius:12px;padding:40px;text-align:center;box-shadow:0 10px 30px rgba(15,23,42,0.06);">
+                <h4 style="margin-bottom:12px;color:#1b2b38;font-weight:700;">Application unavailable while signed out</h4>
+                <p style="color:#6B7A83;margin-bottom:22px;">Please sign in to access the application tabs (Income, Expenses, Banking, Upload Documents, Finalize). You can still read the details on this page but the form sections are hidden until you log in.</p>
+                <a href="client-login.html" class="thm-btn" style="background:#B5E480;color:#0F1F29;border:none;padding:12px 24px;border-radius:999px;">Sign in to continue</a>
+              </div>
+            </div>
+          </div><!-- /.loan-shell-body -->
+
+        </div><!-- /.loan-application-shell -->
+      </div><!-- /.container -->
+    </section>
+
+    <footer id="footer" class="site-footer-two">
+      <div class="site-footer-two__bottom">
+        <div class="container">
+          <p>© Copyright 2025 PBS Finance</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- same scripts -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/swiper.min.js"></script>
+  <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/jquery.validate.min.js"></script>
+  <script src="assets/js/bootstrap-select.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/odometer.min.js"></script>
+  <script src="assets/js/jquery.appear.min.js"></script>
+  <script src="assets/js/wNumb.min.js"></script>
+  <script src="assets/js/nouislider.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/jquery.circleGraph.js"></script>
+  <script src="assets/js/jquery-ui.js"></script>
+  <script src="assets/js/theme.js"></script>
+</body>
+</html>

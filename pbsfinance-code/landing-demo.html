@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PBS Finance | Landing Demo (Auth toggle)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <style>
+    body { font-family: Inter, system-ui, Arial, sans-serif; background:#f8fafc; color:#0f1724; padding:18px; }
+    .card { background:#fff; padding:18px; border-radius:12px; box-shadow:0 8px 20px rgba(15,23,42,0.06); max-width:720px; margin:18px auto; }
+    .btn { padding:10px 14px; border-radius:10px; border:none; cursor:pointer; }
+    .btn-primary { background:#0F1F29; color:#B5E480; font-weight:700; }
+    .btn-ghost { background:transparent; border:1px solid #cbd5e1; color:#0f1724; }
+    .small { font-size:13px; color:#475569; }
+    .header-sim { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="header-sim">
+      <div>
+        <img src="assets/images/logo-dark.png" alt="PBS" style="height:34px">
+      </div>
+      <div>
+        <a href="landing.html" class="btn btn-ghost">Open landing</a>
+      </div>
+    </div>
+
+    <h2>Auth demo — toggle login state</h2>
+    <p class="small">This page lets you simulate logging in or logging out. The landing page reads <code>localStorage.pbs_user</code> to decide which header to show.</p>
+
+    <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+      <button id="loginJohn" class="btn btn-primary">Simulate login — John Doe</button>
+      <button id="loginLerato" class="btn btn-primary">Simulate login — Lerato</button>
+      <button id="logout" class="btn btn-ghost">Simulate logout</button>
+    </div>
+
+    <hr style="margin:16px 0">
+
+    <div>
+      <strong>Current localStorage</strong>
+      <pre id="ls" style="background:#f1f5f9;padding:12px;border-radius:8px;overflow:auto;"></pre>
+    </div>
+  </div>
+
+  <script>
+    function setUser(name,email){
+      const u = { name: name, email: email, at: Date.now() };
+      localStorage.setItem('pbs_user', JSON.stringify(u));
+      renderLS();
+      alert(name + ' logged in (localStorage set). Now open landing.html to see header change.');
+    }
+    function clearUser(){
+      localStorage.removeItem('pbs_user');
+      renderLS();
+      alert('Logged out. Open landing.html to confirm.');
+    }
+    document.getElementById('loginJohn').addEventListener('click', function(){ setUser('John Doe','john@example.com'); });
+    document.getElementById('loginLerato').addEventListener('click', function(){ setUser('Lerato Dlamini','lerato@example.com'); });
+    document.getElementById('logout').addEventListener('click', clearUser);
+
+    function renderLS(){
+      const ls = localStorage.getItem('pbs_user');
+      document.getElementById('ls').textContent = ls ? ls : '(no pbs_user key)';
+    }
+
+    document.addEventListener('DOMContentLoaded', renderLS);
+  </script>
+
+</body>
+</html>

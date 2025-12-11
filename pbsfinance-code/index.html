@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PBS Finance | Home</title>
-	<!-- favicons Icons -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>PBS Finance | Home (Calculator Rules)</title>
+
+	<!-- favicons -->
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
 
-	<!-- fonts / vendor CSS -->
+	<!-- vendor css -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 	<link rel="stylesheet" href="assets/css/swiper.min.css">
@@ -21,13 +21,12 @@
 	<link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
 	<link rel="stylesheet" href="assets/css/nouislider.min.css">
 	<link rel="stylesheet" href="assets/css/nouislider.pips.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/flaticon.css">
+	<link rel="stylesheet" href="assets/css/flaticon.css">
 	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="assets/css/pylon-two-icons.css">
 	<link rel="stylesheet" href="assets/css/jquery-ui.css">
 	<link rel="stylesheet" href="assets/css/custom-animation.css">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- app overrides -->
 	<link rel="stylesheet" href="assets/css/pbs-app.css">
 
 	<style>
@@ -42,31 +41,34 @@
 			margin-top: 6px;
 			color: #3B4A54;
 		}
-
 		.loan-edit-input:focus {
 			outline: none;
 			border-color: #B5E480;
 			box-shadow: 0 0 0 2px rgba(181, 228, 128, 0.35);
 		}
+
+		/* Small warning text */
+		.calc-warning { color:#ad2e2e; font-size: 0.95rem; margin-top:6px; display:none; }
+
+		/* label tweak for Monthly Installment */
+		.loan-calculator-two__form__emi span { font-weight:600; font-size:1.05rem; color:#ffffff; }
+		.loan-calculator-two__form__emi b { font-weight:800; color:#B5E480; }
+
+		/* keep layout consistent */
 	</style>
 </head>
-
 <body class="has-sticky-offset">
 	<div class="preloader">
 		<img class="preloader__image" src="assets/images/loader.png" alt="">
-	</div><!-- /.preloader -->
+	</div>
 	<div class="page-wrapper">
-
 		<div class="main-header-two">
 			<div class="topbar-two"></div>
-
 			<div class="main-header-two__info">
 				<div class="container">
 					<div class="main-header-two__info__inner">
-
 						<div class="logo-box">
-							<a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png"
-									width="155" alt=""></a>
+							<a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
 							<span class="fa fa-bars mobile-nav__toggler"></span>
 						</div><!-- /.logo-box -->
 
@@ -76,8 +78,7 @@
 									<li class="dropdown"><a href="index.html">Home</a></li>
 									<li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
 									<li><a href="#footer">Contact Support</a></li>
-									    <!-- LOGIN BUTTON -->
-									<a href="client-login.html" class="header-login-btn">Login</a>
+									<a href="login.html" class="header-login-btn">Login</a>
 								</ul>
 							</div>
 						</nav>
@@ -89,14 +90,12 @@
 		</div>
 
 		<div class="stricky-header stricked-menu main-header-two__menu main-menu">
-			<div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-		</div><!-- /.stricky-header -->
+			<div class="sticky-header__content"></div>
+		</div>
 
 		<section class="loan-calculator-two">
 			<div class="container">
-
 				<br>
-
 				<div class="loan-calculator-two__shape-2 float-bob-x"></div>
 
 				<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
@@ -117,21 +116,20 @@
 										<h4>Loan Amount</h4>
 										<div class="single-loan-counter">
 											<span>R</span>
-											<span id="pricipal">100000</span>
+											<span id="pricipal">10,000</span>
 										</div>
 										<input type="number" id="pricipal-input" class="loan-edit-input"
-											min="10000" max="5000000" step="1000" value="100000">
+											min="0" max="10000" step="100" value="10000" aria-label="Loan Amount">
+										<div id="pricipal-warning" class="calc-warning">Maximum loan amount is R10,000 — amount adjusted.</div>
 									</div>
 									<div id="pricipal-slide"
 										class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min">
-										</div>
-										<span tabindex="0"
-											class="ui-slider-handle ui-corner-all ui-state-default"></span>
+										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"></div>
+										<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
 									</div>
 									<div class="single-loan-slider__bottom">
-										<span>R10000</span>
-										<span>R5000000</span>
+										<span>R0</span>
+										<span>R10,000</span>
 									</div>
 								</div>
 
@@ -140,46 +138,46 @@
 									<div class="single-loan-slider__top">
 										<h4>Loan Months</h4>
 										<div class="single-loan-counter">
-											<span id="totalyear">120</span>
+											<span id="totalyear">6</span>
 											<span>Months</span>
 										</div>
 										<input type="number" id="totalyear-input" class="loan-edit-input"
-											min="12" max="360" step="1" value="120">
+											min="1" max="6" step="1" value="6" aria-label="Loan Months">
+										<div id="months-warning" class="calc-warning">Maximum term is 6 months — value adjusted.</div>
 									</div>
 									<div id="totalyear-slide"
 										class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min">
-										</div>
-										<span tabindex="0"
-											class="ui-slider-handle ui-corner-all ui-state-default"></span>
+										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"></div>
+										<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
 									</div>
 									<div class="single-loan-slider__bottom">
-										<span>12</span>
-										<span>360</span>
+										<span>1</span>
+										<span>6</span>
 									</div>
 								</div>
 
-								<!-- Interest Rate -->
+								<!-- Interest Rate (Not editable) -->
 								<div class="single-loan-slider">
 									<div class="single-loan-slider__top">
 										<h4>Interest Rate</h4>
 										<div class="single-loan-counter">
-											<span id="intrest">10</span>
+											<span id="intrest">28.5</span>
 											<span>%</span>
 										</div>
 										<input type="number" id="intrest-input" class="loan-edit-input"
-											min="1" max="40" step="0.5" value="10">
+											min="28.5" max="28.5" step="0.1" value="28.5" aria-label="Interest Rate" disabled>
+										<div class="calc-warning" style="display:block;color:#4a5560;font-size:0.95rem;margin-top:6px;">
+											Interest is fixed at <strong>28.5%</strong> (non-editable).
+										</div>
 									</div>
 									<div id="intrest-slide"
 										class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min">
-										</div>
-										<span tabindex="0"
-											class="ui-slider-handle ui-corner-all ui-state-default"></span>
+										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"></div>
+										<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
 									</div>
 									<div class="single-loan-slider__bottom">
-										<span>4</span>
-										<span>16</span>
+										<span>28.5%</span>
+										<span>28.5%</span>
 									</div>
 								</div>
 
@@ -191,29 +189,37 @@
 						</div><!-- /.col-lg-6 -->
 
 						<div class="col-lg-6">
-							<div id="loan-calculator-1" data-interest-rate="15" class="loan-calculator-two__form">
+							<div id="loan-calculator-1" data-interest-rate="28.5" class="loan-calculator-two__form">
 								<span class="sec-title-two__tagline">
 									<i class="fa fa-star"></i>
 									<span>How Much You Need</span>
 								</span>
 								<div class="loan-calculator-two__form__calculation">
 									<div class="loan-calculator-two__form__emi">
-										<span>Monthly EMI:</span>
-										<b>R<i id="emi">1,309.91</i></b>
+										<span>Monthly Installment:</span>
+										<b>R <i id="emi">2,385.00</i></b>
 									</div>
 									<p>
 										<span>Total Interest</span>
-										<b>R<i id="tbl_emi">57,188.72</i></b>
+										<b>R <i id="tbl_emi">2,850.00</i></b>
 									</p>
 									<p>
 										<span>Total Amount Payable</span>
-										<b>R<i id="tbl_la">157,188.72</i></b>
+										<b>R <i id="tbl_la">14,310.00</i></b>
 									</p>
 									<p>
 										<span>Total Months</span>
-										<b><i id="t_m">12</i> Months</b>
+										<b><i id="t_m">6</i> Months</b>
 									</p>
+
+									<!-- extra breakdown so user sees fees -->
+									<div style="margin-top:14px;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;color:#dbe7ef;">
+										<p style="margin:0;"><small>Initiation Fee:</small> <strong>R <span id="init_fee">1,050.00</span></strong></p>
+										<p style="margin:0;"><small>Service Fee (per month):</small> <strong>R <span id="service_fee">60.00</span></strong></p>
+										<p style="margin:0;"><small>Credit Protection (fixed):</small> <strong>R <span id="credit_fee">50.00</span></strong></p>
+									</div>
 								</div>
+
 								<a href="apply_for_a_loan.html" class="thm-btn">Apply For Loan</a>
 							</div>
 						</div><!-- /.col-lg-6 -->
@@ -223,6 +229,7 @@
 			</div><!-- /.container -->
 		</section><!-- /.loan-calculator-two -->
 
+		<!-- rest of page kept unchanged (slider + footer) -->
 		<section class="main-slider main-slider-two">
 			<div class="swiper-container thm-swiper__slider" data-swiper-options='{
 			        "slidesPerView": 1,
@@ -238,15 +245,12 @@
 			    }'>
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<div class="image-layer"
-							style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-1.jpg);">
-						</div>
+						<div class="image-layer" style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-1.jpg);"></div>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-xl-6 col-lg-6">
 									<p>Trusted and Secure Payment Proccess</p>
-									<h2>A Quick, Secure <br>
-										And Transparent <br> <span>Process</span></h2>
+									<h2>A Quick, Secure <br> And Transparent <br> <span>Process</span></h2>
 									<div class="main-slider-two__text">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit.
 									</div>
@@ -255,17 +259,13 @@
 							</div>
 						</div>
 					</div><!-- /.swiper-slide -->
-
 					<div class="swiper-slide">
-						<div class="image-layer"
-							style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-2.jpg);">
-						</div>
+						<div class="image-layer" style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-2.jpg);"></div>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-xl-6 col-lg-6">
 									<p>Trusted and Secure Payment Proccess</p>
-									<h2>A Quick, Secure <br>
-										And Transparent <br> <span>Process</span></h2>
+									<h2>A Quick, Secure <br> And Transparent <br> <span>Process</span></h2>
 									<div class="main-slider-two__text">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit.
 									</div>
@@ -274,17 +274,13 @@
 							</div>
 						</div>
 					</div><!-- /.swiper-slide -->
-
 					<div class="swiper-slide">
-						<div class="image-layer"
-							style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-3.jpg);">
-						</div>
+						<div class="image-layer" style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-3.jpg);"></div>
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-xl-6 col-lg-6">
 									<p>Trusted and Secure Payment Proccess</p>
-									<h2>A Quick, Secure <br>
-										And Transparent <br> <span>Process</span></h2>
+									<h2>A Quick, Secure <br> And Transparent <br> <span>Process</span></h2>
 									<div class="main-slider-two__text">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit.
 									</div>
@@ -298,38 +294,27 @@
 		</section><!-- /.main-slider -->
 
 		<footer id="footer" class="site-footer-two">
-			
 			<div class="site-footer-two__bottom">
 				<div class="container">
 					<p>© Copyright 2025 PBS Finance</p>
 				</div>
 			</div>
-
 		</footer>
 
 	</div><!-- /.page-wrapper -->
 
-
+	<!-- mobile nav (unchanged) -->
 	<div class="mobile-nav__wrapper">
 		<div class="mobile-nav__overlay mobile-nav__toggler"></div>
 		<div class="mobile-nav__content">
 			<span class="mobile-nav__close mobile-nav__toggler"></span>
-
 			<div class="logo-box">
-				<a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155"
-						alt="" /></a>
+				<a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
 			</div>
 			<div class="mobile-nav__container"></div>
-
 			<ul class="mobile-nav__contact list-unstyled">
-				<li>
-					<i class="pylon-icon-email1"></i>
-					<a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a>
-				</li>
-				<li>
-					<i class="pylon-icon-telephone"></i>
-					<a href="tel:+27630683230">(+27) 63 068 3230</a>
-				</li>
+				<li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+				<li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
 			</ul>
 			<div class="mobile-nav__top">
 				<div class="mobile-nav__language">
@@ -351,7 +336,7 @@
 
 	<a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
-	<!-- Vendor JS -->
+	<!-- Vendor JS (keep in same order) -->
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/bootstrap.bundle.min.js"></script>
 	<script src="assets/js/swiper.min.js"></script>
@@ -370,60 +355,102 @@
 	<script src="assets/js/loan-calculator.js"></script>
 	<script src="assets/js/theme.js"></script>
 
-	<!-- Editable calculator logic -->
+	<!-- Editable calculator logic implementing the business rules -->
 	<script>
 		(function () {
+			// Business rule constants
+			const MAX_PRINCIPAL = 10000;
+			const FIXED_INTEREST_RATE = 28.5; // percent (flat)
+			const MAX_MONTHS = 6;
+			const INITIATION_FEE = 1050.00;
+			const SERVICE_FEE_PER_MONTH = 60.00;
+			const CREDIT_PROTECTION_FEE = 50.00;
+
 			function parseNumber(str, fallback) {
 				var n = parseFloat(String(str).replace(/,/g, ''));
 				return isNaN(n) ? fallback : n;
 			}
-
 			function formatMoney(n) {
-				return n.toLocaleString('en-ZA', {
-					minimumFractionDigits: 2,
-					maximumFractionDigits: 2
-				});
+				return Number(n).toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+			}
+
+			// clamp helpers and show warnings
+			function clampPrincipal(value) {
+				if (value > MAX_PRINCIPAL) return MAX_PRINCIPAL;
+				if (value < 0) return 0;
+				return value;
+			}
+			function clampMonths(value) {
+				if (value > MAX_MONTHS) return MAX_MONTHS;
+				if (value < 1) return 1;
+				return Math.round(value);
 			}
 
 			function recalc() {
+				// Inputs
 				var pInput = document.getElementById('pricipal-input');
 				var mInput = document.getElementById('totalyear-input');
 				var rInput = document.getElementById('intrest-input');
 
 				var principal = parseNumber(pInput.value, 0);
 				var months = parseNumber(mInput.value, 0);
-				var rateYear = parseNumber(rInput.value, 0);
+				var rateYear = FIXED_INTEREST_RATE; // fixed
 
-				if (principal <= 0 || months <= 0 || rateYear <= 0) {
-					return;
+				// Enforce caps and show warnings if user tried to go beyond allowed values
+				var clampedPrincipal = clampPrincipal(principal);
+				if (clampedPrincipal !== principal) {
+					document.getElementById('pricipal-warning').style.display = 'block';
+					principal = clampedPrincipal;
+					pInput.value = clampedPrincipal;
+				} else {
+					document.getElementById('pricipal-warning').style.display = 'none';
 				}
 
-				// Update counters
-				document.getElementById('pricipal').textContent = Math.round(principal).toLocaleString('en-ZA');
+				var clampedMonths = clampMonths(months);
+				if (clampedMonths !== months) {
+					document.getElementById('months-warning').style.display = 'block';
+					months = clampedMonths;
+					mInput.value = clampedMonths;
+				} else {
+					document.getElementById('months-warning').style.display = 'none';
+				}
+
+				// Update counters in UI
+				document.getElementById('pricipal').textContent = principal.toLocaleString('en-ZA');
 				document.getElementById('totalyear').textContent = months.toString();
 				document.getElementById('intrest').textContent = rateYear.toString();
 
-				// EMI calculation
-				var r = rateYear / 12 / 100; // monthly interest
-				var n = months;
-				var emi = principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
-				var total = emi * n;
-				var interest = total - principal;
+				// Calculation: flat interest (principal * 28.5%)
+				var interest = principal * (rateYear / 100.0);
 
-				document.getElementById('emi').textContent = formatMoney(emi);
+				// Fees
+				var initiation = INITIATION_FEE;
+				var serviceTotal = SERVICE_FEE_PER_MONTH * months;
+				var creditProtection = CREDIT_PROTECTION_FEE;
+
+				// Total payable (principal + interest + fees)
+				var total = principal + interest + initiation + serviceTotal + creditProtection;
+
+				// Monthly installment (total / months) — if months is 0 (shouldn't be), avoid division by zero
+				var monthlyInstallment = months > 0 ? total / months : total;
+
+				// Update UI
 				document.getElementById('tbl_emi').textContent = formatMoney(interest);
+				document.getElementById('init_fee').textContent = formatMoney(initiation);
+				document.getElementById('service_fee').textContent = formatMoney(SERVICE_FEE_PER_MONTH);
+				document.getElementById('credit_fee').textContent = formatMoney(creditProtection);
 				document.getElementById('tbl_la').textContent = formatMoney(total);
-				document.getElementById('t_m').textContent = n.toString();
-				document.getElementById('t_ir').textContent = rateYear.toString();
+				document.getElementById('emi').textContent = formatMoney(monthlyInstallment);
+				document.getElementById('t_m').textContent = months.toString();
 
-				// Sync sliders if jQuery UI is present
-				if (window.jQuery && $('#pricipal-slide').slider) {
+				// Sync sliders (if jQuery UI slider exists)
+				if (window.jQuery && typeof $('#pricipal-slide').slider === 'function') {
 					$('#pricipal-slide').slider('value', principal);
 				}
-				if (window.jQuery && $('#totalyear-slide').slider) {
+				if (window.jQuery && typeof $('#totalyear-slide').slider === 'function') {
 					$('#totalyear-slide').slider('value', months);
 				}
-				if (window.jQuery && $('#intrest-slide').slider) {
+				if (window.jQuery && typeof $('#intrest-slide').slider === 'function') {
 					$('#intrest-slide').slider('value', rateYear);
 				}
 			}
@@ -431,47 +458,61 @@
 			function hookInputs() {
 				var pInput = document.getElementById('pricipal-input');
 				var mInput = document.getElementById('totalyear-input');
-				var rInput = document.getElementById('intrest-input');
-
-				['input', 'change'].forEach(function (evt) {
+				['input', 'change', 'blur'].forEach(function (evt) {
 					pInput.addEventListener(evt, recalc);
 					mInput.addEventListener(evt, recalc);
-					rInput.addEventListener(evt, recalc);
 				});
 			}
 
 			function hookSliders() {
-				if (!window.jQuery || !$('#pricipal-slide').slider) return;
+				if (!window.jQuery || typeof $('#pricipal-slide').slider !== 'function') return;
 
-				$('#pricipal-slide').on('slide slidechange', function (e, ui) {
-					document.getElementById('pricipal-input').value = ui.value;
-					recalc();
+				// Configure jQuery UI sliders to match new ranges
+				$('#pricipal-slide').slider({
+					range: "min",
+					min: 0,
+					max: MAX_PRINCIPAL,
+					value: parseInt(document.getElementById('pricipal-input').value || 0, 10),
+					step: 100,
+					slide: function(e, ui){ document.getElementById('pricipal-input').value = ui.value; recalc(); }
 				});
-				$('#totalyear-slide').on('slide slidechange', function (e, ui) {
-					document.getElementById('totalyear-input').value = ui.value;
-					recalc();
+				$('#totalyear-slide').slider({
+					range: "min",
+					min: 1,
+					max: MAX_MONTHS,
+					value: parseInt(document.getElementById('totalyear-input').value || 1, 10),
+					step: 1,
+					slide: function(e, ui){ document.getElementById('totalyear-input').value = ui.value; recalc(); }
 				});
-				$('#intrest-slide').on('slide slidechange', function (e, ui) {
-					document.getElementById('intrest-input').value = ui.value;
-					recalc();
+				$('#intrest-slide').slider({
+					range: "min",
+					min: FIXED_INTEREST_RATE,
+					max: FIXED_INTEREST_RATE,
+					value: FIXED_INTEREST_RATE,
+					step: 0.1,
+					disabled: true
 				});
 			}
 
 			window.addEventListener('load', function () {
-				// Initialise inputs from existing spans (in case loan-calculator.js changes them)
-				document.getElementById('pricipal-input').value =
-					parseNumber(document.getElementById('pricipal').textContent, 100000);
-				document.getElementById('totalyear-input').value =
-					parseNumber(document.getElementById('totalyear').textContent, 120);
-				document.getElementById('intrest-input').value =
-					parseNumber(document.getElementById('intrest').textContent, 10);
+				// Initialize inputs to match new business rules
+				var pEl = document.getElementById('pricipal-input');
+				var mEl = document.getElementById('totalyear-input');
+				var rEl = document.getElementById('intrest-input');
 
+				// default to maximum example state if empty
+				pEl.value = clampPrincipal(parseNumber(pEl.value, MAX_PRINCIPAL));
+				mEl.value = clampMonths(parseNumber(mEl.value, MAX_MONTHS));
+				rEl.value = FIXED_INTEREST_RATE;
+
+				// hook events and sliders
 				hookInputs();
 				hookSliders();
+
+				// initial calc
 				recalc();
 			});
 		})();
 	</script>
 </body>
-
 </html>
