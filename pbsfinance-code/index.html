@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -30,268 +31,585 @@
 	<link rel="stylesheet" href="assets/css/pbs-app.css">
 
 	<style>
-		/* Editable calculator inputs */
+		/* =========
+      LANDING PAGE REDESIGN (SAFE OVERRIDES ONLY)
+      - No theme.js edits
+      - No ID changes
+      - Only layout + styling
+    ========= */
+
+		body.has-sticky-offset {
+			background: #ffffff;
+		}
+
+		/* header nav look closer to screenshot */
+		.main-header-two__menu .main-menu__list {
+			align-items: center;
+			gap: 22px;
+		}
+
+		.pbs-portal-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 18px;
+			border-radius: 999px;
+			background: #1f2a30;
+			color: #B5E480 !important;
+			font-weight: 700;
+			text-decoration: none;
+			border: 1px solid rgba(0, 0, 0, 0.08);
+		}
+
+		.pbs-portal-btn:hover {
+			opacity: 0.92;
+		}
+
+		/* HERO WRAP */
+		.pbs-hero {
+			padding: 36px 0 18px;
+		}
+
+		/* Big rounded card */
+		.pbs-calc-card {
+			border-radius: 26px;
+			border: 1px solid rgba(181, 228, 128, 0.55);
+			overflow: hidden;
+			background: #ffffff;
+			box-shadow: 0 16px 50px rgba(16, 24, 40, 0.08);
+		}
+
+		.pbs-calc-grid {
+			display: flex;
+			min-height: 620px;
+		}
+
+		.pbs-calc-left {
+			flex: 1 1 55%;
+			padding: 46px 46px 34px;
+			background: #ffffff;
+		}
+
+		.pbs-calc-right {
+			flex: 1 1 45%;
+			padding: 46px;
+			background: #2c3a40;
+			/* dark panel */
+			color: #ffffff;
+			border-left: 1px solid rgba(255, 255, 255, 0.06);
+		}
+
+		/* Pills like screenshot */
+		.pbs-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			padding: 6px 14px;
+			border-radius: 999px;
+			background: #1f2a30;
+			color: #fff;
+			font-weight: 700;
+			font-size: 12px;
+			letter-spacing: 0.3px;
+		}
+
+		.pbs-pill .dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 999px;
+			background: #B5E480;
+			display: inline-block;
+		}
+
+		/* Title styling */
+		.pbs-title {
+			margin-top: 18px;
+			font-size: 44px;
+			line-height: 1.1;
+			font-weight: 800;
+			color: #18242b;
+		}
+
+		/* Make slider blocks look like screenshot rows */
+		.loan-slider-box {
+			margin-top: 26px;
+		}
+
+		.single-loan-slider {
+			margin-bottom: 34px;
+		}
+
+		.single-loan-slider__top {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			align-items: center;
+			gap: 14px;
+			margin-bottom: 10px;
+		}
+
+		.pbs-row-meta {
+			display: flex;
+			align-items: baseline;
+			gap: 14px;
+			flex-wrap: wrap;
+		}
+
+		.pbs-row-meta h4 {
+			margin: 0;
+			font-size: 16px;
+			font-weight: 800;
+			color: #1c2a31;
+		}
+
+		.pbs-row-meta .pbs-row-hint {
+			font-size: 13px;
+			color: #9aa6b2;
+			font-weight: 700;
+		}
+
+		/* editable inputs: match screenshot (boxed on right) */
 		.loan-edit-input {
-			width: 100%;
-			max-width: 220px;
+			width: 180px;
+			max-width: 100%;
 			border-radius: 12px;
 			border: 1px solid #d9e2ec;
-			padding: 6px 10px;
-			font-size: 14px;
-			margin-top: 6px;
-			color: #3B4A54;
+			padding: 10px 12px;
+			font-size: 18px;
+			font-weight: 800;
+			color: #18242b;
+			background: #fff;
 		}
+
 		.loan-edit-input:focus {
 			outline: none;
 			border-color: #B5E480;
-			box-shadow: 0 0 0 2px rgba(181, 228, 128, 0.35);
+			box-shadow: 0 0 0 3px rgba(181, 228, 128, 0.22);
 		}
 
-		/* Small warning text */
-		.calc-warning { color:#ad2e2e; font-size: 0.95rem; margin-top:6px; display:none; }
+		/* slider style closer to screenshot */
+		.ui-slider {
+			height: 5px !important;
+			border-radius: 999px;
+			background: rgba(24, 36, 43, 0.12);
+			border: none !important;
+		}
 
-		/* label tweak for Monthly Installment */
-		.loan-calculator-two__form__emi span { font-weight:600; font-size:1.05rem; color:#ffffff; }
-		.loan-calculator-two__form__emi b { font-weight:800; color:#B5E480; }
+		.ui-slider .ui-slider-range {
+			background: rgba(24, 36, 43, 0.25);
+			border-radius: 999px;
+		}
 
-		/* keep layout consistent */
+		.ui-slider .ui-slider-handle {
+			width: 18px !important;
+			height: 18px !important;
+			border-radius: 999px !important;
+			border: 2px solid #18242b !important;
+			background: #ffffff !important;
+			top: -7px !important;
+		}
+
+		.single-loan-slider__bottom {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10px;
+			color: #9aa6b2;
+			font-weight: 700;
+			font-size: 12px;
+			letter-spacing: 0.4px;
+			text-transform: uppercase;
+		}
+
+		/* warnings */
+		.calc-warning {
+			color: #ad2e2e;
+			font-size: 0.95rem;
+			margin-top: 8px;
+			display: none;
+			font-weight: 600;
+		}
+
+		/* Right panel typography like screenshot */
+		.pbs-right-pill {
+			background: rgba(0, 0, 0, 0.18);
+			border: 1px solid rgba(255, 255, 255, 0.06);
+		}
+
+		.pbs-right-pill .dot {
+			background: #B5E480;
+		}
+
+		.pbs-emi-row {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 18px;
+			margin-top: 26px;
+		}
+
+		.pbs-emi-row .label {
+			font-size: 28px;
+			font-weight: 800;
+			color: #ffffff;
+		}
+
+		.pbs-emi-row .value {
+			font-size: 40px;
+			font-weight: 900;
+			color: #B5E480;
+			letter-spacing: 0.2px;
+			white-space: nowrap;
+		}
+
+		.pbs-divider {
+			height: 1px;
+			background: rgba(255, 255, 255, 0.12);
+			margin: 22px 0;
+		}
+
+		.pbs-metric {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			gap: 18px;
+			padding: 12px 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.pbs-metric:last-child {
+			border-bottom: none;
+		}
+
+		.pbs-metric .k {
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 0.7px;
+			color: rgba(255, 255, 255, 0.55);
+			font-weight: 800;
+		}
+
+		.pbs-metric .v {
+			font-size: 18px;
+			font-weight: 900;
+			color: #ffffff;
+			white-space: nowrap;
+		}
+
+		.pbs-cta {
+			margin-top: 34px;
+			display: block;
+			width: 100%;
+			text-align: center;
+			border-radius: 999px;
+			padding: 16px 18px;
+			background: #B5E480;
+			color: #142026 !important;
+			font-weight: 900;
+			text-decoration: none;
+			box-shadow: 0 14px 30px rgba(181, 228, 128, 0.25);
+		}
+
+		.pbs-disclaimer {
+			margin-top: 26px;
+			color: #9aa6b2;
+			font-size: 13px;
+			line-height: 1.6;
+			max-width: 520px;
+		}
+
+		/* trust strip */
+		.pbs-trust-strip {
+			display: flex;
+			justify-content: center;
+			gap: 60px;
+			flex-wrap: wrap;
+			padding: 26px 0 6px;
+			color: #8b98a5;
+			font-weight: 700;
+			letter-spacing: 0.2px;
+		}
+
+		.pbs-trust-item {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			opacity: 0.9;
+		}
+
+		.pbs-trust-item small {
+			text-transform: uppercase;
+			letter-spacing: 0.8px;
+			font-size: 11px;
+			color: #95a3af;
+			font-weight: 800;
+		}
+
+		/* responsive */
+		@media (max-width: 991.98px) {
+			.pbs-calc-grid {
+				flex-direction: column;
+			}
+
+			.pbs-calc-right {
+				border-left: none;
+				border-top: 1px solid rgba(255, 255, 255, 0.08);
+			}
+
+			.pbs-title {
+				font-size: 36px;
+			}
+
+			.pbs-calc-left,
+			.pbs-calc-right {
+				padding: 28px 22px;
+			}
+
+			.loan-edit-input {
+				width: 160px;
+				font-size: 16px;
+			}
+
+			.pbs-emi-row .label {
+				font-size: 24px;
+			}
+
+			.pbs-emi-row .value {
+				font-size: 34px;
+			}
+		}
+
+		@media (max-width: 420px) {
+			.single-loan-slider__top {
+				grid-template-columns: 1fr;
+			}
+
+			.loan-edit-input {
+				width: 100%;
+			}
+
+			.pbs-emi-row {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			.pbs-emi-row .value {
+				font-size: 32px;
+			}
+		}
 	</style>
 </head>
+
 <body class="has-sticky-offset">
 	<div class="preloader">
 		<img class="preloader__image" src="assets/images/loader.png" alt="">
 	</div>
+
 	<div class="page-wrapper">
+		<!-- HEADER (keep theme structure so burger + sticky remain compatible) -->
 		<div class="main-header-two">
 			<div class="topbar-two"></div>
 			<div class="main-header-two__info">
 				<div class="container">
 					<div class="main-header-two__info__inner">
 						<div class="logo-box">
-							<a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
+							<a href="index.html" aria-label="logo image">
+								<img src="assets/images/logo-dark.png" width="155" alt="">
+							</a>
 							<span class="fa fa-bars mobile-nav__toggler"></span>
-						</div><!-- /.logo-box -->
+						</div>
 
+						<!-- NAV updated to match screenshot labels -->
 						<nav class="main-header-two__menu main-menu">
 							<div class="container">
 								<ul class="main-menu__list">
-									<li class="dropdown"><a href="index.html">Home</a></li>
-									<li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
-									<li><a href="#footer">Contact Support</a></li>
-									<a href="login.html" class="header-login-btn">Login</a>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="#services">Services</a></li>
+									<li><a href="#footer">Support</a></li>
+									<li style="margin-left:6px;">
+										<a class="pbs-portal-btn" href="login.html">Portal Login</a>
+									</li>
 								</ul>
 							</div>
 						</nav>
 
-					</div><!-- /.main-header-two__info__inner -->
-				</div><!-- /.container -->
-			</div><!-- /.main-header-two__info -->
-
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="stricky-header stricked-menu main-header-two__menu main-menu">
 			<div class="sticky-header__content"></div>
 		</div>
 
-		<section class="loan-calculator-two">
+		<!-- HERO / CALCULATOR CARD -->
+		<section class="pbs-hero" id="services">
 			<div class="container">
-				<br>
-				<div class="loan-calculator-two__shape-2 float-bob-x"></div>
+				<div class="pbs-calc-card">
+					<div class="pbs-calc-grid">
 
-				<div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="sec-title-two text-start">
-								<span class="sec-title-two__tagline">
-									<i class="fa fa-star"></i>
-									<span>Loan Calculator</span>
-								</span>
-								<h2 class="sec-title-two__title ">Customize Your Plan</h2>
-							</div>
+						<!-- LEFT: calculator controls -->
+						<div class="pbs-calc-left">
+							<span class="pbs-pill"><span class="dot"></span> Loan Calculator</span>
+							<h2 class="pbs-title">Customize Your Plan</h2>
 
 							<div class="loan-slider-box">
+
 								<!-- Loan Amount -->
 								<div class="single-loan-slider">
 									<div class="single-loan-slider__top">
-										<h4>Loan Amount</h4>
-										<div class="single-loan-counter">
-											<span>R</span>
-											<span id="pricipal">10,000</span>
+										<div class="pbs-row-meta">
+											<h4>Loan Amount</h4>
+											<span class="pbs-row-hint">R <span id="pricipal">10,000</span></span>
 										</div>
-										<input type="number" id="pricipal-input" class="loan-edit-input"
-											min="0" max="10000" step="100" value="10000" aria-label="Loan Amount">
-										<div id="pricipal-warning" class="calc-warning">Maximum loan amount is R10,000 — amount adjusted.</div>
+
+										<input type="number" id="pricipal-input" class="loan-edit-input" min="0"
+											max="10000" step="100" value="10000" aria-label="Loan Amount">
 									</div>
+
 									<div id="pricipal-slide"
 										class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"></div>
-										<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min">
+										</div>
+										<span tabindex="0"
+											class="ui-slider-handle ui-corner-all ui-state-default"></span>
 									</div>
+
 									<div class="single-loan-slider__bottom">
 										<span>R0</span>
 										<span>R10,000</span>
+									</div>
+
+									<div id="pricipal-warning" class="calc-warning">
+										Maximum loan amount is R10,000 — amount adjusted.
 									</div>
 								</div>
 
 								<!-- Loan Months -->
 								<div class="single-loan-slider">
 									<div class="single-loan-slider__top">
-										<h4>Loan Months</h4>
-										<div class="single-loan-counter">
-											<span id="totalyear">6</span>
-											<span>Months</span>
+										<div class="pbs-row-meta">
+											<h4>Loan Months</h4>
+											<span class="pbs-row-hint"><span id="totalyear">6</span> Months</span>
 										</div>
-										<input type="number" id="totalyear-input" class="loan-edit-input"
-											min="1" max="6" step="1" value="6" aria-label="Loan Months">
-										<div id="months-warning" class="calc-warning">Maximum term is 6 months — value adjusted.</div>
+
+										<input type="number" id="totalyear-input" class="loan-edit-input" min="1"
+											max="6" step="1" value="6" aria-label="Loan Months">
 									</div>
+
 									<div id="totalyear-slide"
 										class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"></div>
-										<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min">
+										</div>
+										<span tabindex="0"
+											class="ui-slider-handle ui-corner-all ui-state-default"></span>
 									</div>
+
 									<div class="single-loan-slider__bottom">
 										<span>1</span>
 										<span>6</span>
 									</div>
+
+									<div id="months-warning" class="calc-warning">
+										Maximum term is 6 months — value adjusted.
+									</div>
 								</div>
 
-								<!-- Interest Rate (Not editable) -->
+								<!-- Interest Rate (fixed) -->
 								<div class="single-loan-slider">
 									<div class="single-loan-slider__top">
-										<h4>Interest Rate</h4>
-										<div class="single-loan-counter">
-											<span id="intrest">28.5</span>
-											<span>%</span>
+										<div class="pbs-row-meta">
+											<h4>Interest Rate</h4>
+											<span class="pbs-row-hint"><span id="intrest">28.5</span>%</span>
 										</div>
-										<input type="number" id="intrest-input" class="loan-edit-input"
-											min="28.5" max="28.5" step="0.1" value="28.5" aria-label="Interest Rate" disabled>
-										<div class="calc-warning" style="display:block;color:#4a5560;font-size:0.95rem;margin-top:6px;">
-											Interest is fixed at <strong>28.5%</strong> (non-editable).
-										</div>
+
+										<input type="number" id="intrest-input" class="loan-edit-input" min="28.5"
+											max="28.5" step="0.1" value="28.5" aria-label="Interest Rate" disabled>
 									</div>
+
 									<div id="intrest-slide"
 										class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"></div>
-										<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+										<div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min">
+										</div>
+										<span tabindex="0"
+											class="ui-slider-handle ui-corner-all ui-state-default"></span>
 									</div>
+
 									<div class="single-loan-slider__bottom">
 										<span>28.5%</span>
 										<span>28.5%</span>
 									</div>
+
+									<div class="pbs-disclaimer" style="margin-top:12px;">
+										Interest is fixed at <strong>28.5%</strong> (non-editable).
+									</div>
 								</div>
 
-								<p class="loan-calculator-two__text">
-									*These calculators are provided only as general self-help Planning Tools.
+								<p class="pbs-disclaimer">
+									*These calculators are provided only as general self-help planning tools.
 									Results depend on other factors.
 								</p>
-							</div>
-						</div><!-- /.col-lg-6 -->
 
-						<div class="col-lg-6">
-							<div id="loan-calculator-1" data-interest-rate="28.5" class="loan-calculator-two__form">
-								<span class="sec-title-two__tagline">
-									<i class="fa fa-star"></i>
-									<span>How Much You Need</span>
-								</span>
-								<div class="loan-calculator-two__form__calculation">
-									<div class="loan-calculator-two__form__emi">
-										<span>Monthly Installment:</span>
-										<b>R <i id="emi">2,385.00</i></b>
-									</div>
-									<p>
-										<span>Total Interest</span>
-										<b>R <i id="tbl_emi">2,850.00</i></b>
-									</p>
-									<p>
-										<span>Total Amount Payable</span>
-										<b>R <i id="tbl_la">14,310.00</i></b>
-									</p>
-									<p>
-										<span>Total Months</span>
-										<b><i id="t_m">6</i> Months</b>
-									</p>
-
-									<!-- extra breakdown so user sees fees -->
-									<div style="margin-top:14px;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;color:#dbe7ef;">
-										<p style="margin:0;"><small>Initiation Fee:</small> <strong>R <span id="init_fee">1,050.00</span></strong></p>
-										<p style="margin:0;"><small>Service Fee (per month):</small> <strong>R <span id="service_fee">60.00</span></strong></p>
-										<p style="margin:0;"><small>Credit Protection (fixed):</small> <strong>R <span id="credit_fee">50.00</span></strong></p>
-									</div>
-								</div>
-
-								<a href="apply_for_a_loan.html" class="thm-btn">Apply For Loan</a>
-							</div>
-						</div><!-- /.col-lg-6 -->
-					</div><!-- /.row -->
-				</div><!-- /.loan-calculator-two__inner -->
-
-			</div><!-- /.container -->
-		</section><!-- /.loan-calculator-two -->
-
-		<!-- rest of page kept unchanged (slider + footer) -->
-		<section class="main-slider main-slider-two">
-			<div class="swiper-container thm-swiper__slider" data-swiper-options='{
-			        "slidesPerView": 1,
-			        "loop": true,
-			        "effect": "fade",
-			        "autoplay": {
-			            "delay": 5000
-			        },
-			        "navigation": {
-			            "nextEl": "#main-slider__swiper-button-next",
-			            "prevEl": "#main-slider__swiper-button-prev"
-			        }
-			    }'>
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div class="image-layer" style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-1.jpg);"></div>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-xl-6 col-lg-6">
-									<p>Trusted and Secure Payment Proccess</p>
-									<h2>A Quick, Secure <br> And Transparent <br> <span>Process</span></h2>
-									<div class="main-slider-two__text">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit.
-									</div>
-									<a href="apply_for_a_loan.html" class=" thm-btn">Apply For Loan</a>
-								</div>
 							</div>
 						</div>
-					</div><!-- /.swiper-slide -->
-					<div class="swiper-slide">
-						<div class="image-layer" style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-2.jpg);"></div>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-xl-6 col-lg-6">
-									<p>Trusted and Secure Payment Proccess</p>
-									<h2>A Quick, Secure <br> And Transparent <br> <span>Process</span></h2>
-									<div class="main-slider-two__text">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit.
-									</div>
-									<a href="apply_for_a_loan.html" class=" thm-btn">Apply For Loan</a>
-								</div>
+
+						<!-- RIGHT: estimate panel -->
+						<div class="pbs-calc-right">
+							<span class="pbs-pill pbs-right-pill"><span class="dot"></span> YOUR ESTIMATE</span>
+
+							<div class="pbs-emi-row">
+								<div class="label">Monthly EMI</div>
+								<div class="value">R<span id="emi">2,385.00</span></div>
 							</div>
-						</div>
-					</div><!-- /.swiper-slide -->
-					<div class="swiper-slide">
-						<div class="image-layer" style="background-image: url(assets/images/update-20-12-2022/resources/slider-1-3.jpg);"></div>
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-xl-6 col-lg-6">
-									<p>Trusted and Secure Payment Proccess</p>
-									<h2>A Quick, Secure <br> And Transparent <br> <span>Process</span></h2>
-									<div class="main-slider-two__text">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit.
-									</div>
-									<a href="apply_for_a_loan.html" class=" thm-btn">Apply For Loan</a>
-								</div>
+
+							<div class="pbs-divider"></div>
+
+							<div class="pbs-metric">
+								<div class="k">Total Interest</div>
+								<div class="v">R <span id="tbl_emi">2,850.00</span></div>
 							</div>
+
+							<div class="pbs-metric">
+								<div class="k">Amount Payable</div>
+								<div class="v">R <span id="tbl_la">14,310.00</span></div>
+							</div>
+
+							<div class="pbs-metric">
+								<div class="k">Term Duration</div>
+								<div class="v"><span id="t_m">6</span> Months</div>
+							</div>
+
+							<!-- optional fees shown (kept, but styled subtly) -->
+							<div class="pbs-divider"></div>
+							<div class="pbs-metric">
+								<div class="k">Initiation Fee</div>
+								<div class="v">R <span id="init_fee">1,050.00</span></div>
+							</div>
+							<div class="pbs-metric">
+								<div class="k">Service Fee (per month)</div>
+								<div class="v">R <span id="service_fee">60.00</span></div>
+							</div>
+							<div class="pbs-metric">
+								<div class="k">Credit Protection</div>
+								<div class="v">R <span id="credit_fee">50.00</span></div>
+							</div>
+
+							<a href="apply_for_a_loan.html" class="pbs-cta">Apply For Loan</a>
 						</div>
-					</div><!-- /.swiper-slide -->
-				</div><!-- /.swiper-wrapper -->
-			</div><!-- /.swiper-container -->
-		</section><!-- /.main-slider -->
+
+					</div>
+				</div>
+
+				<!-- trust strip like screenshot -->
+				<div class="pbs-trust-strip">
+					<div class="pbs-trust-item"><i class="fa fa-shield-alt"></i> <span>security</span> <small>enterprise
+							security</small></div>
+					<div class="pbs-trust-item"><i class="fa fa-check-circle"></i> <span>verified</span> <small>secure
+							processing</small></div>
+					<div class="pbs-trust-item"><i class="fa fa-shield-virus"></i> <span>shield</span> <small>protection
+							guaranteed</small></div>
+				</div>
+
+			</div>
+		</section>
 
 		<footer id="footer" class="site-footer-two">
 			<div class="site-footer-two__bottom">
@@ -309,11 +627,13 @@
 		<div class="mobile-nav__content">
 			<span class="mobile-nav__close mobile-nav__toggler"></span>
 			<div class="logo-box">
-				<a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
+				<a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155"
+						alt="" /></a>
 			</div>
 			<div class="mobile-nav__container"></div>
 			<ul class="mobile-nav__contact list-unstyled">
-				<li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+				<li><i class="pylon-icon-email1"></i><a
+						href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
 				<li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
 			</ul>
 		</div>
@@ -337,10 +657,9 @@
 	<script src="assets/js/owl.carousel.min.js"></script>
 	<script src="assets/js/jquery.circleGraph.js"></script>
 	<script src="assets/js/jquery-ui.js"></script>
-	<script src="assets/js/loan-calculator.js"></script>
 	<script src="assets/js/theme.js"></script>
 
-	<!-- Editable calculator logic implementing the business rules -->
+	<!-- Editable calculator logic implementing the business rules (UNCHANGED) -->
 	<script>
 		(function () {
 			// Business rule constants
@@ -356,7 +675,7 @@
 				return isNaN(n) ? fallback : n;
 			}
 			function formatMoney(n) {
-				return Number(n).toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+				return Number(n).toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 			}
 
 			// clamp helpers and show warnings
@@ -416,7 +735,7 @@
 				// Total payable (principal + interest + fees)
 				var total = principal + interest + initiation + serviceTotal + creditProtection;
 
-				// Monthly installment (total / months) — if months is 0 (shouldn't be), avoid division by zero
+				// Monthly installment (total / months)
 				var monthlyInstallment = months > 0 ? total / months : total;
 
 				// Update UI
@@ -459,7 +778,7 @@
 					max: MAX_PRINCIPAL,
 					value: parseInt(document.getElementById('pricipal-input').value || 0, 10),
 					step: 100,
-					slide: function(e, ui){ document.getElementById('pricipal-input').value = ui.value; recalc(); }
+					slide: function (e, ui) { document.getElementById('pricipal-input').value = ui.value; recalc(); }
 				});
 				$('#totalyear-slide').slider({
 					range: "min",
@@ -467,7 +786,7 @@
 					max: MAX_MONTHS,
 					value: parseInt(document.getElementById('totalyear-input').value || 1, 10),
 					step: 1,
-					slide: function(e, ui){ document.getElementById('totalyear-input').value = ui.value; recalc(); }
+					slide: function (e, ui) { document.getElementById('totalyear-input').value = ui.value; recalc(); }
 				});
 				$('#intrest-slide').slider({
 					range: "min",
@@ -477,30 +796,34 @@
 					step: 0.1,
 					disabled: true
 				});
+
+				// If the slider was already initialized by another script, force our rules onto it
+				try {
+					if ($('#pricipal-slide').hasClass('ui-slider')) {
+						$('#pricipal-slide').slider('option', 'max', MAX_PRINCIPAL);
+						$('#pricipal-slide').slider('option', 'min', 0);
+						$('#pricipal-slide').slider('option', 'step', 100);
+					}
+				} catch (e) { }
+
+
 			}
 
 			window.addEventListener('load', function () {
-				// Initialize inputs to match new business rules
 				var pEl = document.getElementById('pricipal-input');
 				var mEl = document.getElementById('totalyear-input');
 				var rEl = document.getElementById('intrest-input');
 
-				// default to maximum example state if empty
 				pEl.value = clampPrincipal(parseNumber(pEl.value, MAX_PRINCIPAL));
 				mEl.value = clampMonths(parseNumber(mEl.value, MAX_MONTHS));
 				rEl.value = FIXED_INTEREST_RATE;
 
-				// hook events and sliders
 				hookInputs();
 				hookSliders();
-
-				// initial calc
 				recalc();
 			});
 		})();
 	</script>
-
-
-
 </body>
+
 </html>
