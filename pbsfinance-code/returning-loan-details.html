@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PBS Finance | Returning Client — Loan Details</title>
+
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <!-- vendor css -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+
+  <style>
+    /* Page shell */
+    .rc-shell { padding: 34px 0 52px; }
+    .rc-card {
+      border-radius: 26px;
+      background: #ffffff;
+      border: 1px solid rgba(15,31,41,0.08);
+      box-shadow: 0 16px 44px rgba(15,31,41,0.06);
+      overflow:hidden;
+    }
+    .rc-header {
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(15,31,41,0.07);
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .rc-header .left { display:flex; align-items:center; gap:12px; }
+    .rc-back { text-decoration:none; font-weight:700; color:#0F1F29; }
+    .rc-title { margin:0; font-size: 16px; font-weight:800; color:#0F1F29; }
+    .rc-step { font-weight:800; color:#51606a; }
+
+    /* Body layout like reference */
+    .rc-body { padding: 22px; }
+    .rc-grid { display:flex; gap:22px; align-items:stretch; }
+    .rc-left { flex: 0 0 58%; max-width:58%; }
+    .rc-right { flex: 0 0 42%; max-width:42%; }
+
+    @media (max-width: 991.98px){
+      .rc-grid { flex-direction:column; }
+      .rc-left, .rc-right { flex: 0 0 100%; max-width:100%; }
+    }
+
+    .rc-pill {
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 14px; border-radius: 999px;
+      background:#eef7df; color:#0F1F29; font-weight:800; font-size:13px;
+    }
+    .rc-h2 { font-size: 44px; line-height: 1.05; margin: 14px 0 22px; color:#0F1F29; }
+    @media (max-width: 575.98px){ .rc-h2{ font-size: 34px; } }
+
+    /* Inputs/sliders */
+    .rc-row { margin-bottom: 26px; }
+    .rc-label { font-weight:800; color:#0F1F29; margin-bottom: 8px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .rc-muted { color:#7b8a95; font-weight:700; font-size: 13px; }
+    .rc-number {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 14px;
+      border: 1px solid #d9e2ec;
+      padding: 10px 12px;
+      font-size: 15px;
+      color: #0F1F29;
+      font-weight:800;
+      background:#fff;
+    }
+    .rc-number:focus{ outline:none; border-color:#B5E480; box-shadow:0 0 0 3px rgba(181,228,128,0.18); }
+
+    .rc-slider { margin-top: 14px; }
+    .rc-minmax { display:flex; justify-content:space-between; margin-top:10px; color:#8a99a4; font-weight:800; font-size: 12px; letter-spacing:.03em; text-transform:uppercase; }
+    .rc-warning { display:none; margin-top:8px; color:#ad2e2e; font-weight:700; }
+
+    /* jQuery UI slider touch-up */
+    .ui-slider { height: 8px; border-radius: 999px; background: rgba(15,31,41,0.08); border:none; }
+    .ui-slider .ui-slider-range { background: rgba(181,228,128,0.55); border-radius:999px; }
+    .ui-slider .ui-slider-handle {
+      width: 18px; height: 18px; border-radius: 999px;
+      margin-top: -5px;
+      border: 2px solid #0F1F29;
+      background:#ffffff;
+      box-shadow: 0 6px 16px rgba(15,31,41,0.14);
+    }
+
+    /* Right estimate panel */
+    .rc-est {
+      height:100%;
+      border-radius: 22px;
+      background: #1f2a2f;
+      color:#ffffff;
+      padding: 22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .rc-est .tag {
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 14px; border-radius:999px;
+      background: rgba(255,255,255,0.08);
+      font-weight:800; font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+      width: fit-content;
+    }
+    .rc-est .big {
+      font-size: 40px;
+      font-weight: 900;
+      color:#B5E480;
+      margin: 8px 0 8px;
+    }
+    .rc-est .line { height:1px; background: rgba(255,255,255,0.12); margin: 14px 0; }
+    .rc-est .row { display:flex; justify-content:space-between; gap:12px; margin: 10px 0; }
+    .rc-est .row span { color: rgba(255,255,255,0.75); font-weight:700; }
+    .rc-est .row b { font-weight:900; }
+
+    .rc-actions { margin-top: 18px; display:flex; justify-content:flex-end; }
+    .rc-actions .thm-btn { min-width: 240px; border-radius: 999px; }
+    @media (max-width: 575.98px){
+      .rc-actions { justify-content:stretch; }
+      .rc-actions .thm-btn { width:100%; min-width:auto; }
+    }
+  </style>
+</head>
+
+<body class="has-sticky-offset home-page-wrapper">
+  <div class="preloader">
+    <img class="preloader__image" src="assets/images/loader.png" alt="">
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <div class="main-header-two">
+      <div class="topbar-two"></div>
+      <div class="main-header-two__info">
+        <div class="container">
+          <div class="main-header-two__info__inner">
+            <div class="logo-box">
+              <a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
+              <span class="fa fa-bars mobile-nav__toggler"></span>
+            </div>
+
+            <nav class="main-header-two__menu main-menu">
+              <div class="container">
+                <ul class="main-menu__list">
+                  <li class="dropdown"><a href="index.html">Home</a></li>
+                  <li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
+                  <li><a href="#footer">Support</a></li>
+                  <a href="login.html" class="header-login-btn">Portal Login</a>
+                </ul>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stricky-header stricked-menu main-header-two__menu main-menu">
+      <div class="sticky-header__content"></div>
+    </div>
+
+    <!-- BODY -->
+    <section class="rc-shell">
+      <div class="container">
+        <div class="rc-card">
+
+          <div class="rc-header">
+            <div class="left">
+              <a class="rc-back" href="welcome-back.html"><i class="fa fa-angle-left"></i> Back</a>
+              <h3 class="rc-title">Loan Details</h3>
+            </div>
+            <div class="rc-step">Step 1/4</div>
+          </div>
+
+          <div class="rc-body">
+            <div class="rc-grid">
+
+              <!-- LEFT -->
+              <div class="rc-left">
+                <span class="rc-pill"><i class="fa fa-star"></i> Loan Calculator</span>
+                <h2 class="rc-h2">Customize Your Plan</h2>
+
+                <!-- Amount -->
+                <div class="rc-row">
+                  <div class="rc-label">
+                    <span>Loan Amount</span>
+                    <span class="rc-muted" id="amountHint">Max R10,000</span>
+                  </div>
+                  <input class="rc-number" type="number" id="amountInput" min="0" max="10000" step="100" value="8000" aria-label="Loan amount">
+                  <div class="rc-slider" id="amountSlider"></div>
+                  <div class="rc-minmax"><span>R0</span><span>R10,000</span></div>
+                  <div class="rc-warning" id="amountWarn">Maximum loan amount is R10,000 — value adjusted.</div>
+                </div>
+
+                <!-- Months -->
+                <div class="rc-row">
+                  <div class="rc-label">
+                    <span>Repayment Period</span>
+                    <span class="rc-muted">Max 6 months</span>
+                  </div>
+                  <input class="rc-number" type="number" id="monthsInput" min="1" max="6" step="1" value="6" aria-label="Loan months">
+                  <div class="rc-slider" id="monthsSlider"></div>
+                  <div class="rc-minmax"><span>1 month</span><span>6 months</span></div>
+                  <div class="rc-warning" id="monthsWarn">Maximum term is 6 months — value adjusted.</div>
+                </div>
+
+                <!-- Interest (fixed) -->
+                <div class="rc-row" style="margin-bottom:6px;">
+                  <div class="rc-label">
+                    <span>Interest Rate</span>
+                    <span class="rc-muted">Fixed</span>
+                  </div>
+                  <input class="rc-number" type="number" id="rateInput" value="28.5" disabled aria-label="Interest rate">
+                  <div class="rc-muted" style="margin-top:8px;">
+                    Interest is fixed at <strong>28.5%</strong> (non-editable).
+                  </div>
+                </div>
+
+                <div class="rc-actions">
+                  <a class="thm-btn" href="returning-personal-info.html">Continue</a>
+                </div>
+              </div>
+
+              <!-- RIGHT -->
+              <div class="rc-right">
+                <div class="rc-est">
+                  <div>
+                    <div class="tag"><i class="fa fa-star"></i> your estimate</div>
+
+                    <div style="margin-top:18px; font-weight:900; font-size:18px;">Monthly Installment</div>
+                    <div class="big">R <span id="monthlyInstallment">0.00</span></div>
+
+                    <div class="line"></div>
+
+                    <div class="row"><span>Total Interest</span><b>R <span id="totalInterest">0.00</span></b></div>
+                    <div class="row"><span>Total Amount Payable</span><b>R <span id="totalPayable">0.00</span></b></div>
+                    <div class="row"><span>Term Duration</span><b><span id="termDuration">0</span> Months</b></div>
+
+                    <div class="line"></div>
+
+                    <div class="row"><span>Initiation Fee</span><b>R <span id="initFee">1,050.00</span></b></div>
+                    <div class="row"><span>Service Fee (per month)</span><b>R <span id="serviceFee">60.00</span></b></div>
+                    <div class="row"><span>Credit Protection (fixed)</span><b>R <span id="creditFee">50.00</span></b></div>
+                  </div>
+
+                  <div>
+                    <a href="apply_for_a_loan.html" class="thm-btn" style="width:100%; border-radius:999px;">Apply For Loan</a>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /rc-grid -->
+          </div><!-- /rc-body -->
+
+        </div><!-- /rc-card -->
+      </div>
+    </section>
+
+    <footer id="footer" class="site-footer-two">
+      <div class="site-footer-two__bottom">
+        <div class="container"><p>© Copyright 2025 PBS Finance</p></div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- mobile nav (unchanged) -->
+  <div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <div class="mobile-nav__content">
+      <span class="mobile-nav__close mobile-nav__toggler"></span>
+      <div class="logo-box">
+        <a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
+      </div>
+      <div class="mobile-nav__container"></div>
+      <ul class="mobile-nav__contact list-unstyled">
+        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+        <li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+  <!-- vendor JS -->
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/jquery-ui.js"></script>
+
+  <!-- ✅ REQUIRED by theme.js to prevent $(...).appear error -->
+  <script src="assets/js/jquery.appear.min.js"></script>
+
+  <script src="assets/js/theme.js"></script>
+
+  <!-- business rules calculator JS -->
+  <script>
+    (function(){
+      // Rules
+      var MAX_AMOUNT = 10000;
+      var MAX_MONTHS = 6;
+      var FIXED_RATE = 28.5;
+
+      var INIT_FEE = 1050.00;
+      var SERVICE_FEE_PM = 60.00;
+      var CREDIT_FEE = 50.00;
+
+      function money(n){
+        return Number(n).toLocaleString('en-ZA', {minimumFractionDigits:2, maximumFractionDigits:2});
+      }
+      function clamp(n, min, max){
+        n = Number(n);
+        if (isNaN(n)) n = min;
+        if (n < min) return min;
+        if (n > max) return max;
+        return n;
+      }
+
+      var amountInput = document.getElementById('amountInput');
+      var monthsInput = document.getElementById('monthsInput');
+      var amountWarn = document.getElementById('amountWarn');
+      var monthsWarn = document.getElementById('monthsWarn');
+
+      function recalc(){
+        var amount = clamp(amountInput.value, 0, MAX_AMOUNT);
+        var months = clamp(monthsInput.value, 1, MAX_MONTHS);
+
+        // warnings if user tried exceed
+        if (Number(amountInput.value) > MAX_AMOUNT) { amountWarn.style.display='block'; } else { amountWarn.style.display='none'; }
+        if (Number(monthsInput.value) > MAX_MONTHS) { monthsWarn.style.display='block'; } else { monthsWarn.style.display='none'; }
+
+        amountInput.value = amount;
+        monthsInput.value = months;
+
+        // Flat interest (as per your rule examples): principal * 28.5%
+        var interest = amount * (FIXED_RATE/100);
+
+        // Fees
+        var serviceTotal = SERVICE_FEE_PM * months;
+        var totalPayable = amount + interest + INIT_FEE + serviceTotal + CREDIT_FEE;
+        var monthlyInstallment = totalPayable / months;
+
+        // UI
+        document.getElementById('monthlyInstallment').textContent = money(monthlyInstallment);
+        document.getElementById('totalInterest').textContent = money(interest);
+        document.getElementById('totalPayable').textContent = money(totalPayable);
+        document.getElementById('termDuration').textContent = months;
+
+        // Fee UI constants (already fixed)
+        document.getElementById('initFee').textContent = money(INIT_FEE);
+        document.getElementById('serviceFee').textContent = money(SERVICE_FEE_PM);
+        document.getElementById('creditFee').textContent = money(CREDIT_FEE);
+
+        // Sync sliders
+        if (window.jQuery && typeof jQuery('#amountSlider').slider === 'function') {
+          jQuery('#amountSlider').slider('value', amount);
+          jQuery('#monthsSlider').slider('value', months);
+        }
+      }
+
+      function initSliders(){
+        if (!window.jQuery || typeof jQuery('#amountSlider').slider !== 'function') return;
+
+        jQuery('#amountSlider').slider({
+          range: "min",
+          min: 0,
+          max: MAX_AMOUNT,
+          step: 100,
+          value: Number(amountInput.value || 0),
+          slide: function(e, ui){
+            amountInput.value = ui.value;
+            recalc();
+          }
+        });
+
+        jQuery('#monthsSlider').slider({
+          range: "min",
+          min: 1,
+          max: MAX_MONTHS,
+          step: 1,
+          value: Number(monthsInput.value || 1),
+          slide: function(e, ui){
+            monthsInput.value = ui.value;
+            recalc();
+          }
+        });
+      }
+
+      ['input','change','blur'].forEach(function(evt){
+        amountInput.addEventListener(evt, recalc);
+        monthsInput.addEventListener(evt, recalc);
+      });
+
+      window.addEventListener('load', function(){
+        document.getElementById('rateInput').value = FIXED_RATE;
+        initSliders();
+        recalc();
+      });
+    })();
+  </script>
+</body>
+</html>

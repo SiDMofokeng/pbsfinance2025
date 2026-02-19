@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PBS Finance | Returning Client — Financial Info</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+
+  <style>
+    .rc-shell{padding:34px 0 52px;}
+    .rc-card{border-radius:26px;background:#fff;border:1px solid rgba(15,31,41,0.08);box-shadow:0 16px 44px rgba(15,31,41,0.06);overflow:hidden;}
+    .rc-header{padding:18px 22px;border-bottom:1px solid rgba(15,31,41,0.07);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .rc-header .left{display:flex;align-items:center;gap:12px;}
+    .rc-back{text-decoration:none;font-weight:700;color:#0F1F29;}
+    .rc-title{margin:0;font-size:16px;font-weight:800;color:#0F1F29;}
+    .rc-step{font-weight:800;color:#51606a;}
+    .rc-body{padding:22px;}
+    .rc-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#eef7df;color:#0F1F29;font-weight:800;font-size:13px;}
+    .rc-h2{font-size:28px;font-weight:900;margin:14px 0 6px;color:#0F1F29;}
+    .rc-sub{color:#5b6b75;margin-bottom:18px;}
+    .rc-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px;}
+    @media (max-width:575.98px){.rc-actions .thm-btn{width:100%;}}
+    .rc-checkbox{display:flex;align-items:center;gap:10px;margin:6px 0 14px;color:#0F1F29;font-weight:700;}
+    .rc-checkbox input{width:18px;height:18px;}
+    .is-disabled{opacity:.55; pointer-events:none;}
+  </style>
+</head>
+
+<body class="has-sticky-offset home-page-wrapper">
+  <div class="preloader"><img class="preloader__image" src="assets/images/loader.png" alt=""></div>
+
+  <div class="page-wrapper">
+    <div class="main-header-two">
+      <div class="topbar-two"></div>
+      <div class="main-header-two__info">
+        <div class="container">
+          <div class="main-header-two__info__inner">
+            <div class="logo-box">
+              <a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
+              <span class="fa fa-bars mobile-nav__toggler"></span>
+            </div>
+            <nav class="main-header-two__menu main-menu">
+              <div class="container">
+                <ul class="main-menu__list">
+                  <li class="dropdown"><a href="index.html">Home</a></li>
+                  <li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
+                  <li><a href="#footer">Support</a></li>
+                  <a href="login.html" class="header-login-btn">Portal Login</a>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stricky-header stricked-menu main-header-two__menu main-menu">
+      <div class="sticky-header__content"></div>
+    </div>
+
+    <section class="rc-shell">
+      <div class="container">
+        <div class="rc-card">
+
+          <div class="rc-header">
+            <div class="left">
+              <a class="rc-back" href="returning-personal-info.html"><i class="fa fa-angle-left"></i> Back</a>
+              <h3 class="rc-title">Financial Information</h3>
+            </div>
+            <div class="rc-step">Step 3/4</div>
+          </div>
+
+          <div class="rc-body">
+            <span class="rc-pill"><i class="fa fa-check-circle"></i> Prefilled from last application</span>
+            <h2 class="rc-h2">Confirm your financial details</h2>
+            <p class="rc-sub">Tick “No changes” to keep everything as-is.</p>
+
+            <div class="rc-checkbox">
+              <input id="noChanges" type="checkbox">
+              <label for="noChanges">No changes since last application</label>
+            </div>
+
+            <form id="finForm">
+              <div class="row low-gutters">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Employer Name</label>
+                    <input class="form-control contact-one__form-input" type="text" value="ABC Logistics" required>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Monthly Income</label>
+                    <input class="form-control contact-one__form-input" type="text" value="R 18,000" required>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Bank Name</label>
+                    <select class="form-control" required>
+                      <option>Capitec Bank</option>
+                      <option>FNB</option>
+                      <option>Absa</option>
+                      <option>Standard Bank</option>
+                      <option>Nedbank</option>
+                      <option>TymeBank</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Account Number</label>
+                    <input class="form-control contact-one__form-input" type="text" value="************" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rc-actions">
+                <a class="thm-btn thm-btn--outline" href="returning-personal-info.html">Back</a>
+                <a class="thm-btn" href="returning-review-submit.html">Continue</a>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="site-footer-two">
+      <div class="site-footer-two__bottom">
+        <div class="container"><p>© Copyright 2025 PBS Finance</p></div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <div class="mobile-nav__content">
+      <span class="mobile-nav__close mobile-nav__toggler"></span>
+      <div class="logo-box">
+        <a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
+      </div>
+      <div class="mobile-nav__container"></div>
+      <ul class="mobile-nav__contact list-unstyled">
+        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+        <li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ✅ REQUIRED by theme.js (prevents $(...).appear error) -->
+  <script src="assets/js/jquery.appear.min.js"></script>
+
+  <script src="assets/js/theme.js"></script>
+
+  <script>
+    (function(){
+      var noChanges = document.getElementById('noChanges');
+      var finForm = document.getElementById('finForm');
+      if (!noChanges || !finForm) return;
+
+      noChanges.addEventListener('change', function(){
+        if (noChanges.checked) finForm.classList.add('is-disabled');
+        else finForm.classList.remove('is-disabled');
+      });
+    })();
+  </script>
+</body>
+</html>
