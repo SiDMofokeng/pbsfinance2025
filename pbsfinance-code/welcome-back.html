@@ -1,3 +1,4 @@
+<!-- FILE: welcome-back.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +22,89 @@
   <link rel="stylesheet" href="assets/css/pbs-app.css">
 
   <style>
+    /* user badge (match apply_for_a_loan_logged.html) */
+    .header-user-badge{
+      display:inline-flex;align-items:center;gap:10px;padding:6px 12px;border-radius:999px;
+      background:#e9f6da;color:#0F1F29;font-weight:600;text-decoration:none;
+    }
+    .header-user-badge .initials{
+      width:28px;height:28px;border-radius:999px;background:#0F1F29;color:#B5E480;
+      display:inline-flex;align-items:center;justify-content:center;font-weight:700;
+    }
+
+    /* ✅ dropdown wrapper + menu */
+    .header-user-wrap{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
+    }
+
+    .header-user-trigger{
+      cursor:pointer;
+      border:none;
+      padding:0;
+      background:transparent;
+      display:inline-flex;
+      align-items:center;
+    }
+
+    .header-user-badge .caret{
+      margin-left:8px;
+      opacity:.9;
+      font-size:12px;
+    }
+
+    .header-user-menu{
+      position:absolute;
+      right:0;
+      top:calc(100% + 10px);
+      min-width:220px;
+      background:#ffffff;
+      border:1px solid rgba(15,31,41,0.10);
+      box-shadow:0 16px 40px rgba(15,31,41,0.10);
+      border-radius:14px;
+      padding:8px;
+      z-index:999;
+      display:none;
+    }
+    .header-user-menu.is-open{ display:block; }
+
+    .header-user-menu a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 10px;
+      border-radius:10px;
+      text-decoration:none;
+      color:#0F1F29;
+      font-weight:700;
+    }
+    .header-user-menu a:hover{
+      background:#f3f7ef;
+    }
+    .header-user-menu .divider{
+      height:1px;
+      background:rgba(15,31,41,0.08);
+      margin:6px 4px;
+    }
+
+    /* ✅ Logout button (matches header vibe) */
+    .header-logout-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:#0F1F29;
+      color:#B5E480;
+      font-weight:800;
+      text-decoration:none;
+      line-height:1;
+    }
+    .header-logout-btn:hover{ color:#B5E480; opacity:.92; }
+
     .rb-shell { padding: 48px 0; }
     .rb-card {
       border-radius: 24px;
@@ -52,6 +136,9 @@
       .rb-title { font-size: 34px; }
       .rb-card-inner { padding: 26px 18px; }
       .rb-btn { width:100%; min-width: auto; }
+      .header-user-wrap{ flex-wrap:wrap; justify-content:flex-end; }
+      .header-logout-btn{ width:100%; justify-content:center; }
+      .header-user-menu{ right:auto; left:0; width:100%; min-width:0; }
     }
   </style>
 </head>
@@ -63,7 +150,7 @@
 
   <div class="page-wrapper">
 
-    <!-- HEADER (keep theme structure) -->
+    <!-- HEADER (logged-in badge + dropdown + logout) -->
     <div class="main-header-two">
       <div class="topbar-two"></div>
       <div class="main-header-two__info">
@@ -79,10 +166,55 @@
             <nav class="main-header-two__menu main-menu">
               <div class="container">
                 <ul class="main-menu__list">
-                  <li class="dropdown"><a href="index.html">Home</a></li>
                   <li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
                   <li><a href="#footer">Support</a></li>
-                  <a href="login.html" class="header-login-btn">Portal Login</a>
+
+                  <!-- ✅ logged-in area (dropdown + logout) -->
+                  <li class="main-menu__item main-menu__item--user" style="margin-left:18px;">
+                    <div class="header-user-wrap">
+                      <!-- dropdown trigger (badge) -->
+                      <button
+                        type="button"
+                        class="header-user-trigger"
+                        id="headerUserBtn"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="headerUserMenu"
+                        title="Account menu"
+                      >
+                        <span class="header-user-badge">
+                          <span class="initials">SM</span>
+                          <span class="user-meta" style="text-align:left;">
+                            Sid Mofokeng<br>
+                            <small style="font-weight:600;color:#52606a">Last login: 12 Nov 2025</small>
+                          </span>
+                          <i class="fa fa-chevron-down caret" aria-hidden="true"></i>
+                        </span>
+                      </button>
+
+                      <!-- flyout menu -->
+                      <div class="header-user-menu" id="headerUserMenu" role="menu" aria-labelledby="headerUserBtn">
+                        <!-- Profile link (best match: client portal) -->
+                        <a href="client-portal.html" role="menuitem">
+                          <i class="fa fa-user-circle"></i>
+                          <span>Profile</span>
+                        </a>
+
+                        <div class="divider"></div>
+
+                        <a href="client-portal.html" role="menuitem">
+                          <i class="fa fa-th-large"></i>
+                          <span>Client Portal</span>
+                        </a>
+                      </div>
+
+                      <!-- logout button (requested) -->
+                      <a class="header-logout-btn" href="apply_for_a_loan_guest_out.html" title="Log out">
+                        <i class="fa fa-sign-out-alt"></i> 
+                      </a>
+                    </div>
+                  </li>
+
                 </ul>
               </div>
             </nav>
@@ -103,7 +235,7 @@
           <div class="rb-card-inner">
             <span class="rb-pill"><i class="fa fa-star"></i> Returning Client</span>
 
-            <h1 class="rb-title">👋 Welcome back, Pheko</h1>
+            <h1 class="rb-title">👋 Welcome back, SiD</h1>
             <p class="rb-sub">
               We’ve pre-filled your details from your previous application.
               Confirm your loan amount and repayment term, update anything that changed, and submit.
@@ -165,6 +297,50 @@
 
   <!-- ✅ REQUIRED by theme.js (fixes $(...).appear error) -->
   <script src="assets/js/jquery.appear.min.js"></script>
+
+  <script>
+    // Dropdown open/close (no dependencies)
+    (function () {
+      var btn = document.getElementById('headerUserBtn');
+      var menu = document.getElementById('headerUserMenu');
+      if (!btn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMenu() {
+        var isOpen = menu.classList.contains('is-open');
+        if (isOpen) closeMenu();
+        else {
+          menu.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      // close when clicking outside
+      document.addEventListener('click', function () {
+        closeMenu();
+      });
+
+      // close on ESC
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // prevent inside clicks from closing immediately
+      menu.addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    })();
+  </script>
 
   <!-- template js -->
   <script src="assets/js/theme.js"></script>
