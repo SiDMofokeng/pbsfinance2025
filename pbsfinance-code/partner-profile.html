@@ -1,0 +1,523 @@
+<!-- FILE: partner-profile.html
+     PURPOSE: Partner Company Profile (static UI)
+     NOTES:
+     - Multi-block form: shows more fields as user clicks Continue
+     - Uses same PBS look & feel + header dropdown
+     - Includes: company, NCR/CIPC, authorized rep, domains, security placeholders
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PBS Finance | Partner Profile</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/swiper.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/odometer.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="assets/css/nouislider.min.css">
+  <link rel="stylesheet" href="assets/css/nouislider.pips.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+
+  <style>
+    .header-user-badge{
+      display:inline-flex;align-items:center;gap:10px;padding:6px 12px;border-radius:999px;
+      background:#e9f6da;color:#0F1F29;font-weight:600;text-decoration:none;
+    }
+    .header-user-badge .initials{
+      width:28px;height:28px;border-radius:999px;background:#0F1F29;color:#B5E480;
+      display:inline-flex;align-items:center;justify-content:center;font-weight:700;
+    }
+    .header-user-wrap{ position:relative; display:inline-flex; align-items:center; gap:10px; white-space:nowrap; }
+    .header-user-trigger{ cursor:pointer; border:none; padding:0; background:transparent; display:inline-flex; align-items:center; }
+    .header-user-badge .caret{ margin-left:8px; opacity:.9; font-size:12px; }
+
+    .header-user-menu{
+      position:absolute; right:0; top:calc(100% + 10px);
+      min-width:240px; background:#ffffff;
+      border:1px solid rgba(15,31,41,0.10);
+      box-shadow:0 16px 40px rgba(15,31,41,0.10);
+      border-radius:14px; padding:8px; z-index:999;
+      display:none;
+    }
+    .header-user-menu.is-open{ display:block; }
+    .header-user-menu a{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 10px; border-radius:10px;
+      text-decoration:none; color:#0F1F29; font-weight:800;
+    }
+    .header-user-menu a:hover{ background:#f3f7ef; }
+    .header-user-menu .divider{ height:1px; background:rgba(15,31,41,0.08); margin:6px 4px; }
+
+    .header-logout-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px;
+      background:#0F1F29; color:#B5E480; font-weight:800;
+      text-decoration:none; line-height:1;
+    }
+    .header-logout-btn:hover{ color:#B5E480; opacity:.92; }
+
+    @media (max-width:575.98px){
+      .header-user-wrap{ flex-wrap:wrap; justify-content:flex-end; }
+      .header-logout-btn{ width:100%; justify-content:center; }
+      .header-user-menu{ right:auto; left:0; width:100%; min-width:0; }
+    }
+
+    .pf-pill{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
+      background:#eef7df;color:#0F1F29;font-weight:900;font-size:13px;margin-bottom:14px;
+    }
+    .pf-sub{ color:#5b6b75; margin:6px 0 18px; font-weight:600; }
+    .pf-card{
+      border:1px solid rgba(15,31,41,0.08);
+      border-radius:16px;
+      padding:18px 18px 6px;
+      background:#fff;
+    }
+    .loan-form-block{
+      border:1px solid rgba(15,31,41,0.08);
+      border-radius:16px;
+      padding:18px 18px 6px;
+      background:#fff;
+      margin-top:12px;
+    }
+    .pf-actions{
+      display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap; margin-top:12px;
+    }
+    @media (max-width:575.98px){
+      .pf-actions .thm-btn{ width:100%; }
+    }
+    .mini-note{ font-size:.9rem; color:#6b7781; margin-top:8px; }
+  </style>
+</head>
+
+<body class="has-sticky-offset home-page-wrapper">
+  <div class="preloader"><img class="preloader__image" src="assets/images/loader.png" alt=""></div>
+
+  <div class="page-wrapper">
+    <div class="main-header-two">
+      <div class="topbar-two"></div>
+      <div class="main-header-two__info">
+        <div class="container">
+          <div class="main-header-two__info__inner">
+
+            <div class="logo-box">
+              <a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
+              <span class="fa fa-bars mobile-nav__toggler"></span>
+            </div>
+
+            <nav class="main-header-two__menu main-menu">
+              <div class="container">
+                <ul class="main-menu__list">
+                  <li class="dropdown"><a href="index.html">Home</a></li>
+                  <li><a href="#footer">Support</a></li>
+
+                  <li class="main-menu__item main-menu__item--user" style="margin-left:18px;">
+                    <div class="header-user-wrap">
+                      <button
+                        type="button"
+                        class="header-user-trigger"
+                        id="headerUserBtn"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="headerUserMenu"
+                        title="Account menu"
+                      >
+                        <span class="header-user-badge">
+                          <span class="initials">GC</span>
+                          <span class="user-meta" style="text-align:left;">
+                            Greenridge Capital (Pty) Ltd<br>
+                            <small style="font-weight:600;color:#52606a">Company Profile</small>
+                          </span>
+                          <i class="fa fa-chevron-down caret" aria-hidden="true"></i>
+                        </span>
+                      </button>
+
+                      <div class="header-user-menu" id="headerUserMenu" role="menu" aria-labelledby="headerUserBtn">
+                        <a href="partner-portal.html" role="menuitem">
+                          <i class="fa fa-th-large"></i>
+                          <span>Partner Portal</span>
+                        </a>
+                        <a href="partner-profile.html" role="menuitem">
+                          <i class="fa fa-building"></i>
+                          <span>Company Profile</span>
+                        </a>
+
+                        <div class="divider"></div>
+
+                        <a href="partner-register-company.html" role="menuitem">
+                          <i class="fa fa-clipboard-check"></i>
+                          <span>Partner Onboarding</span>
+                        </a>
+                      </div>
+
+                      <a class="header-logout-btn" href="apply_for_a_loan_guest_out.html" title="Log out">
+                        <i class="fa fa-sign-out-alt"></i>
+                      </a>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stricky-header stricked-menu main-header-two__menu main-menu">
+      <div class="sticky-header__content"></div>
+    </div>
+
+    <section class="loan-calculator-two loan-application-section" style="padding-top:34px;padding-bottom:52px;">
+      <div class="container">
+
+        <div class="loan-application-shell">
+          <div class="loan-shell-top">
+            <div class="loan-application-tabs">
+              <button class="loan-application-tablink" type="button" onclick="location.href='partner-portal.html'">
+                <i class="fas fa-th-large"></i><span>Dashboard</span>
+              </button>
+              <button class="loan-application-tablink is-active" type="button">
+                <i class="fas fa-building"></i><span>Company Profile</span>
+              </button>
+              <button class="loan-application-tablink" type="button" onclick="location.href='partner-register-company.html'">
+                <i class="fas fa-clipboard-check"></i><span>Onboarding</span>
+              </button>
+            </div>
+
+            <div class="loan-shell-summary">
+              <span class="loan-shell-chip">Profile</span>
+              <p>Keep details aligned with NCR/CIPC records.</p>
+            </div>
+          </div>
+
+          <div class="loan-shell-body">
+            <div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
+              <span class="pf-pill"><i class="fas fa-building"></i> Partner Company Profile</span>
+
+              <h3 class="loan-application-heading">
+                <i class="fas fa-id-badge"></i> Company Details
+              </h3>
+              <p class="pf-sub">Static UI with multi-block fields. Save buttons are placeholders.</p>
+
+              <form class="contact-one__form" action="#" method="post" novalidate>
+
+                <!-- BLOCK 1: Company -->
+                <div id="pf-block-1" class="loan-form-block">
+                  <div class="row low-gutters">
+                    <div class="col-md-12">
+                      <p class="loan-extra-title"><i class="fas fa-balance-scale"></i> Registered Company</p>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Company legal name</label>
+                        <input class="form-control contact-one__form-input" type="text" value="Greenridge Capital (Pty) Ltd" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Trading name (optional)</label>
+                        <input class="form-control contact-one__form-input" type="text" value="Greenridge Capital">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Registration number (CIPC)</label>
+                        <input class="form-control contact-one__form-input" type="text" value="2019/123456/07" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>NCR registration number</label>
+                        <input class="form-control contact-one__form-input" type="text" value="NCRCP12345" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 mt-2">
+                      <button type="button" class="thm-btn thm-btn--outline" onclick="showNextBlock('pf-block-2')">
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BLOCK 2: Contact + Domain -->
+                <div id="pf-block-2" class="loan-form-block" style="display:none;">
+                  <div class="row low-gutters">
+                    <div class="col-md-12">
+                      <p class="loan-extra-title"><i class="fas fa-envelope"></i> Contact & Domain</p>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Official company email domain</label>
+                        <input class="form-control contact-one__form-input" type="text" value="greenridge.co.za" required>
+                        <div class="mini-note">Used to validate authorized email addresses.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Primary contact email</label>
+                        <input class="form-control contact-one__form-input" type="email" value="compliance@greenridge.co.za" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Primary contact phone</label>
+                        <input class="form-control contact-one__form-input" type="tel" value="+27 63 000 0000" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Website (optional)</label>
+                        <input class="form-control contact-one__form-input" type="text" value="https://greenridge.co.za">
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 mt-2">
+                      <button type="button" class="thm-btn thm-btn--outline" onclick="showNextBlock('pf-block-3')">
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BLOCK 3: Address -->
+                <div id="pf-block-3" class="loan-form-block" style="display:none;">
+                  <div class="row low-gutters">
+                    <div class="col-md-12">
+                      <p class="loan-extra-title"><i class="fas fa-map-marker-alt"></i> Registered Address</p>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Address Line 1</label>
+                        <input class="form-control contact-one__form-input" type="text" value="12 Katherine Street" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Suburb</label>
+                        <input class="form-control contact-one__form-input" type="text" value="Sandton" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>City</label>
+                        <input class="form-control contact-one__form-input" type="text" value="Johannesburg" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Province</label>
+                        <input class="form-control contact-one__form-input" type="text" value="Gauteng" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Postal Code</label>
+                        <input class="form-control contact-one__form-input" type="text" value="2196" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 mt-2">
+                      <button type="button" class="thm-btn thm-btn--outline" onclick="showNextBlock('pf-block-4')">
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BLOCK 4: Authorized Rep + Security -->
+                <div id="pf-block-4" class="loan-form-block" style="display:none;">
+                  <div class="row low-gutters">
+                    <div class="col-md-12">
+                      <p class="loan-extra-title"><i class="fas fa-user-shield"></i> Authorized Representative</p>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Full name</label>
+                        <input class="form-control contact-one__form-input" type="text" value="Lerato Maseko" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Role / capacity</label>
+                        <select class="form-control" required>
+                          <option>Director</option>
+                          <option selected>Compliance Officer</option>
+                          <option>Authorized Representative</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Rep email</label>
+                        <input class="form-control contact-one__form-input" type="email" value="compliance@greenridge.co.za" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Rep mobile</label>
+                        <input class="form-control contact-one__form-input" type="tel" value="+27 63 000 0000" required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <p class="loan-extra-title mt-2"><i class="fas fa-lock"></i> Security (UI placeholders)</p>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>MFA status</label>
+                        <select class="form-control">
+                          <option selected>Enabled</option>
+                          <option>Not enabled</option>
+                        </select>
+                        <div class="mini-note">MFA is required on first login (backend later).</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Access role</label>
+                        <select class="form-control">
+                          <option selected>Partner Admin</option>
+                          <option>Partner Ops</option>
+                          <option>Partner Read-only</option>
+                        </select>
+                        <div class="mini-note">Role-based access is provisioned after approval.</div>
+                      </div>
+                    </div>
+
+                    <div class="pf-actions">
+                      <a class="thm-btn thm-btn--outline" href="partner-portal.html">Back to Portal</a>
+                      <a class="thm-btn" href="#" onclick="return false;">Save Changes</a>
+                    </div>
+
+                    <p class="mini-note">
+                      Note: this page is static UI. In the real system, edits here are audit logged.
+                    </p>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer id="footer" class="site-footer-two">
+      <div class="site-footer-two__bottom">
+        <div class="container"><p>© Copyright 2025 PBS Finance</p></div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <div class="mobile-nav__content">
+      <span class="mobile-nav__close mobile-nav__toggler"></span>
+      <div class="logo-box">
+        <a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
+      </div>
+      <div class="mobile-nav__container"></div>
+      <ul class="mobile-nav__contact list-unstyled">
+        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+        <li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/swiper.min.js"></script>
+  <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/jquery.validate.min.js"></script>
+  <script src="assets/js/bootstrap-select.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/odometer.min.js"></script>
+  <script src="assets/js/jquery.appear.min.js"></script>
+  <script src="assets/js/wNumb.min.js"></script>
+  <script src="assets/js/nouislider.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/jquery.circleGraph.js"></script>
+  <script src="assets/js/jquery-ui.js"></script>
+  <script src="assets/js/theme.js"></script>
+
+  <script>
+    function showNextBlock(blockId){
+      var block = document.getElementById(blockId);
+      if (block) block.style.display = 'block';
+      var shell = document.querySelector(".loan-application-shell");
+      if (shell) shell.scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var btn = document.getElementById('headerUserBtn');
+      var menu = document.getElementById('headerUserMenu');
+      if (!btn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function toggleMenu() {
+        var isOpen = menu.classList.contains('is-open');
+        if (isOpen) closeMenu();
+        else { menu.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener('click', function () { closeMenu(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+      menu.addEventListener('click', function (e) { e.stopPropagation(); });
+    });
+  </script>
+</body>
+</html>

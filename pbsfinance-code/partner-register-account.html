@@ -1,0 +1,277 @@
+<!-- FILE: partner-register-account.html
+     PURPOSE: Account Register (Password first) for Partner users (static UI)
+     FLOW: Create Password → Continue to OTP page
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PBS Finance | Partner Account — Create Password</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/swiper.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-icons.css">
+  <link rel="stylesheet" href="assets/css/odometer.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="assets/css/nouislider.min.css">
+  <link rel="stylesheet" href="assets/css/nouislider.pips.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/pylon-two-icons.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.css">
+  <link rel="stylesheet" href="assets/css/custom-animation.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/pbs-app.css">
+
+  <style>
+    .auth-pill{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
+      background:#eef7df;color:#0F1F29;font-weight:800;font-size:13px;margin-bottom:14px;
+    }
+    .auth-sub{ color:#5b6b75; margin:6px 0 18px; }
+    .auth-card{
+      border:1px solid rgba(15,31,41,0.08);
+      border-radius:16px;
+      padding:18px 18px 6px;
+      background:#fff;
+    }
+    .pwd-rules{
+      margin:10px 0 0; padding-left:18px; color:#6b7781; font-size:0.92rem;
+    }
+    .auth-actions{
+      display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap; margin-top:10px;
+    }
+    @media (max-width:575.98px){
+      .auth-actions .thm-btn{ width:100%; }
+    }
+    .mini-note{ font-size:.9rem; color:#6b7781; margin-top:8px; }
+    .toggle-eye{
+      position:absolute; right:12px; top:50%; transform:translateY(-50%);
+      border:none; background:transparent; color:#0F1F29; opacity:.75;
+    }
+    .toggle-eye:hover{ opacity:1; }
+    .pos-rel{ position:relative; }
+  </style>
+</head>
+
+<body class="has-sticky-offset home-page-wrapper">
+  <div class="preloader"><img class="preloader__image" src="assets/images/loader.png" alt=""></div>
+
+  <div class="page-wrapper">
+    <div class="main-header-two">
+      <div class="topbar-two"></div>
+      <div class="main-header-two__info">
+        <div class="container">
+          <div class="main-header-two__info__inner">
+            <div class="logo-box">
+              <a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
+              <span class="fa fa-bars mobile-nav__toggler"></span>
+            </div>
+
+            <nav class="main-header-two__menu main-menu">
+              <div class="container">
+                <ul class="main-menu__list">
+                  <li class="dropdown"><a href="index.html">Home</a></li>
+                  <li><a href="#footer">Support</a></li>
+                  <li class="dropdown"><a href="partner-register-company.html">Partner Onboarding</a></li>
+                </ul>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stricky-header stricked-menu main-header-two__menu main-menu">
+      <div class="sticky-header__content"></div>
+    </div>
+
+    <section class="loan-calculator-two loan-application-section" style="padding-top:34px;padding-bottom:52px;">
+      <div class="container">
+
+        <div class="loan-application-shell">
+          <div class="loan-shell-top">
+            <div class="loan-application-tabs">
+              <button class="loan-application-tablink is-active" type="button">
+                <i class="fas fa-key"></i><span>Create Password</span>
+              </button>
+              <button class="loan-application-tablink" type="button" onclick="location.href='partner-register-otp.html'">
+                <i class="fas fa-envelope-open-text"></i><span>OTP</span>
+              </button>
+            </div>
+
+            <div class="loan-shell-summary">
+              <span class="loan-shell-chip">Step <span id="loan-step-indicator">1</span> of 2</span>
+              <p>Secure partner access.</p>
+            </div>
+          </div>
+
+          <div class="loan-shell-body">
+            <div class="loan-calculator-two__inner wow fadeInUp" data-wow-duration="1500ms">
+              <span class="auth-pill"><i class="fas fa-user-shield"></i> Partner Account Registration</span>
+
+              <h3 class="loan-application-heading">
+                <i class="fas fa-key"></i> Create Your Password
+              </h3>
+              <p class="auth-sub">
+                This creates your account credentials. Next you’ll verify your email using an OTP.
+              </p>
+
+              <form class="contact-one__form" action="#" method="post" novalidate>
+                <div class="auth-card">
+                  <div class="row low-gutters">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Official email address</label>
+                        <input class="form-control contact-one__form-input" type="email" value="compliance@greenridge.co.za" required>
+                        <div class="mini-note">Use your official company domain email (no public domains).</div>
+                      </div>
+                    </div>
+
+                    <!-- BLOCK 1: Password -->
+                    <div id="pwd-block-1" class="col-md-12">
+                      <div class="row low-gutters">
+                        <div class="col-md-6">
+                          <div class="form-group pos-rel">
+                            <label>Password</label>
+                            <input id="pwd1" class="form-control contact-one__form-input" type="password" placeholder="Enter password" required>
+                            <button class="toggle-eye" type="button" onclick="togglePwd('pwd1', this)" aria-label="Toggle password visibility">
+                              <i class="fa fa-eye"></i>
+                            </button>
+                          </div>
+                          <ul class="pwd-rules">
+                            <li>Minimum 12 characters</li>
+                            <li>At least 1 uppercase + 1 lowercase</li>
+                            <li>At least 1 number</li>
+                            <li>At least 1 special character</li>
+                          </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group pos-rel">
+                            <label>Confirm password</label>
+                            <input id="pwd2" class="form-control contact-one__form-input" type="password" placeholder="Confirm password" required>
+                            <button class="toggle-eye" type="button" onclick="togglePwd('pwd2', this)" aria-label="Toggle password visibility">
+                              <i class="fa fa-eye"></i>
+                            </button>
+                            <div class="mini-note">Password complexity is enforced on backend later (Phase 2). This is UI-only.</div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                          <button type="button" class="thm-btn thm-btn--outline" onclick="showNextBlock('pwd-block-2')">
+                            Continue
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- BLOCK 2: Consent + Continue -->
+                    <div id="pwd-block-2" class="col-md-12" style="display:none;">
+                      <div class="row low-gutters mt-3">
+                        <div class="col-md-12">
+                          <label style="display:flex;align-items:flex-start;gap:10px;font-weight:700;">
+                            <input type="checkbox" style="width:18px;height:18px;margin-top:2px;" checked required>
+                            <span>
+                              I agree to secure access controls and confirm I am an authorized representative.
+                              <div class="mini-note">POPIA compliant handling. Rate limiting applies.</div>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-md-12">
+                          <div class="auth-actions">
+                            <a class="thm-btn thm-btn--outline" href="index.html">Cancel</a>
+                            <a class="thm-btn" href="partner-register-otp.html">Create Password &amp; Send OTP</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div><!-- /row -->
+                </div><!-- /auth-card -->
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <footer id="footer" class="site-footer-two">
+      <div class="site-footer-two__bottom">
+        <div class="container"><p>© Copyright 2025 PBS Finance</p></div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <div class="mobile-nav__content">
+      <span class="mobile-nav__close mobile-nav__toggler"></span>
+      <div class="logo-box">
+        <a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="155" alt="" /></a>
+      </div>
+      <div class="mobile-nav__container"></div>
+      <ul class="mobile-nav__contact list-unstyled">
+        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+        <li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+  <script src="assets/js/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/swiper.min.js"></script>
+  <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/jquery.validate.min.js"></script>
+  <script src="assets/js/bootstrap-select.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/odometer.min.js"></script>
+  <script src="assets/js/jquery.appear.min.js"></script>
+  <script src="assets/js/wNumb.min.js"></script>
+  <script src="assets/js/nouislider.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/jquery.circleGraph.js"></script>
+  <script src="assets/js/jquery-ui.js"></script>
+  <script src="assets/js/theme.js"></script>
+
+  <script>
+    function showNextBlock(blockId){
+      var block = document.getElementById(blockId);
+      if (block) block.style.display = 'block';
+      var shell = document.querySelector(".loan-application-shell");
+      if (shell) shell.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function togglePwd(inputId, btn){
+      var el = document.getElementById(inputId);
+      if (!el) return;
+      var isPwd = el.type === 'password';
+      el.type = isPwd ? 'text' : 'password';
+      if (btn && btn.querySelector('i')){
+        btn.querySelector('i').className = isPwd ? 'fa fa-eye-slash' : 'fa fa-eye';
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      var indicator = document.getElementById("loan-step-indicator");
+      if (indicator) indicator.textContent = "1";
+    });
+  </script>
+</body>
+</html>
