@@ -1,6 +1,7 @@
 <!-- FILE: returning-review-submit.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -29,105 +30,195 @@
   <link rel="stylesheet" href="assets/css/pbs-app.css">
 
   <style>
-    .header-user-badge{
-      display:inline-flex;align-items:center;gap:10px;padding:6px 12px;border-radius:999px;
-      background:#e9f6da;color:#0F1F29;font-weight:600;text-decoration:none;
-    }
-    .header-user-badge .initials{
-      width:28px;height:28px;border-radius:999px;background:#0F1F29;color:#B5E480;
-      display:inline-flex;align-items:center;justify-content:center;font-weight:700;
-    }
-
-    /* ✅ dropdown wrapper + menu + logout */
-    .header-user-wrap{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      white-space:nowrap;
+    .header-user-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e9f6da;
+      color: #0F1F29;
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    .header-user-trigger{
-      cursor:pointer;
-      border:none;
-      padding:0;
-      background:transparent;
-      display:inline-flex;
-      align-items:center;
+    .header-user-badge .initials {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: #0F1F29;
+      color: #B5E480;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
     }
 
-    .header-user-badge .caret{
-      margin-left:8px;
-      opacity:.9;
-      font-size:12px;
+    .header-user-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
     }
 
-    .header-user-menu{
-      position:absolute;
-      right:0;
-      top:calc(100% + 10px);
-      min-width:220px;
-      background:#ffffff;
-      border:1px solid rgba(15,31,41,0.10);
-      box-shadow:0 16px 40px rgba(15,31,41,0.10);
-      border-radius:14px;
-      padding:8px;
-      z-index:999;
-      display:none;
-    }
-    .header-user-menu.is-open{ display:block; }
-
-    .header-user-menu a{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 10px;
-      border-radius:10px;
-      text-decoration:none;
-      color:#0F1F29;
-      font-weight:700;
-    }
-    .header-user-menu a:hover{ background:#f3f7ef; }
-
-    .header-user-menu .divider{
-      height:1px;
-      background:rgba(15,31,41,0.08);
-      margin:6px 4px;
+    .header-user-trigger {
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .header-logout-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:#0F1F29;
-      color:#B5E480;
-      font-weight:800;
-      text-decoration:none;
-      line-height:1;
-    }
-    .header-logout-btn:hover{ color:#B5E480; opacity:.92; }
-
-    .rc-sub{color:#5b6b75;margin:6px 0 18px;}
-    .rc-summary{border:1px solid rgba(15,31,41,0.08);border-radius:18px;padding:16px;margin-bottom:14px;background:#fff;}
-    .rc-summary h4{margin:0 0 12px;font-weight:900;color:#0F1F29;}
-    .rc-row{display:flex;justify-content:space-between;gap:12px;margin:8px 0;}
-    .rc-row span{color:#6b7c88;font-weight:700;}
-    .rc-row b{font-weight:900;color:#0F1F29;}
-
-    .rc-consent{display:flex;align-items:flex-start;gap:10px;margin:10px 0;color:#0F1F29;font-weight:700;}
-    .rc-consent input{width:18px;height:18px;margin-top:2px;}
-
-    .rc-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;margin-top:14px;}
-    @media (max-width:575.98px){
-      .rc-actions .thm-btn{width:100%;}
-      .header-user-wrap{ flex-wrap:wrap; justify-content:flex-end; }
-      .header-logout-btn{ width:100%; justify-content:center; }
-      .header-user-menu{ right:auto; left:0; width:100%; min-width:0; }
+    .header-user-badge .caret {
+      margin-left: 8px;
+      opacity: .9;
+      font-size: 12px;
     }
 
-    .rc-error{display:none;margin-top:10px;color:#ad2e2e;font-weight:800;}
+    .header-user-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      min-width: 220px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 31, 41, 0.10);
+      box-shadow: 0 16px 40px rgba(15, 31, 41, 0.10);
+      border-radius: 14px;
+      padding: 8px;
+      z-index: 999;
+      display: none;
+    }
+
+    .header-user-menu.is-open {
+      display: block;
+    }
+
+    .header-user-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #0F1F29;
+      font-weight: 700;
+    }
+
+    .header-user-menu a:hover {
+      background: #f3f7ef;
+    }
+
+    .header-user-menu .divider {
+      height: 1px;
+      background: rgba(15, 31, 41, 0.08);
+      margin: 6px 4px;
+    }
+
+    .header-logout-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #2d3942;
+      color: #B5E480;
+      font-size: 16px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .header-logout-btn:hover {
+      color: #B5E480;
+      opacity: .92;
+    }
+
+    .rc-sub {
+      color: #5b6b75;
+      margin: 6px 0 18px;
+    }
+
+    .rc-summary {
+      border: 1px solid rgba(15, 31, 41, 0.08);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 14px;
+      background: #fff;
+    }
+
+    .rc-summary h4 {
+      margin: 0 0 12px;
+      font-weight: 900;
+      color: #0F1F29;
+    }
+
+    .rc-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 8px 0;
+    }
+
+    .rc-row span {
+      color: #6b7c88;
+      font-weight: 700;
+    }
+
+    .rc-row b {
+      font-weight: 900;
+      color: #0F1F29;
+    }
+
+    .rc-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 10px 0;
+      color: #0F1F29;
+      font-weight: 700;
+    }
+
+    .rc-consent input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+    }
+
+    .rc-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .rc-error {
+      display: none;
+      margin-top: 10px;
+      color: #ad2e2e;
+      font-weight: 800;
+    }
+
+    @media (max-width:575.98px) {
+      .rc-actions .thm-btn {
+        width: 100%;
+      }
+
+      .header-user-wrap {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .header-user-menu {
+        right: auto;
+        left: 0;
+        width: 100%;
+        min-width: 0;
+      }
+    }
   </style>
 </head>
 
@@ -143,7 +234,8 @@
           <div class="main-header-two__info__inner">
 
             <div class="logo-box">
-              <a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155" alt=""></a>
+              <a href="index.html" aria-label="logo image"><img src="assets/images/logo-dark.png" width="155"
+                  alt=""></a>
               <span class="fa fa-bars mobile-nav__toggler"></span>
             </div>
 
@@ -155,19 +247,11 @@
 
                   <li class="main-menu__item main-menu__item--user" style="margin-left:18px;">
                     <div class="header-user-wrap">
-                      <!-- dropdown trigger -->
-                      <button
-                        type="button"
-                        class="header-user-trigger"
-                        id="headerUserBtn"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        aria-controls="headerUserMenu"
-                        title="Account menu"
-                      >
+                      <button type="button" class="header-user-trigger" id="headerUserBtn" aria-haspopup="true"
+                        aria-expanded="false" aria-controls="headerUserMenu">
                         <span class="header-user-badge">
                           <span class="initials">SM</span>
-                          <span class="user-meta" style="text-align:left;">
+                          <span class="user-meta">
                             Sid Mofokeng<br>
                             <small style="font-weight:600;color:#52606a">Last login: 12 Nov 2025</small>
                           </span>
@@ -175,23 +259,19 @@
                         </span>
                       </button>
 
-                      <!-- flyout -->
                       <div class="header-user-menu" id="headerUserMenu" role="menu" aria-labelledby="headerUserBtn">
                         <a href="client-portal.html" role="menuitem">
                           <i class="fa fa-user-circle"></i>
                           <span>Profile</span>
                         </a>
-
                         <div class="divider"></div>
-
                         <a href="client-portal.html" role="menuitem">
                           <i class="fa fa-th-large"></i>
                           <span>Client Portal</span>
                         </a>
                       </div>
 
-                      <!-- logout -->
-                      <a class="header-logout-btn" href="apply_for_a_loan_guest_out.html" title="Log out">
+                      <a class="header-logout-btn" href="apply_for_a_loan_guest_out.html" title="Logout">
                         <i class="fa fa-sign-out-alt"></i>
                       </a>
                     </div>
@@ -217,22 +297,30 @@
 
           <div class="loan-shell-top">
             <div class="loan-application-tabs">
-              <button class="loan-application-tablink" type="button" onclick="location.href='returning-loan-details.html'">
+              <button class="loan-application-tablink" type="button"
+                onclick="location.href='returning-loan-details.html'">
                 <i class="fas fa-coins"></i><span>Loan Details</span>
               </button>
-              <button class="loan-application-tablink" type="button" onclick="location.href='returning-personal-info.html'">
+              <button class="loan-application-tablink" type="button"
+                onclick="location.href='returning-personal-info.html'">
                 <i class="fas fa-user"></i><span>Personal</span>
               </button>
-              <button class="loan-application-tablink" type="button" onclick="location.href='returning-financial-info.html'">
+              <button class="loan-application-tablink" type="button"
+                onclick="location.href='returning-expenses-info.html'">
+                <i class="fas fa-receipt"></i><span>Expenses</span>
+              </button>
+              <button class="loan-application-tablink" type="button"
+                onclick="location.href='returning-financial-info.html'">
                 <i class="fas fa-briefcase"></i><span>Financial</span>
               </button>
-              <button class="loan-application-tablink is-active" type="button" onclick="location.href='returning-review-submit.html'">
+              <button class="loan-application-tablink is-active" type="button"
+                onclick="location.href='returning-review-submit.html'">
                 <i class="fas fa-check-circle"></i><span>Finalize</span>
               </button>
             </div>
 
             <div class="loan-shell-summary">
-              <span class="loan-shell-chip">Step <span id="loan-step-indicator">4</span> of 4</span>
+              <span class="loan-shell-chip">Step <span id="loan-step-indicator">5</span> of 5</span>
               <p>Average completion time: 2–4 minutes.</p>
             </div>
           </div>
@@ -258,6 +346,14 @@
                 <div class="rc-row"><span>ID Number</span><b>900101******</b></div>
                 <div class="rc-row"><span>Mobile</span><b>082*******</b></div>
                 <div class="rc-row"><span>Address</span><b>12 Main Road, Pretoria</b></div>
+              </div>
+
+              <div class="rc-summary">
+                <h4>Expenses Summary</h4>
+                <div class="rc-row"><span>Household &amp; groceries</span><b>R 5,500</b></div>
+                <div class="rc-row"><span>Utilities &amp; rates</span><b>R 1,800</b></div>
+                <div class="rc-row"><span>Transport</span><b>R 1,500</b></div>
+                <div class="rc-row"><span>Insurance</span><b>R 750</b></div>
               </div>
 
               <div class="rc-summary">
@@ -300,7 +396,9 @@
 
     <footer id="footer" class="site-footer-two">
       <div class="site-footer-two__bottom">
-        <div class="container"><p>© Copyright 2025 PBS Finance</p></div>
+        <div class="container">
+          <p>© Copyright 2025 PBS Finance</p>
+        </div>
       </div>
     </footer>
 
@@ -315,7 +413,8 @@
       </div>
       <div class="mobile-nav__container"></div>
       <ul class="mobile-nav__contact list-unstyled">
-        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a>
+        </li>
         <li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
       </ul>
     </div>
@@ -341,33 +440,31 @@
   <script src="assets/js/theme.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', function () {
       var indicator = document.getElementById('loan-step-indicator');
-      if (indicator) indicator.textContent = '4';
+      if (indicator) indicator.textContent = '5';
 
-      // ✅ consent logic (unchanged)
       var form = document.getElementById('submitForm');
       var err = document.getElementById('consentError');
-      if (!form) return;
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          var a = document.getElementById('consentCredit');
+          var b = document.getElementById('consentTerms');
+          var c = document.getElementById('consentPrivacy');
 
-      form.addEventListener('submit', function(e){
-        var a = document.getElementById('consentCredit');
-        var b = document.getElementById('consentTerms');
-        var c = document.getElementById('consentPrivacy');
+          var ok = !!(a && b && c && a.checked && b.checked && c.checked);
+          if (!ok) {
+            e.preventDefault();
+            if (err) err.style.display = 'block';
+            return;
+          }
 
-        var ok = !!(a && b && c && a.checked && b.checked && c.checked);
-        if (!ok){
           e.preventDefault();
-          if (err) err.style.display = 'block';
-          return;
-        }
+          if (err) err.style.display = 'none';
+          window.location.href = 'application-approved.html';
+        });
+      }
 
-        e.preventDefault();
-        if (err) err.style.display = 'none';
-        window.location.href = 'application-approved.html';
-      });
-
-      // ✅ dropdown open/close (no dependencies)
       var btn = document.getElementById('headerUserBtn');
       var menu = document.getElementById('headerUserMenu');
       if (!btn || !menu) return;
@@ -393,9 +490,12 @@
       });
 
       document.addEventListener('click', function () { closeMenu(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
       menu.addEventListener('click', function (e) { e.stopPropagation(); });
     });
   </script>
 </body>
+
 </html>
