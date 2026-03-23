@@ -1,6 +1,7 @@
 <!-- FILE: welcome-back.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -23,122 +24,245 @@
 
   <style>
     /* user badge (match apply_for_a_loan_logged.html) */
-    .header-user-badge{
-      display:inline-flex;align-items:center;gap:10px;padding:6px 12px;border-radius:999px;
-      background:#e9f6da;color:#0F1F29;font-weight:600;text-decoration:none;
-    }
-    .header-user-badge .initials{
-      width:28px;height:28px;border-radius:999px;background:#0F1F29;color:#B5E480;
-      display:inline-flex;align-items:center;justify-content:center;font-weight:700;
-    }
-
-    /* ✅ dropdown wrapper + menu */
-    .header-user-wrap{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      white-space:nowrap;
+    .header-user-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e9f6da;
+      color: #0F1F29;
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    .header-user-trigger{
-      cursor:pointer;
-      border:none;
-      padding:0;
-      background:transparent;
-      display:inline-flex;
-      align-items:center;
+    .header-user-badge .initials {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: #0F1F29;
+      color: #B5E480;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
     }
 
-    .header-user-badge .caret{
-      margin-left:8px;
-      opacity:.9;
-      font-size:12px;
+    .header-user-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
     }
 
-    .header-user-menu{
-      position:absolute;
-      right:0;
-      top:calc(100% + 10px);
-      min-width:220px;
-      background:#ffffff;
-      border:1px solid rgba(15,31,41,0.10);
-      box-shadow:0 16px 40px rgba(15,31,41,0.10);
-      border-radius:14px;
-      padding:8px;
-      z-index:999;
-      display:none;
-    }
-    .header-user-menu.is-open{ display:block; }
-
-    .header-user-menu a{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 10px;
-      border-radius:10px;
-      text-decoration:none;
-      color:#0F1F29;
-      font-weight:700;
-    }
-    .header-user-menu a:hover{
-      background:#f3f7ef;
-    }
-    .header-user-menu .divider{
-      height:1px;
-      background:rgba(15,31,41,0.08);
-      margin:6px 4px;
+    .header-user-trigger {
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
     }
 
-    /* ✅ Logout button (matches header vibe) */
-    .header-logout-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:#0F1F29;
-      color:#B5E480;
-      font-weight:800;
-      text-decoration:none;
-      line-height:1;
+    .header-user-badge .caret {
+      margin-left: 8px;
+      opacity: .9;
+      font-size: 12px;
     }
-    .header-logout-btn:hover{ color:#B5E480; opacity:.92; }
 
-    .rb-shell { padding: 48px 0; }
+    .header-user-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      min-width: 220px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 31, 41, 0.10);
+      box-shadow: 0 16px 40px rgba(15, 31, 41, 0.10);
+      border-radius: 14px;
+      padding: 8px;
+      z-index: 999;
+      display: none;
+    }
+
+    .header-user-menu.is-open {
+      display: block;
+    }
+
+    .header-user-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #0F1F29;
+      font-weight: 700;
+    }
+
+    .header-user-menu a:hover {
+      background: #f3f7ef;
+    }
+
+    .header-user-menu .divider {
+      height: 1px;
+      background: rgba(15, 31, 41, 0.08);
+      margin: 6px 4px;
+    }
+
+    .header-logout-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #0F1F29;
+      color: #B5E480;
+      font-weight: 800;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .header-logout-btn:hover {
+      color: #B5E480;
+      opacity: .92;
+    }
+
+    .rb-shell {
+      padding: 48px 0;
+    }
+
     .rb-card {
       border-radius: 24px;
       background: #ffffff;
-      border: 1px solid rgba(15,31,41,0.08);
-      box-shadow: 0 16px 40px rgba(15,31,41,0.06);
+      border: 1px solid rgba(15, 31, 41, 0.08);
+      box-shadow: 0 16px 40px rgba(15, 31, 41, 0.06);
       overflow: hidden;
     }
-    .rb-card-inner { padding: 34px 28px; }
+
+    .rb-card-inner {
+      padding: 34px 28px;
+    }
+
     .rb-pill {
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 14px; border-radius: 999px;
-      background:#eef7df; color:#0F1F29; font-weight:700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #eef7df;
+      color: #0F1F29;
+      font-weight: 700;
       font-size: 13px;
     }
-    .rb-title { font-size: 44px; line-height: 1.05; margin: 14px 0 10px; }
-    .rb-sub { color: #5b6b75; margin-bottom: 20px; max-width: 520px; }
-    .rb-meta { color:#6b7c88; font-size: 14px; margin-top: 8px; }
-    .rb-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px; }
-    .rb-btn { min-width: 220px; }
+
+    .rb-title {
+      font-size: 44px;
+      line-height: 1.05;
+      margin: 14px 0 10px;
+    }
+
+    .rb-sub {
+      color: #5b6b75;
+      margin-bottom: 20px;
+      max-width: 620px;
+    }
+
+    .rb-meta {
+      color: #6b7c88;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .rb-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .rb-btn {
+      min-width: 220px;
+    }
+
+    .rb-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      margin-bottom: 4px;
+    }
+
+    .rb-flow-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #f7f9fb;
+      border: 1px solid rgba(15, 31, 41, 0.08);
+      color: #0F1F29;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .rb-flow-chip i {
+      color: #7aa83d;
+    }
+
     .rb-footer-icons {
-      display:flex; gap:28px; flex-wrap:wrap; justify-content:center;
-      margin-top: 26px; color:#7b8a95; font-size: 12px; letter-spacing: .04em;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 26px;
+      color: #7b8a95;
+      font-size: 12px;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
-    .rb-footer-icons span { display:inline-flex; align-items:center; gap:8px; }
-    .rb-footer-icons i { opacity:.85; }
-    @media (max-width: 575.98px){
-      .rb-title { font-size: 34px; }
-      .rb-card-inner { padding: 26px 18px; }
-      .rb-btn { width:100%; min-width: auto; }
-      .header-user-wrap{ flex-wrap:wrap; justify-content:flex-end; }
-      .header-logout-btn{ width:100%; justify-content:center; }
-      .header-user-menu{ right:auto; left:0; width:100%; min-width:0; }
+
+    .rb-footer-icons span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rb-footer-icons i {
+      opacity: .85;
+    }
+
+    @media (max-width: 575.98px) {
+      .rb-title {
+        font-size: 34px;
+      }
+
+      .rb-card-inner {
+        padding: 26px 18px;
+      }
+
+      .rb-btn {
+        width: 100%;
+        min-width: auto;
+      }
+
+      .header-user-wrap {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .header-logout-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .header-user-menu {
+        right: auto;
+        left: 0;
+        width: 100%;
+        min-width: 0;
+      }
     }
   </style>
 </head>
@@ -169,19 +293,10 @@
                   <li class="dropdown"><a href="apply_for_a_loan.html">Apply for a Loan</a></li>
                   <li><a href="#footer">Support</a></li>
 
-                  <!-- ✅ logged-in area (dropdown + logout) -->
                   <li class="main-menu__item main-menu__item--user" style="margin-left:18px;">
                     <div class="header-user-wrap">
-                      <!-- dropdown trigger (badge) -->
-                      <button
-                        type="button"
-                        class="header-user-trigger"
-                        id="headerUserBtn"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        aria-controls="headerUserMenu"
-                        title="Account menu"
-                      >
+                      <button type="button" class="header-user-trigger" id="headerUserBtn" aria-haspopup="true"
+                        aria-expanded="false" aria-controls="headerUserMenu" title="Account menu">
                         <span class="header-user-badge">
                           <span class="initials">SM</span>
                           <span class="user-meta" style="text-align:left;">
@@ -192,9 +307,7 @@
                         </span>
                       </button>
 
-                      <!-- flyout menu -->
                       <div class="header-user-menu" id="headerUserMenu" role="menu" aria-labelledby="headerUserBtn">
-                        <!-- Profile link (best match: client portal) -->
                         <a href="client-portal.html" role="menuitem">
                           <i class="fa fa-user-circle"></i>
                           <span>Profile</span>
@@ -208,9 +321,8 @@
                         </a>
                       </div>
 
-                      <!-- logout button (requested) -->
                       <a class="header-logout-btn" href="apply_for_a_loan_guest_out.html" title="Log out">
-                        <i class="fa fa-sign-out-alt"></i> 
+                        <i class="fa fa-sign-out-alt"></i>
                       </a>
                     </div>
                   </li>
@@ -238,11 +350,21 @@
             <h1 class="rb-title">👋 Welcome back, SiD</h1>
             <p class="rb-sub">
               We’ve pre-filled your details from your previous application.
-              Confirm your loan amount and repayment term, update anything that changed, and submit.
+              You can now move through your returning application faster by confirming your loan details, reviewing your
+              personal information, checking your expenses, updating your financial details if needed, and then
+              submitting.
             </p>
 
             <div class="rb-meta">
               Last application submitted: <strong>12 Nov 2025</strong>
+            </div>
+
+            <div class="rb-flow">
+              <span class="rb-flow-chip"><i class="fa fa-coins"></i> Loan Details</span>
+              <span class="rb-flow-chip"><i class="fa fa-user"></i> Personal</span>
+              <span class="rb-flow-chip"><i class="fa fa-receipt"></i> Expenses</span>
+              <span class="rb-flow-chip"><i class="fa fa-briefcase"></i> Financial</span>
+              <span class="rb-flow-chip"><i class="fa fa-check-circle"></i> Finalize</span>
             </div>
 
             <div class="rb-actions">
@@ -283,7 +405,8 @@
       </div>
       <div class="mobile-nav__container"></div>
       <ul class="mobile-nav__contact list-unstyled">
-        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a></li>
+        <li><i class="pylon-icon-email1"></i><a href="mailto:info@phekhubusiness.co.za">info@phekhubusiness.co.za</a>
+        </li>
         <li><i class="pylon-icon-telephone"></i><a href="tel:+27630683230">(+27) 63 068 3230</a></li>
       </ul>
     </div>
@@ -294,12 +417,9 @@
   <!-- vendor JS -->
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
-
-  <!-- ✅ REQUIRED by theme.js (fixes $(...).appear error) -->
   <script src="assets/js/jquery.appear.min.js"></script>
 
   <script>
-    // Dropdown open/close (no dependencies)
     (function () {
       var btn = document.getElementById('headerUserBtn');
       var menu = document.getElementById('headerUserMenu');
@@ -325,24 +445,21 @@
         toggleMenu();
       });
 
-      // close when clicking outside
       document.addEventListener('click', function () {
         closeMenu();
       });
 
-      // close on ESC
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeMenu();
       });
 
-      // prevent inside clicks from closing immediately
       menu.addEventListener('click', function (e) {
         e.stopPropagation();
       });
     })();
   </script>
 
-  <!-- template js -->
   <script src="assets/js/theme.js"></script>
 </body>
+
 </html>
