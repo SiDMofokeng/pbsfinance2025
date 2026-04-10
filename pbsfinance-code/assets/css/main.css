@@ -3382,9 +3382,11 @@ h6 {
     margin-top: 50px;
   }
 }
+
 .blog-sidebar {
   position: relative;
 }
+
 .blog-sidebar:before {
   content: "";
   display: block;
@@ -10433,7 +10435,7 @@ nav.main-header-two__menu.main-menu {
   width: 86%;
 }
 
-.main-header-two__menu .main-menu__list > li > a {
+.main-header-two__menu .main-menu__list>li>a {
   margin-left: 0;
   margin-right: 0;
   border: 0;
@@ -10596,7 +10598,7 @@ nav.main-header-two__menu.main-menu {
     padding-bottom: 150px;
     margin-bottom: 150px;
   }
-  
+
 }
 
 .loan-calculator-two__shape-1 {
@@ -12106,7 +12108,7 @@ select#cars {
 
 /* topbar two */
 .topbar-two {
-  background-color: #3c4a53;
+  background-color: #0f1f29;
   padding-top: 12px;
   padding-bottom: 12px;
   display: none;
